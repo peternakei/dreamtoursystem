@@ -1,0 +1,137 @@
+[
+    {
+        "regionID": 1,
+        "fullName": "Arusha",
+        "abbreviation": "ARU"
+    },
+    {
+        "regionID": 2,
+        "fullName": "Dar es Salaam",
+        "abbreviation": "DAR"
+    },
+    {
+        "regionID": 3,
+        "fullName": "Dodoma",
+        "abbreviation": "DOM"
+    },
+    {
+        "regionID": 4,
+        "fullName": "Iringa",
+        "abbreviation": "IRI"
+    },
+    {
+        "regionID": 5,
+        "fullName": "Kagera",
+        "abbreviation": "KGR"
+    },
+    {
+        "regionID": 16,
+        "fullName": "Kaskazini Pemba",
+        "abbreviation": "KZP"
+    },
+    {
+        "regionID": 26,
+        "fullName": "Kaskazini Unguja",
+        "abbreviation": "KZU"
+    },
+    {
+        "regionID": 6,
+        "fullName": "Katavi",
+        "abbreviation": "KTV"
+    },
+    {
+        "regionID": 7,
+        "fullName": "Kigoma",
+        "abbreviation": "KGM"
+    },
+    {
+        "regionID": 8,
+        "fullName": "Kilimanjaro",
+        "abbreviation": "KMJ"
+    },
+    {
+        "regionID": 17,
+        "fullName": "Kusini Pemba",
+        "abbreviation": "KSP"
+    },
+    {
+        "regionID": 27,
+        "fullName": "Kusini Unguja",
+        "abbreviation": "KSU"
+    },
+    {
+        "regionID": 9,
+        "fullName": "Lindi",
+        "abbreviation": "LND"
+    },
+    {
+        "regionID": 10,
+        "fullName": "Manyara",
+        "abbreviation": "MYR"
+    },
+    {
+        "regionID": 11,
+        "fullName": "Mara",
+        "abbreviation": "MAR"
+    },
+    {
+        "regionID": 12,
+        "fullName": "Mbeya",
+        "abbreviation": "MBY"
+    },
+    {
+        "regionID": 25,
+        "fullName": "Mjini Magharibi",
+        "abbreviation": "MJM"
+    },
+    {
+        "regionID": 13,
+        "fullName": "Morogoro",
+        "abbreviation": "MGR"
+    },
+    {
+        "regionID": 14,
+        "fullName": "Mtwara",
+        "abbreviation": "MTW"
+    },
+    {
+        "regionID": 15,
+        "fullName": "Mwanza",
+        "abbreviation": "MWZ"
+    },
+    {
+        "regionID": 18,
+        "fullName": "Pwani",
+        "abbreviation": "PWN"
+    },
+    {
+        "regionID": 19,
+        "fullName": "Rukwa",
+        "abbreviation": "RKW"
+    },
+    {
+        "regionID": 20,
+        "fullName": "Ruvuma",
+        "abbreviation": "RVM"
+    },
+    {
+        "regionID": 21,
+        "fullName": "Shinyanga",
+        "abbreviation": "SHY"
+    },
+    {
+        "regionID": 22,
+        "fullName": "Singida",
+        "abbreviation": "SGD"
+    },
+    {
+        "regionID": 23,
+        "fullName": "Tabora",
+        "abbreviation": "TBR"
+    },
+    {
+        "regionID": 24,
+        "fullName": "Tanga",
+        "abbreviation": "TNG"
+    }
+]

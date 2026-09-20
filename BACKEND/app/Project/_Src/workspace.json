@@ -1,0 +1,342 @@
+{
+  "accommodations": {
+    "slug": "accommodations",
+    "module": "Accommodations",
+    "title": "Accommodations",
+    "controller": "App\\Project\\Modules\\System\\Accommodations\\AccommodationController",
+    "path": "/accommodations",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/accommodations/{accommodation}"
+  },
+  "activities": {
+    "slug": "activities",
+    "module": "Activities",
+    "title": "Activities",
+    "controller": "App\\Project\\Modules\\System\\Activities\\ActivityController",
+    "path": "/activities",
+    "show": false,
+    "group": "Configuration",
+    "showPath": "/activities/{activity}"
+  },
+  "addons": {
+    "slug": "addons",
+    "module": "Addons",
+    "title": "Addons",
+    "controller": "App\\Project\\Modules\\System\\Addons\\AddonController",
+    "path": "/addons",
+    "show": true,
+    "group": "Configuration",
+    "showPath": "/addons/{addon}"
+  },
+  "bank_details": {
+    "slug": "bank_details",
+    "module": "BankDetails",
+    "title": "Bank Details",
+    "controller": "App\\Project\\Modules\\System\\BankDetails\\BankDetailController",
+    "path": "/bank_details",
+    "show": true,
+    "group": "Configuration",
+    "showPath": "/bank_details/{bank_detail}"
+  },
+  "banks": {
+    "slug": "banks",
+    "module": "Banks",
+    "title": "Banks",
+    "controller": "App\\Project\\Modules\\System\\Banks\\BankController",
+    "path": "/banks",
+    "show": true,
+    "group": "Configuration",
+    "showPath": "/banks/{bank}"
+  },
+  "blogs": {
+    "slug": "blogs",
+    "module": "Blogs",
+    "title": "Blogs",
+    "controller": "App\\Project\\Modules\\System\\Blogs\\BlogController",
+    "path": "/blogs",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/blogs/{blog}"
+  },
+  "bookings": {
+    "slug": "bookings",
+    "module": "Bookings",
+    "title": "Bookings",
+    "controller": "App\\Project\\Modules\\System\\Bookings\\BookingController",
+    "path": "/bookings",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/bookings/{booking}"
+  },
+  "budgets": {
+    "slug": "budgets",
+    "module": "Budgets",
+    "title": "Budgets",
+    "controller": "App\\Project\\Modules\\System\\Budgets\\BudgetController",
+    "path": "/budgets",
+    "show": true,
+    "group": "Configuration",
+    "showPath": "/budgets/{budget}"
+  },
+  "categories": {
+    "slug": "categories",
+    "module": "Categories",
+    "title": "Categories",
+    "controller": "App\\Project\\Modules\\System\\Categories\\CategoryController",
+    "path": "/categories",
+    "show": false,
+    "group": "Configuration",
+    "showPath": "/categories/{category}"
+  },
+  "countries": {
+    "slug": "countries",
+    "module": "Countries",
+    "title": "Countries",
+    "controller": "App\\Project\\Modules\\Core\\Countries\\CountryController",
+    "path": "/countries",
+    "show": false,
+    "group": "Administration",
+    "showPath": "/countries/{country}"
+  },
+  "destinations": {
+    "slug": "destinations",
+    "module": "Destinations",
+    "title": "Destinations",
+    "controller": "App\\Project\\Modules\\System\\Destinations\\DestinationController",
+    "path": "/destinations",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/destinations/{destination}"
+  },
+  "districts": {
+    "slug": "districts",
+    "module": "Districts",
+    "title": "Districts",
+    "controller": "App\\Project\\Modules\\Core\\Districts\\DistrictController",
+    "path": "/districts",
+    "show": true,
+    "group": "Administration",
+    "showPath": "/districts/{district}"
+  },
+  "exchange_rates": {
+    "slug": "exchange_rates",
+    "module": "ExchangeRates",
+    "title": "Exchange Rates",
+    "controller": "App\\Project\\Modules\\System\\ExchangeRates\\ExchangeRateController",
+    "path": "/exchange_rates",
+    "show": true,
+    "group": "Configuration",
+    "showPath": "/exchange_rates/{exchange_rate}"
+  },
+  "faqs": {
+    "slug": "faqs",
+    "module": "Faqs",
+    "title": "Faqs",
+    "controller": "App\\Project\\Modules\\System\\Faqs\\FaqController",
+    "path": "/faqs",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/faqs/{faq}"
+  },
+  "inquiries": {
+    "slug": "inquiries",
+    "module": "Inquiries",
+    "title": "Inquiries",
+    "controller": "App\\Project\\Modules\\System\\Inquiries\\InquiryController",
+    "path": "/inquiries",
+    "show": false,
+    "group": "Safari operations",
+    "showPath": "/inquiries/{inquiry}"
+  },
+  "invoices": {
+    "slug": "invoices",
+    "module": "Invoices",
+    "title": "Invoices",
+    "controller": "App\\Project\\Modules\\System\\Invoices\\InvoiceController",
+    "path": "/invoices",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/invoices/{invoice}"
+  },
+  "locations": {
+    "slug": "locations",
+    "module": "Locations",
+    "title": "Locations",
+    "controller": "App\\Project\\Modules\\Core\\Locations\\LocationController",
+    "path": "/locations",
+    "show": true,
+    "group": "Administration",
+    "showPath": "/locations/{location}"
+  },
+  "menus": {
+    "slug": "menus",
+    "module": "Menus",
+    "title": "Menus",
+    "controller": "App\\Project\\Modules\\Core\\Menus\\MenuController",
+    "path": "/menus",
+    "show": true,
+    "group": "Administration",
+    "showPath": "/menus/{menu}"
+  },
+  "pages": {
+    "slug": "pages",
+    "module": "Pages",
+    "title": "Pages",
+    "controller": "App\\Project\\Modules\\System\\Pages\\PageController",
+    "path": "/pages",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/pages/{page}"
+  },
+  "permissions": {
+    "slug": "permissions",
+    "module": "Permissions",
+    "title": "Permissions",
+    "controller": "App\\Project\\Modules\\Core\\Permissions\\PermissionController",
+    "path": "/permissions",
+    "show": true,
+    "group": "Administration",
+    "showPath": "/permissions/{permission}"
+  },
+  "quotations": {
+    "slug": "quotations",
+    "module": "Quotations",
+    "title": "Quotations",
+    "controller": "App\\Project\\Modules\\System\\Quotations\\QuotationController",
+    "path": "/quotations",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/quotations/{quotation}"
+  },
+  "ratings": {
+    "slug": "ratings",
+    "module": "Ratings",
+    "title": "Ratings",
+    "controller": "App\\Project\\Modules\\System\\Ratings\\RatingController",
+    "path": "/ratings",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/ratings/{rating}"
+  },
+  "receipts": {
+    "slug": "receipts",
+    "module": "Receipts",
+    "title": "Receipts",
+    "controller": "App\\Project\\Modules\\System\\Receipts\\ReceiptController",
+    "path": "/receipts",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/receipts/{receipt}"
+  },
+  "refunds": {
+    "slug": "refunds",
+    "module": "Refunds",
+    "title": "Refunds",
+    "controller": "App\\Project\\Modules\\System\\Refunds\\RefundController",
+    "path": "/refunds",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/refunds/{refund}"
+  },
+  "regions": {
+    "slug": "regions",
+    "module": "Regions",
+    "title": "Regions",
+    "controller": "App\\Project\\Modules\\Core\\Regions\\RegionController",
+    "path": "/regions",
+    "show": true,
+    "group": "Administration",
+    "showPath": "/regions/{region}"
+  },
+  "roles": {
+    "slug": "roles",
+    "module": "Roles",
+    "title": "Roles",
+    "controller": "App\\Project\\Modules\\Core\\Roles\\RoleController",
+    "path": "/roles",
+    "show": true,
+    "group": "Administration",
+    "showPath": "/roles/{role}"
+  },
+  "seasons": {
+    "slug": "seasons",
+    "module": "Seasons",
+    "title": "Seasons",
+    "controller": "App\\Project\\Modules\\System\\Seasons\\SeasonController",
+    "path": "/seasons",
+    "show": true,
+    "group": "Configuration",
+    "showPath": "/seasons/{season}"
+  },
+  "subscriptions": {
+    "slug": "subscriptions",
+    "module": "Subscriptions",
+    "title": "Subscriptions",
+    "controller": "App\\Project\\Modules\\System\\Subscriptions\\SubscriptionController",
+    "path": "/subscriptions",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/subscriptions/{subscription}"
+  },
+  "system_configurations": {
+    "slug": "system_configurations",
+    "module": "SystemConfigurations",
+    "title": "System Configurations",
+    "controller": "App\\Project\\Modules\\Core\\SystemConfigurations\\SystemConfigurationController",
+    "path": "/system_configurations",
+    "show": true,
+    "group": "Administration",
+    "showPath": "/system_configurations/{system_configuration}"
+  },
+  "testimonials": {
+    "slug": "testimonials",
+    "module": "Testimonials",
+    "title": "Testimonials",
+    "controller": "App\\Project\\Modules\\System\\Testimonials\\TestimonialController",
+    "path": "/testimonials",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/testimonials/{testimonial}"
+  },
+  "tourists": {
+    "slug": "tourists",
+    "module": "Tourists",
+    "title": "Tourists",
+    "controller": "App\\Project\\Modules\\System\\Tourists\\TouristController",
+    "path": "/tourists",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/tourists/{tourist}"
+  },
+  "trips": {
+    "slug": "trips",
+    "module": "Trips",
+    "title": "Trips",
+    "controller": "App\\Project\\Modules\\System\\Trips\\TripController",
+    "path": "/trips",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/trips/{trip}"
+  },
+  "users": {
+    "slug": "users",
+    "module": "Users",
+    "title": "Users",
+    "controller": "App\\Project\\Modules\\Core\\Users\\UserController",
+    "path": "/users",
+    "show": true,
+    "group": "Administration",
+    "showPath": "/users/{user}"
+  },
+  "vehicles": {
+    "slug": "vehicles",
+    "module": "Vehicles",
+    "title": "Vehicles",
+    "controller": "App\\Project\\Modules\\System\\Vehicles\\VehicleController",
+    "path": "/vehicles",
+    "show": true,
+    "group": "Safari operations",
+    "showPath": "/vehicles/{vehicle}"
+  }
+}

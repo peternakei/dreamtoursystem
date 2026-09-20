@@ -1,0 +1,1 @@
+<template><main class="flex min-h-screen flex-col items-center justify-center gap-4"><h1 class="text-2xl font-semibold">Page not found</h1><RouterLink to="/dashboard" class="underline">Return to dashboard</RouterLink></main></template>

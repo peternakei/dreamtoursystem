@@ -1,0 +1,11 @@
+{
+  "name": "serenbluesafarissystem",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "bash start.sh",
+    "build": "npm --prefix FRONTEND run build",
+    "typecheck": "npm --prefix FRONTEND run typecheck",
+    "test": "cd BACKEND && php artisan test"
+  }
+}

@@ -1,0 +1,21 @@
+**/vendor/
+**/node_modules/
+**/.env
+**/.env.*
+!**/.env.example
+**/storage/logs/*.log
+**/storage/framework/cache/data/**
+**/storage/framework/sessions/**
+**/storage/framework/views/*.php
+**/bootstrap/cache/*.php
+**/database/*.sqlite*
+**/.phpunit.cache/
+FRONTEND/dist/
+.idea/
+.vscode/
+
+# Local diagnostics, credentials and development-server state
+**/*.stackdump
+**/auth.json
+**/public/hot
+**/.DS_Store

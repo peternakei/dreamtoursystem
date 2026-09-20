@@ -1,0 +1,794 @@
+[
+    {
+        "districtID": 1,
+        "regionID": 1,
+        "fullName": "Arumeru",
+        "region": "Arusha"
+    },
+    {
+        "districtID": 2,
+        "regionID": 1,
+        "fullName": "Arusha",
+        "region": "Arusha"
+    },
+    {
+        "districtID": 49,
+        "regionID": 10,
+        "fullName": "Babati",
+        "region": "Manyara"
+    },
+    {
+        "districtID": 88,
+        "regionID": 18,
+        "fullName": "Bagamoyo",
+        "region": "Pwani"
+    },
+    {
+        "districtID": 12,
+        "regionID": 3,
+        "fullName": "Bahi",
+        "region": "Dodoma"
+    },
+    {
+        "districtID": 22,
+        "regionID": 5,
+        "fullName": "Biharamulo",
+        "region": "Kagera"
+    },
+    {
+        "districtID": 32,
+        "regionID": 7,
+        "fullName": "Buhigwe",
+        "region": "Kigoma"
+    },
+    {
+        "districtID": 23,
+        "regionID": 5,
+        "fullName": "Bukoba",
+        "region": "Kagera"
+    },
+    {
+        "districtID": 54,
+        "regionID": 11,
+        "fullName": "Bunda",
+        "region": "Mara"
+    },
+    {
+        "districtID": 55,
+        "regionID": 11,
+        "fullName": "Butiama",
+        "region": "Mara"
+    },
+    {
+        "districtID": 86,
+        "regionID": 17,
+        "fullName": "Chake Chake",
+        "region": "Kusini Pemba"
+    },
+    {
+        "districtID": 13,
+        "regionID": 3,
+        "fullName": "Chamwino",
+        "region": "Dodoma"
+    },
+    {
+        "districtID": 14,
+        "regionID": 3,
+        "fullName": "Chemba",
+        "region": "Dodoma"
+    },
+    {
+        "districtID": 60,
+        "regionID": 12,
+        "fullName": "Chunya",
+        "region": "Mbeya"
+    },
+    {
+        "districtID": 15,
+        "regionID": 3,
+        "fullName": "Dodoma",
+        "region": "Dodoma"
+    },
+    {
+        "districtID": 65,
+        "regionID": 13,
+        "fullName": "Gairo",
+        "region": "Morogoro"
+    },
+    {
+        "districtID": 38,
+        "regionID": 8,
+        "fullName": "Hai",
+        "region": "Kilimanjaro"
+    },
+    {
+        "districtID": 50,
+        "regionID": 10,
+        "fullName": "Hanang",
+        "region": "Manyara"
+    },
+    {
+        "districtID": 118,
+        "regionID": 24,
+        "fullName": "Handeni",
+        "region": "Tanga"
+    },
+    {
+        "districtID": 111,
+        "regionID": 23,
+        "fullName": "Igunga",
+        "region": "Tabora"
+    },
+    {
+        "districtID": 106,
+        "regionID": 22,
+        "fullName": "Ikungi",
+        "region": "Singida"
+    },
+    {
+        "districtID": 7,
+        "regionID": 2,
+        "fullName": "Ilala",
+        "region": "Dar es Salaam"
+    },
+    {
+        "districtID": 77,
+        "regionID": 15,
+        "fullName": "Ilemela",
+        "region": "Mwanza"
+    },
+    {
+        "districtID": 107,
+        "regionID": 22,
+        "fullName": "Iramba",
+        "region": "Singida"
+    },
+    {
+        "districtID": 19,
+        "regionID": 4,
+        "fullName": "Iringa",
+        "region": "Iringa"
+    },
+    {
+        "districtID": 103,
+        "regionID": 21,
+        "fullName": "Kahama",
+        "region": "Shinyanga"
+    },
+    {
+        "districtID": 33,
+        "regionID": 7,
+        "fullName": "Kakonko",
+        "region": "Kigoma"
+    },
+    {
+        "districtID": 95,
+        "regionID": 19,
+        "fullName": "Kalambo",
+        "region": "Rukwa"
+    },
+    {
+        "districtID": 112,
+        "regionID": 23,
+        "fullName": "Kaliua",
+        "region": "Tabora"
+    },
+    {
+        "districtID": 24,
+        "regionID": 5,
+        "fullName": "Karagwe",
+        "region": "Kagera"
+    },
+    {
+        "districtID": 3,
+        "regionID": 1,
+        "fullName": "Karatu",
+        "region": "Arusha"
+    },
+    {
+        "districtID": 129,
+        "regionID": 26,
+        "fullName": "Kaskazini A",
+        "region": "Kaskazini Unguja"
+    },
+    {
+        "districtID": 130,
+        "regionID": 26,
+        "fullName": "Kaskazini B",
+        "region": "Kaskazini Unguja"
+    },
+    {
+        "districtID": 34,
+        "regionID": 7,
+        "fullName": "Kasulu",
+        "region": "Kigoma"
+    },
+    {
+        "districtID": 131,
+        "regionID": 27,
+        "fullName": "Kati",
+        "region": "Kusini Unguja"
+    },
+    {
+        "districtID": 89,
+        "regionID": 18,
+        "fullName": "Kibaha",
+        "region": "Pwani"
+    },
+    {
+        "districtID": 90,
+        "regionID": 18,
+        "fullName": "Kibiti",
+        "region": "Pwani"
+    },
+    {
+        "districtID": 35,
+        "regionID": 7,
+        "fullName": "Kibondo",
+        "region": "Kigoma"
+    },
+    {
+        "districtID": 8,
+        "regionID": 2,
+        "fullName": "Kigamboni",
+        "region": "Dar es Salaam"
+    },
+    {
+        "districtID": 36,
+        "regionID": 7,
+        "fullName": "Kigoma",
+        "region": "Kigoma"
+    },
+    {
+        "districtID": 119,
+        "regionID": 24,
+        "fullName": "Kilindi",
+        "region": "Tanga"
+    },
+    {
+        "districtID": 20,
+        "regionID": 4,
+        "fullName": "Kilolo",
+        "region": "Iringa"
+    },
+    {
+        "districtID": 66,
+        "regionID": 13,
+        "fullName": "Kilombero",
+        "region": "Morogoro"
+    },
+    {
+        "districtID": 67,
+        "regionID": 13,
+        "fullName": "Kilosa",
+        "region": "Morogoro"
+    },
+    {
+        "districtID": 44,
+        "regionID": 9,
+        "fullName": "Kilwa",
+        "region": "Lindi"
+    },
+    {
+        "districtID": 9,
+        "regionID": 2,
+        "fullName": "Kinondoni",
+        "region": "Dar es Salaam"
+    },
+    {
+        "districtID": 91,
+        "regionID": 18,
+        "fullName": "Kisarawe",
+        "region": "Pwani"
+    },
+    {
+        "districtID": 104,
+        "regionID": 21,
+        "fullName": "Kishapu",
+        "region": "Shinyanga"
+    },
+    {
+        "districtID": 51,
+        "regionID": 10,
+        "fullName": "Kiteto",
+        "region": "Manyara"
+    },
+    {
+        "districtID": 16,
+        "regionID": 3,
+        "fullName": "Kondoa",
+        "region": "Dodoma"
+    },
+    {
+        "districtID": 17,
+        "regionID": 3,
+        "fullName": "Kongwa",
+        "region": "Dodoma"
+    },
+    {
+        "districtID": 120,
+        "regionID": 24,
+        "fullName": "Korogwe",
+        "region": "Tanga"
+    },
+    {
+        "districtID": 132,
+        "regionID": 27,
+        "fullName": "Kusini",
+        "region": "Kusini Unguja"
+    },
+    {
+        "districtID": 78,
+        "regionID": 15,
+        "fullName": "Kwimba",
+        "region": "Mwanza"
+    },
+    {
+        "districtID": 61,
+        "regionID": 12,
+        "fullName": "Kyela",
+        "region": "Mbeya"
+    },
+    {
+        "districtID": 25,
+        "regionID": 5,
+        "fullName": "Kyerwa",
+        "region": "Kagera"
+    },
+    {
+        "districtID": 45,
+        "regionID": 9,
+        "fullName": "Lindi",
+        "region": "Lindi"
+    },
+    {
+        "districtID": 46,
+        "regionID": 9,
+        "fullName": "Liwale",
+        "region": "Lindi"
+    },
+    {
+        "districtID": 4,
+        "regionID": 1,
+        "fullName": "Longido",
+        "region": "Arusha"
+    },
+    {
+        "districtID": 121,
+        "regionID": 24,
+        "fullName": "Lushoto",
+        "region": "Tanga"
+    },
+    {
+        "districtID": 92,
+        "regionID": 18,
+        "fullName": "Mafia",
+        "region": "Pwani"
+    },
+    {
+        "districtID": 126,
+        "regionID": 25,
+        "fullName": "Magharibi A",
+        "region": "Mjini Magharibi"
+    },
+    {
+        "districtID": 127,
+        "regionID": 25,
+        "fullName": "Magharibi B",
+        "region": "Mjini Magharibi"
+    },
+    {
+        "districtID": 79,
+        "regionID": 15,
+        "fullName": "Magu",
+        "region": "Mwanza"
+    },
+    {
+        "districtID": 68,
+        "regionID": 13,
+        "fullName": "Malinyi",
+        "region": "Morogoro"
+    },
+    {
+        "districtID": 108,
+        "regionID": 22,
+        "fullName": "Manyoni",
+        "region": "Singida"
+    },
+    {
+        "districtID": 72,
+        "regionID": 14,
+        "fullName": "Masasi",
+        "region": "Mtwara"
+    },
+    {
+        "districtID": 62,
+        "regionID": 12,
+        "fullName": "Mbarali",
+        "region": "Mbeya"
+    },
+    {
+        "districtID": 63,
+        "regionID": 12,
+        "fullName": "Mbeya",
+        "region": "Mbeya"
+    },
+    {
+        "districtID": 98,
+        "regionID": 20,
+        "fullName": "Mbinga",
+        "region": "Ruvuma"
+    },
+    {
+        "districtID": 52,
+        "regionID": 10,
+        "fullName": "Mbulu",
+        "region": "Manyara"
+    },
+    {
+        "districtID": 84,
+        "regionID": 16,
+        "fullName": "Micheweni",
+        "region": "Kaskazini Pemba"
+    },
+    {
+        "districtID": 26,
+        "regionID": 5,
+        "fullName": "Missenyi",
+        "region": "Kagera"
+    },
+    {
+        "districtID": 80,
+        "regionID": 15,
+        "fullName": "Misungwi",
+        "region": "Mwanza"
+    },
+    {
+        "districtID": 128,
+        "regionID": 25,
+        "fullName": "Mjini",
+        "region": "Mjini Magharibi"
+    },
+    {
+        "districtID": 109,
+        "regionID": 22,
+        "fullName": "Mkalama",
+        "region": "Singida"
+    },
+    {
+        "districtID": 122,
+        "regionID": 24,
+        "fullName": "Mkinga",
+        "region": "Tanga"
+    },
+    {
+        "districtID": 87,
+        "regionID": 17,
+        "fullName": "Mkoani",
+        "region": "Kusini Pemba"
+    },
+    {
+        "districtID": 93,
+        "regionID": 18,
+        "fullName": "Mkuranga",
+        "region": "Pwani"
+    },
+    {
+        "districtID": 29,
+        "regionID": 6,
+        "fullName": "Mlele",
+        "region": "Katavi"
+    },
+    {
+        "districtID": 5,
+        "regionID": 1,
+        "fullName": "Monduli",
+        "region": "Arusha"
+    },
+    {
+        "districtID": 69,
+        "regionID": 13,
+        "fullName": "Morogoro",
+        "region": "Morogoro"
+    },
+    {
+        "districtID": 39,
+        "regionID": 8,
+        "fullName": "Moshi",
+        "region": "Kilimanjaro"
+    },
+    {
+        "districtID": 30,
+        "regionID": 6,
+        "fullName": "Mpanda",
+        "region": "Katavi"
+    },
+    {
+        "districtID": 18,
+        "regionID": 3,
+        "fullName": "Mpwapwa",
+        "region": "Dodoma"
+    },
+    {
+        "districtID": 73,
+        "regionID": 14,
+        "fullName": "Mtwara",
+        "region": "Mtwara"
+    },
+    {
+        "districtID": 21,
+        "regionID": 4,
+        "fullName": "Mufindi",
+        "region": "Iringa"
+    },
+    {
+        "districtID": 123,
+        "regionID": 24,
+        "fullName": "Muheza",
+        "region": "Tanga"
+    },
+    {
+        "districtID": 27,
+        "regionID": 5,
+        "fullName": "Muleba",
+        "region": "Kagera"
+    },
+    {
+        "districtID": 56,
+        "regionID": 11,
+        "fullName": "Musoma",
+        "region": "Mara"
+    },
+    {
+        "districtID": 70,
+        "regionID": 13,
+        "fullName": "Mvomero",
+        "region": "Morogoro"
+    },
+    {
+        "districtID": 40,
+        "regionID": 8,
+        "fullName": "Mwanga",
+        "region": "Kilimanjaro"
+    },
+    {
+        "districtID": 47,
+        "regionID": 9,
+        "fullName": "Nachingwea",
+        "region": "Lindi"
+    },
+    {
+        "districtID": 99,
+        "regionID": 20,
+        "fullName": "Namtumbo",
+        "region": "Ruvuma"
+    },
+    {
+        "districtID": 74,
+        "regionID": 14,
+        "fullName": "Nanyumbu",
+        "region": "Mtwara"
+    },
+    {
+        "districtID": 75,
+        "regionID": 14,
+        "fullName": "Newala",
+        "region": "Mtwara"
+    },
+    {
+        "districtID": 28,
+        "regionID": 5,
+        "fullName": "Ngara",
+        "region": "Kagera"
+    },
+    {
+        "districtID": 6,
+        "regionID": 1,
+        "fullName": "Ngorongoro",
+        "region": "Arusha"
+    },
+    {
+        "districtID": 96,
+        "regionID": 19,
+        "fullName": "Nkasi",
+        "region": "Rukwa"
+    },
+    {
+        "districtID": 81,
+        "regionID": 15,
+        "fullName": "Nyamagana",
+        "region": "Mwanza"
+    },
+    {
+        "districtID": 100,
+        "regionID": 20,
+        "fullName": "Nyasa",
+        "region": "Ruvuma"
+    },
+    {
+        "districtID": 113,
+        "regionID": 23,
+        "fullName": "Nzega",
+        "region": "Tabora"
+    },
+    {
+        "districtID": 124,
+        "regionID": 24,
+        "fullName": "Pangani",
+        "region": "Tanga"
+    },
+    {
+        "districtID": 41,
+        "regionID": 8,
+        "fullName": "Rombo",
+        "region": "Kilimanjaro"
+    },
+    {
+        "districtID": 57,
+        "regionID": 11,
+        "fullName": "Rorya",
+        "region": "Mara"
+    },
+    {
+        "districtID": 48,
+        "regionID": 9,
+        "fullName": "Ruangwa",
+        "region": "Lindi"
+    },
+    {
+        "districtID": 94,
+        "regionID": 18,
+        "fullName": "Rufiji",
+        "region": "Pwani"
+    },
+    {
+        "districtID": 64,
+        "regionID": 12,
+        "fullName": "Rungwe",
+        "region": "Mbeya"
+    },
+    {
+        "districtID": 42,
+        "regionID": 8,
+        "fullName": "Same",
+        "region": "Kilimanjaro"
+    },
+    {
+        "districtID": 82,
+        "regionID": 15,
+        "fullName": "Sengerema",
+        "region": "Mwanza"
+    },
+    {
+        "districtID": 58,
+        "regionID": 11,
+        "fullName": "Serengeti",
+        "region": "Mara"
+    },
+    {
+        "districtID": 105,
+        "regionID": 21,
+        "fullName": "Shinyanga",
+        "region": "Shinyanga"
+    },
+    {
+        "districtID": 43,
+        "regionID": 8,
+        "fullName": "Siha",
+        "region": "Kilimanjaro"
+    },
+    {
+        "districtID": 114,
+        "regionID": 23,
+        "fullName": "Sikonge",
+        "region": "Tabora"
+    },
+    {
+        "districtID": 53,
+        "regionID": 10,
+        "fullName": "Simanjiro",
+        "region": "Manyara"
+    },
+    {
+        "districtID": 110,
+        "regionID": 22,
+        "fullName": "Singida",
+        "region": "Singida"
+    },
+    {
+        "districtID": 101,
+        "regionID": 20,
+        "fullName": "Songea",
+        "region": "Ruvuma"
+    },
+    {
+        "districtID": 97,
+        "regionID": 19,
+        "fullName": "Sumbawanga",
+        "region": "Rukwa"
+    },
+    {
+        "districtID": 115,
+        "regionID": 23,
+        "fullName": "Tabora",
+        "region": "Tabora"
+    },
+    {
+        "districtID": 76,
+        "regionID": 14,
+        "fullName": "Tandahimba",
+        "region": "Mtwara"
+    },
+    {
+        "districtID": 125,
+        "regionID": 24,
+        "fullName": "Tanga",
+        "region": "Tanga"
+    },
+    {
+        "districtID": 31,
+        "regionID": 6,
+        "fullName": "Tanganyika",
+        "region": "Katavi"
+    },
+    {
+        "districtID": 59,
+        "regionID": 11,
+        "fullName": "Tarime",
+        "region": "Mara"
+    },
+    {
+        "districtID": 10,
+        "regionID": 2,
+        "fullName": "Temeke",
+        "region": "Dar es Salaam"
+    },
+    {
+        "districtID": 102,
+        "regionID": 20,
+        "fullName": "Tunduru",
+        "region": "Ruvuma"
+    },
+    {
+        "districtID": 11,
+        "regionID": 2,
+        "fullName": "Ubungo",
+        "region": "Dar es Salaam"
+    },
+    {
+        "districtID": 83,
+        "regionID": 15,
+        "fullName": "Ukerewe",
+        "region": "Mwanza"
+    },
+    {
+        "districtID": 71,
+        "regionID": 13,
+        "fullName": "Ulanga",
+        "region": "Morogoro"
+    },
+    {
+        "districtID": 116,
+        "regionID": 23,
+        "fullName": "Urambo",
+        "region": "Tabora"
+    },
+    {
+        "districtID": 37,
+        "regionID": 7,
+        "fullName": "Uvinza",
+        "region": "Kigoma"
+    },
+    {
+        "districtID": 117,
+        "regionID": 23,
+        "fullName": "Uyui",
+        "region": "Tabora"
+    },
+    {
+        "districtID": 85,
+        "regionID": 16,
+        "fullName": "Wete",
+        "region": "Kaskazini Pemba"
+    }
+]

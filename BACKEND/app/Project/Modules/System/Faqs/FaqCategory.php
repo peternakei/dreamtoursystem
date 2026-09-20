@@ -1,0 +1,60 @@
+<?php
+
+namespace App\Project\Modules\System\Faqs;
+
+use App\Project\Modules\Core\Users\User;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
+
+class FaqCategory extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'slug',
+        'description',
+        'uuid',
+        'created_at',
+        'updated_at',
+        'created_by',
+        'updated_by',
+        'is_active',
+    ];
+
+    public function getCreatedAtAttribute($value)
+    {
+        return $this->attributes['created_at'] = (new Carbon($value))->toDateTimeString();
+    }
+
+    public function getUpdatedAtAttribute($value)
+    {
+        return $this->attributes['updated_at'] = (new Carbon($value))->toDateTimeString();
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->is_active = true;
+            $model->uuid = (string) Str::orderedUuid();
+            $model->created_at = Carbon::now();
+        });
+
+        static::updating(function ($model) {
+            $model->updated_at = Carbon::now();
+        });
+    }
+}

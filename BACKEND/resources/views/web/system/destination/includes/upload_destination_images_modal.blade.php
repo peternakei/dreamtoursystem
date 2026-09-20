@@ -1,0 +1,65 @@
+<div id="upload-destination-images-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="standard-modalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="standard-modalLabel">Upload <span
+                        class="text-primary">{!! $destination->name !!}</span>`s Images</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-hidden="true"></button>
+            </div>
+            <form action="{{ route('destinations.upload_images', $destination->uuid) }}"
+                id="uploadDestinationImagesForm" name="uploadDestinationImagesForm" enctype="multipart/form-data" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <h5 style="font-weight: 500;">Fill the form to upload destination images</h5>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="d-flex justify-content-end">
+                                        <button type="button" class="btn btn-primary btn-sm uploadAddOrderItemsRow">
+                                            <i class="uil uil-plus-circle"></i> Add</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-2">
+                                    <table class="table table-bordered table-centered mb-0" id="uploadOrderItemsTable">
+                                        <thead>
+                                            <tr>
+                                                <th>File</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div class="col-md-12 col-lg-12">
+                                                        <div class="mb-0">
+                                                            <input type="file" id="upload_identity_image_0"
+                                                                accept="image/*"
+                                                                name="identity_image[]" class="form-control">
+                                                            <small class="text-danger"
+                                                                id="error_identity_image_0"></small><small id="id_pdf_o" class="text-danger"><i>Upload image upto 2Mbs</i></small>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="submitCreateFormUpload('uploadDestinationImagesForm')"
+                        class="btn btn-success saveBtn">Upload Images</button>
+                    <button class="btn btn-success btnLoading" type="button" style="display: none" disabled>
+                        <span class="spinner-grow spinner-grow-sm me-1" role="status" aria-hidden="true"></span>
+                        Loading...
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

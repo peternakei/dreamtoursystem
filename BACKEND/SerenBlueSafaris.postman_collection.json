@@ -1,0 +1,940 @@
+{
+  "info": {
+    "name": "Seren Blue Safaris API",
+    "_postman_id": "b1a9f7d2-0001-4a00-9c22-serenblue0001",
+    "description": "Full API collection for Seren Blue Safaris backend (Laravel + Sanctum).\n\n## Setup\n1. Import `SerenBlueSafaris.postman_environment.json` and select it.\n2. Set `base_url` (e.g. http://localhost:8000/api).\n3. Run **Auth → Login** — token, user_uuid, and other ids are auto-saved to the environment.\n4. Subsequent protected requests read `{{token}}` automatically from collection-level Bearer auth.\n\nAll requests use `Accept: application/json`. Dynamic fields (uuids, ids) are captured from responses via test scripts where sensible.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Global pre-request: ensure base_url exists and normalise it",
+          "let baseUrl = pm.environment.get('base_url') || pm.collectionVariables.get('base_url');",
+          "if (!baseUrl) {",
+          "    baseUrl = 'http://localhost:8000/api';",
+          "    pm.environment.set('base_url', baseUrl);",
+          "}",
+          "// strip trailing slash",
+          "if (baseUrl.endsWith('/')) {",
+          "    baseUrl = baseUrl.slice(0, -1);",
+          "    pm.environment.set('base_url', baseUrl);",
+          "}",
+          "const ensure = (key, value) => { if (!pm.environment.get(key)) pm.environment.set(key, value); };",
+          "const fmt = (date) => [date.getFullYear(), String(date.getMonth() + 1).padStart(2, '0'), String(date.getDate()).padStart(2, '0')].join('-');",
+          "const start = new Date();",
+          "start.setDate(start.getDate() + 14);",
+          "const end = new Date(start);",
+          "end.setDate(end.getDate() + 5);",
+          "ensure('travel_date', fmt(start));",
+          "ensure('travel_end_date', fmt(end));",
+          "ensure('item_type', 'trip');",
+          "ensure('trip_type_id', '1');",
+          "ensure('cartable_type', pm.environment.get('item_type'));",
+          "ensure('like_type', pm.environment.get('item_type'));",
+          "const itemType = pm.environment.get('item_type') || 'trip';",
+          "const itemUuid = itemType === 'destination' ? pm.environment.get('destination_uuid') : pm.environment.get('trip_uuid');",
+          "if (itemUuid) {",
+          "    pm.environment.set('item_uuid', itemUuid);",
+          "    pm.environment.set('cartable_uuid', itemUuid);",
+          "    pm.environment.set('likeable_uuid', itemUuid);",
+          "    pm.environment.set('rateable_uuid', itemUuid);",
+          "}",
+          "// generate a per-request idempotency key if needed",
+          "pm.variables.set('request_id', pm.variables.replaceIn('{{$guid}}'));"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Global test: auto-capture token & common ids from any response",
+          "try {",
+          "    const res = pm.response.json();",
+          "    const data = res && (res.data || res);",
+          "    if (!data) return;",
+          "",
+          "    const pickToken = (o) => o && (o.token || o.access_token || (o.user && (o.user.token || o.user.access_token)) || (o.data && (o.data.token || o.data.access_token)));",
+          "    const token = pickToken(res) || pickToken(data);",
+          "    if (token && typeof token === 'string') {",
+          "        pm.environment.set('token', token);",
+          "        console.log('✔ token saved');",
+          "    }",
+          "",
+          "    const u = (data && data.user) || res.user;",
+          "    if (u) {",
+          "        if (u.uuid) pm.environment.set('user_uuid', u.uuid);",
+          "        if (u.id)   pm.environment.set('user_id', u.id);",
+          "        if (u.email) pm.environment.set('user_email', u.email);",
+          "    }",
+          "} catch (e) { /* non-JSON response — ignore */ }"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8000/api" }
+  ],
+  "item": [
+    {
+      "name": "Splash",
+      "item": [
+        {
+          "name": "Get Splash",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('200 OK', () => pm.response.to.have.status(200));",
+                  "try {",
+                  "    const d = pm.response.json().data || {};",
+                  "    if (d.locations && d.locations[0]) pm.environment.set('location_id', d.locations[0].id);",
+                  "    if (d.currencies && d.currencies[0]) { pm.environment.set('currency_id', d.currencies[0].id); if (d.currencies[0].uuid) pm.environment.set('currency_uuid', d.currencies[0].uuid); }",
+                  "    if (d.countries && d.countries[0])  pm.environment.set('country_id',  d.countries[0].id);",
+                  "    if (d.categories && d.categories[0]) pm.environment.set('category_id', d.categories[0].id);",
+                  "    if (d.seasons && d.seasons[0]) pm.environment.set('season_id', d.seasons[0].id);",
+                  "    if (d.searviceClasses && d.searviceClasses[0]) pm.environment.set('service_class_id', d.searviceClasses[0].id);",
+                  "    if (d.genders && d.genders[0]) pm.environment.set('gender_id', d.genders[0].id);",
+                  "    if (d.paymentModes && d.paymentModes[0]) pm.environment.set('payment_mode_id', d.paymentModes[0].id);",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/splash", "host": ["{{base_url}}"], "path": ["splash"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('register success', () => pm.expect([200,201]).to.include(pm.response.code));",
+                  "try {",
+                  "    const r = pm.response.json();",
+                  "    const t = (r.data && (r.data.token || (r.data.user && r.data.user.token))) || r.token;",
+                  "    if (t) pm.environment.set('token', t);",
+                  "    const u = (r.data && r.data.user) || r.user;",
+                  "    if (u && u.uuid) pm.environment.set('user_uuid', u.uuid);",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"name\": \"{{full_name}}\",\n  \"phone\": \"{{user_phone}}\",\n  \"email\": \"{{user_email}}\",\n  \"country\": {{country_id}},\n  \"address\": \"{{user_address}}\",\n  \"gender\": {{gender_id}},\n  \"password\": \"{{user_password}}\",\n  \"confirm-password\": \"{{user_password}}\"\n}" },
+            "url": { "raw": "{{base_url}}/register", "host": ["{{base_url}}"], "path": ["register"] }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('login 200', () => pm.response.to.have.status(200));",
+                  "try {",
+                  "    const r = pm.response.json();",
+                  "    const t = (r.data && (r.data.token || (r.data.user && r.data.user.token))) || r.token || r.access_token;",
+                  "    if (t) { pm.environment.set('token', t); console.log('✔ token saved to environment'); }",
+                  "    const u = (r.data && r.data.user) || r.user;",
+                  "    if (u) {",
+                  "        if (u.uuid)  pm.environment.set('user_uuid', u.uuid);",
+                  "        if (u.id)    pm.environment.set('user_id', u.id);",
+                  "        if (u.email) pm.environment.set('user_email', u.email);",
+                  "    }",
+                  "} catch (e) { console.warn('login test: ', e.message); }"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"{{user_email}}\",\n  \"password\": \"{{user_password}}\"\n}" },
+            "url": { "raw": "{{base_url}}/login", "host": ["{{base_url}}"], "path": ["login"] }
+          }
+        },
+        {
+          "name": "Forgot Password",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"{{user_email}}\"\n}" },
+            "url": { "raw": "{{base_url}}/forgot-password", "host": ["{{base_url}}"], "path": ["forgot-password"] }
+          }
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"username\": \"{{user_email}}\",\n  \"password\": \"{{new_password}}\",\n  \"token\": \"{{reset_token}}\"\n}" },
+            "url": { "raw": "{{base_url}}/reset-password", "host": ["{{base_url}}"], "path": ["reset-password"] }
+          }
+        },
+        {
+          "name": "Change Password (auth)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"current_password\": \"{{user_password}}\",\n  \"new_password\": \"{{new_password}}\"\n}" },
+            "url": { "raw": "{{base_url}}/change_password", "host": ["{{base_url}}"], "path": ["change_password"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Exchange Rate",
+      "item": [
+        {
+          "name": "Get Rate",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"currency\": \"{{currency_uuid}}\"\n}" },
+            "url": { "raw": "{{base_url}}/exchange-rate", "host": ["{{base_url}}"], "path": ["exchange-rate"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Destinations",
+      "item": [
+        {
+          "name": "List Destinations",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "try {",
+                  "    const d = pm.response.json().data;",
+                  "    const list = (d && (d.destinations || d)) || [];",
+                  "    if (list[0]) {",
+                  "        pm.environment.set('destination_id', list[0].id);",
+                  "        if (list[0].uuid) pm.environment.set('destination_uuid', list[0].uuid);",
+                  "    }",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/destinations?limit=10&offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["destinations"],
+              "query": [
+                { "key": "limit", "value": "10" },
+                { "key": "offset", "value": "0" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Destination Details",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": {
+              "raw": "{{base_url}}/destinations/{{destination_uuid}}",
+              "host": ["{{base_url}}"],
+              "path": ["destinations", "{{destination_uuid}}"]
+            }
+          }
+        },
+        {
+          "name": "List Safari Destinations",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "try {",
+                  "    const d = pm.response.json().data;",
+                  "    const list = (d && (d.destinations || d)) || [];",
+                  "    if (list[0]) {",
+                  "        pm.environment.set('destination_id', list[0].id);",
+                  "        if (list[0].uuid) pm.environment.set('destination_uuid', list[0].uuid);",
+                  "    }",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/destinations?product_family=safari&limit=10&offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["destinations"],
+              "query": [
+                { "key": "product_family", "value": "safari" },
+                { "key": "limit", "value": "10" },
+                { "key": "offset", "value": "0" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "List Zanzibar Tours",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "try {",
+                  "    const d = pm.response.json().data;",
+                  "    const list = (d && (d.destinations || d)) || [];",
+                  "    if (list[0]) {",
+                  "        pm.environment.set('destination_id', list[0].id);",
+                  "        if (list[0].uuid) pm.environment.set('destination_uuid', list[0].uuid);",
+                  "    }",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/destinations?product_family=zanzibar_tour&limit=10&offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["destinations"],
+              "query": [
+                { "key": "product_family", "value": "zanzibar_tour" },
+                { "key": "limit", "value": "10" },
+                { "key": "offset", "value": "0" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "List Categories",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "try {",
+                  "    const d = pm.response.json().data;",
+                  "    const list = (d && (d.categories || d)) || [];",
+                  "    if (list[0]) {",
+                  "        pm.environment.set('category_id', list[0].id);",
+                  "        if (list[0].uuid) pm.environment.set('category_uuid', list[0].uuid);",
+                  "    }",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/categories?limit=4&offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["categories"],
+              "query": [
+                { "key": "limit", "value": "4" },
+                { "key": "offset", "value": "0" }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trips",
+      "item": [
+        {
+          "name": "List Trips",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "try {",
+                  "    const d = pm.response.json().data;",
+                  "    const list = (d && (d.trips || d)) || [];",
+                  "    if (list[0]) {",
+                  "        pm.environment.set('trip_id', list[0].id);",
+                  "        if (list[0].uuid) pm.environment.set('trip_uuid', list[0].uuid);",
+                  "        if (list[0].groups && list[0].groups[0] && list[0].groups[0].uuid) pm.environment.set('trip_group_uuid', list[0].groups[0].uuid);",
+                  "    }",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/trips?limit=10&offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["trips"],
+              "query": [
+                { "key": "limit", "value": "10" },
+                { "key": "offset", "value": "0" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Trip Details",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"id\": \"{{trip_uuid}}\"\n}" },
+            "url": {
+              "raw": "{{base_url}}/trips/{{trip_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["trips", "{{trip_id}}"]
+            }
+          }
+        },
+        {
+          "name": "List Trips By Category",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "try {",
+                  "    const d = pm.response.json().data;",
+                  "    const list = (d && (d.trips || d)) || [];",
+                  "    if (list[0]) {",
+                  "        pm.environment.set('trip_id', list[0].id);",
+                  "        if (list[0].uuid) pm.environment.set('trip_uuid', list[0].uuid);",
+                  "        if (list[0].groups && list[0].groups[0] && list[0].groups[0].uuid) pm.environment.set('trip_group_uuid', list[0].groups[0].uuid);",
+                  "    }",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/trips?category_uuid={{category_uuid}}&limit=10&offset=0",
+              "host": ["{{base_url}}"],
+              "path": ["trips"],
+              "query": [
+                { "key": "category_uuid", "value": "{{category_uuid}}" },
+                { "key": "limit", "value": "10" },
+                { "key": "offset", "value": "0" }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Search Trip",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "try {",
+                  "    const d = pm.response.json().data;",
+                  "    const list = (d && (d.trips || d)) || [];",
+                  "    if (list[0]) {",
+                  "        pm.environment.set('trip_id', list[0].id);",
+                  "        if (list[0].uuid) pm.environment.set('trip_uuid', list[0].uuid);",
+                  "        if (list[0].groups && list[0].groups[0] && list[0].groups[0].uuid) pm.environment.set('trip_group_uuid', list[0].groups[0].uuid);",
+                  "    }",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"location\": {{location_id}},\n  \"guest_count\": 2,\n  \"check_in\": \"{{travel_date}}\",\n  \"check_out\": \"{{travel_end_date}}\",\n  \"category_uuid\": \"{{category_uuid}}\"\n}" },
+            "url": { "raw": "{{base_url}}/search_trip", "host": ["{{base_url}}"], "path": ["search_trip"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Booking",
+      "item": [
+        {
+          "name": "Save Booking",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "try {",
+                  "    const r = pm.response.json();",
+                  "    const b = (r.data && (r.data.booking || r.data)) || {};",
+                  "    if (b.uuid) pm.environment.set('booking_uuid', b.uuid);",
+                  "    if (b.id)   pm.environment.set('booking_id', b.id);",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"trip_uuid\": \"{{trip_uuid}}\",\n  \"trip_group_uuid\": \"{{trip_group_uuid}}\",\n  \"class_id\": {{service_class_id}},\n  \"season_id\": {{season_id}},\n  \"guest_count\": 2,\n  \"gender\": \"{{gender_id}}\",\n  \"country\": \"{{country_id}}\",\n  \"start_date\": \"{{travel_date}}\",\n  \"phone\": \"{{user_phone}}\",\n  \"email\": \"{{user_email}}\",\n  \"fname\": \"{{first_name}}\",\n  \"lname\": \"{{last_name}}\",\n  \"note\": \"Booking created from the Postman collection.\",\n  \"address\": \"{{user_address}}\"\n}" },
+            "url": { "raw": "{{base_url}}/save_booking", "host": ["{{base_url}}"], "path": ["save_booking"] }
+          }
+        },
+        {
+          "name": "Get Bookings (auth)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/get-bookings", "host": ["{{base_url}}"], "path": ["get-bookings"] }
+          }
+        },
+        {
+          "name": "Get Booking Details (auth)",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/get-booking-details?uuid={{booking_uuid}}",
+              "host": ["{{base_url}}"],
+              "path": ["get-booking-details"],
+              "query": [{ "key": "uuid", "value": "{{booking_uuid}}" }]
+            }
+          }
+        },
+        {
+          "name": "Cancel Booking (auth)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"uuid\": \"{{booking_uuid}}\",\n  \"remarks\": \"Change of plans\"\n}" },
+            "url": { "raw": "{{base_url}}/cancel-booking", "host": ["{{base_url}}"], "path": ["cancel-booking"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cart (auth)",
+      "item": [
+        {
+          "name": "Add to Cart",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "try {",
+                  "    const r = pm.response.json();",
+                  "    const item = (r.data && (r.data.cart_item || r.data.item || r.data)) || {};",
+                  "    if (item.uuid) pm.environment.set('cart_item_uuid', item.uuid);",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"cartable_type\": \"{{item_type}}\",\n  \"cartable_uuid\": \"{{item_uuid}}\",\n  \"quantity\": 2,\n  \"start_date\": \"{{travel_date}}\",\n  \"end_date\": \"{{travel_end_date}}\"\n}" },
+            "url": { "raw": "{{base_url}}/cart/add", "host": ["{{base_url}}"], "path": ["cart", "add"] }
+          }
+        },
+        {
+          "name": "Update Cart Item",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"quantity\": 3,\n  \"start_date\": \"{{travel_date}}\",\n  \"end_date\": \"{{travel_end_date}}\"\n}" },
+            "url": { "raw": "{{base_url}}/cart/{{cart_item_uuid}}", "host": ["{{base_url}}"], "path": ["cart", "{{cart_item_uuid}}"] }
+          }
+        },
+        {
+          "name": "Remove from Cart",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/cart/{{cart_item_uuid}}", "host": ["{{base_url}}"], "path": ["cart", "{{cart_item_uuid}}"] }
+          }
+        },
+        {
+          "name": "Clear Cart",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/user/cart/clear", "host": ["{{base_url}}"], "path": ["user", "cart", "clear"] }
+          }
+        },
+        {
+          "name": "Get User Cart",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/user/cart", "host": ["{{base_url}}"], "path": ["user", "cart"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Likes (auth)",
+      "item": [
+        {
+          "name": "Toggle Like",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"likeable_type\": \"{{item_type}}\",\n  \"likeable_uuid\": \"{{item_uuid}}\"\n}" },
+            "url": { "raw": "{{base_url}}/toggle_like", "host": ["{{base_url}}"], "path": ["toggle_like"] }
+          }
+        },
+        {
+          "name": "Get User Likes",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/user/likes", "host": ["{{base_url}}"], "path": ["user", "likes"] }
+          }
+        },
+        {
+          "name": "Check Like Status",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/user/check-like-{{item_type}}?uuid={{item_uuid}}",
+              "host": ["{{base_url}}"],
+              "path": ["user", "check-like-{{item_type}}"],
+              "query": [{ "key": "uuid", "value": "{{item_uuid}}" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Ratings (auth)",
+      "item": [
+        {
+          "name": "Submit Rating",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "try {",
+                  "    const r = pm.response.json();",
+                  "    const rate = (r.data && (r.data.rating || r.data)) || {};",
+                  "    if (rate.uuid) pm.environment.set('rating_uuid', rate.uuid);",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"rateable_type\": \"{{item_type}}\",\n  \"rateable_uuid\": \"{{item_uuid}}\",\n  \"rating\": 5,\n  \"comment\": \"Amazing safari!\"\n}" },
+            "url": { "raw": "{{base_url}}/submit_rating", "host": ["{{base_url}}"], "path": ["submit_rating"] }
+          }
+        },
+        {
+          "name": "Update Rating",
+          "request": {
+            "method": "PUT",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"rating\": 4,\n  \"comment\": \"Updated review\"\n}" },
+            "url": { "raw": "{{base_url}}/ratings/{{rating_uuid}}", "host": ["{{base_url}}"], "path": ["ratings", "{{rating_uuid}}"] }
+          }
+        },
+        {
+          "name": "Delete Rating",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/ratings/{{rating_uuid}}", "host": ["{{base_url}}"], "path": ["ratings", "{{rating_uuid}}"] }
+          }
+        },
+        {
+          "name": "Get User Ratings",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/user/ratings", "host": ["{{base_url}}"], "path": ["user", "ratings"] }
+          }
+        },
+        {
+          "name": "Check Rating Status",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/user/check-rating-{{item_type}}?uuid={{item_uuid}}",
+              "host": ["{{base_url}}"],
+              "path": ["user", "check-rating-{{item_type}}"],
+              "query": [{ "key": "uuid", "value": "{{item_uuid}}" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Testimonials",
+      "item": [
+        {
+          "name": "Save Testimonial (auth)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"comments\": \"Best trip ever with Seren Blue Safaris!\"\n}" },
+            "url": { "raw": "{{base_url}}/save-testimonal", "host": ["{{base_url}}"], "path": ["save-testimonal"] }
+          }
+        },
+        {
+          "name": "Get Testimonials",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/get-testimonals", "host": ["{{base_url}}"], "path": ["get-testimonals"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Subscription",
+      "item": [
+        {
+          "name": "Subscribe",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"email\": \"{{user_email}}\"\n}" },
+            "url": { "raw": "{{base_url}}/subscribe", "host": ["{{base_url}}"], "path": ["subscribe"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Dashboard (auth)",
+      "item": [
+        {
+          "name": "Get User Dashboard",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/user/dashboard", "host": ["{{base_url}}"], "path": ["user", "dashboard"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Check Interaction Status",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/user/check-{{item_type}}?type={{item_type}}&uuid={{item_uuid}}",
+              "host": ["{{base_url}}"],
+              "path": ["user", "check-{{item_type}}"],
+              "query": [{ "key": "type", "value": "{{item_type}}" }, { "key": "uuid", "value": "{{item_uuid}}" }]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "FAQs",
+      "item": [
+        {
+          "name": "Get FAQs",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": { "raw": "{{base_url}}/faqs", "host": ["{{base_url}}"], "path": ["faqs"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inquiries",
+      "item": [
+        {
+          "name": "Save Inquiry",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "try {",
+                  "    const r = pm.response.json();",
+                  "    const i = (r.data && (r.data.inquiry || r.data)) || {};",
+                  "    if (i.uuid) pm.environment.set('inquiry_uuid', i.uuid);",
+                  "} catch (e) {}"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"{{first_name}}\",\n  \"lastName\": \"{{last_name}}\",\n  \"email\": \"{{user_email}}\",\n  \"phone\": \"{{user_phone}}\",\n  \"country\": {{country_id}},\n  \"tripType\": {{trip_type_id}},\n  \"destinations\": [{{destination_id}}],\n  \"locations\": [{{location_id}}],\n  \"serviceClass\": {{service_class_id}},\n  \"guests\": 2,\n  \"startDate\": \"{{travel_date}}\",\n  \"endDate\": \"{{travel_end_date}}\",\n  \"budget\": \"Mid-range\",\n  \"message\": \"I would like details on the Serengeti package.\"\n}" },
+            "url": { "raw": "{{base_url}}/save-inquiry", "host": ["{{base_url}}"], "path": ["save-inquiry"] }
+          }
+        },
+        {
+          "name": "Get Inquiries",
+          "request": {
+            "auth": { "type": "noauth" },
+            "method": "GET",
+            "header": [{ "key": "Accept", "value": "application/json" }],
+            "url": {
+              "raw": "{{base_url}}/get-inquiries?email={{user_email}}",
+              "host": ["{{base_url}}"],
+              "path": ["get-inquiries"],
+              "query": [{ "key": "email", "value": "{{user_email}}" }]
+            }
+          }
+        },
+        {
+          "name": "Get Inquiry Details (auth)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"uuid\": \"{{inquiry_uuid}}\"\n}" },
+            "url": { "raw": "{{base_url}}/get-inquiry", "host": ["{{base_url}}"], "path": ["get-inquiry"] }
+          }
+        }
+      ]
+    }
+  ]
+}

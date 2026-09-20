@@ -1,93 +1,118 @@
-# dreamtour
+# Dream Travel and Tours System
 
+A separate copy of the safari backend, reorganized into the feature-module layout used by `tzrestaurantsystem`, with a Vue 3 / TypeScript administration workspace using that project's Tailwind/Reka component library and theme.
 
+## Run the supplied local copy
 
-## Getting started
+PHP 8.2–8.4, Composer 2, Node 22 and npm are supported by the supplied dependency locks. The existing local installation uses a separate seeded SQLite database. Git excludes dependencies, local `.env` files, application keys, databases, logs, and caches. For a new clone, follow the setup section below first.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.com/nakei/dreamtour.git
-git branch -M main
-git push -uf origin main
+```bash
+cd /mnt/CE8007F58007E337/D/B_PROJECTS/dreamtoursystem
+./start.sh
 ```
 
-## Integrate with your tools
+Open **http://127.0.0.1:5174**. The backend runs at **http://127.0.0.1:8001**. These ports let the original project continue using 8000/5173.
 
-* [Set up project integrations](https://gitlab.com/nakei/dreamtour/-/settings/integrations)
+The launcher checks the configured database driver and selects an installed PHP runtime that supports it. It prints the selected runtime before starting. To choose one explicitly, use `PHP_BIN=/usr/bin/php8.3 ./start.sh`. If login reports "could not find driver", stop the old server and restart with this launcher; no database reset is needed. Use the same PHP executable for Artisan commands and queue workers.
 
-## Collaborate with your team
+Local seeded administrator:
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+- Email: `admin@serenbluesafaris.com`
+- Password: `1234567890`
 
-## Test and Deploy
+For queued account emails, open another terminal:
 
-Use the built-in continuous integration in GitLab.
+```bash
+cd BACKEND
+php artisan queue:work
+```
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+Email uses the log driver. Quotation PDFs use DomPDF by default; Browsershot remains supported with Node/Puppeteer/Chrome configured.
 
-***
+## Structure
 
-# Editing this README
+```text
+BACKEND/
+  app/Project/
+    Auth/                         # Existing authentication, API and web routes
+    Modules/
+      Core/Users/                 # User, SystemUser, controller, services, requests, seeders
+      Core/Roles/
+      Core/Permissions/
+      System/Trips/               # Trip models, planner, services, requests, migrations
+      System/Quotations/
+      System/Bookings/
+      System/Destinations/
+      ...
+    Workspace/                    # Session-based Vue admin endpoints and form descriptors
+    _Src/                         # Module registry and application service provider
+  database/seeders/DatabaseSeeder.php
+  resources/views/                # Preserved document, email and management templates
+FRONTEND/
+  src/pages/Auth/
+  src/pages/modules/core/
+  src/pages/modules/system/
+  src/layouts/
+  src/components/ui/              # Shared components from tzrestaurantsystem
+  src/components/workspace/       # Shared records/detail/form components
+  src/modules.json
+```
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+Laravel stays on the existing locked **11.51.0** version. This is an architecture migration, not a Laravel 12 upgrade.
 
-## Suggestions for a good README
+## What is migrated
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+- 410 existing PHP classes moved into 53 registered feature/infrastructure modules.
+- All 103 existing migrations are discovered from their module folders in their original timestamp order.
+- Model relationships, validation, business actions, observers and the original public API paths remain available.
+- Existing polymorphic model names are mapped to the new namespaces for compatibility with stored attachment, role and activity records.
+- Public API route names are namespaced with `api.` to avoid collisions with management route names. URLs are unchanged.
+- Vue login, dashboard, responsive sidebar, light/dark theme, and 34 module list/detail screens.
+- Native Vue dialogs submit the original backend forms, with their existing field names, lookup options, CSRF protection and validation.
 
-## Name
-Choose a self-explaining name for your project.
+## UI migration boundary
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+The backend module reorganization is complete. The Vue workspace is an initial interface migration, **not a complete conversion of every Blade workflow**.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+The workspace derives form descriptors from the preserved management templates. It does not execute their JavaScript. Forms that depend on custom Blade JavaScript, dynamic dependent selections, inline edit modals, the trip itinerary planner, quotation builder, media library and specialised reporting remain available in the original management screens through **Full management**. Blade still renders guest itineraries, PDFs and email templates.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+The new workspace currently requires an active `SystemUser` with the `SuperAdmin` role. The existing role/permission system and original management routes are retained. Additional staff-role access should be mapped explicitly before opening the new workspace to those roles.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Some source controllers (Blogs, Pages, Refunds) had no implemented management screen. The workspace provides read-only lists/details for these; it does not invent missing create/update workflows.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Current list endpoints preserve the source application's load-all behaviour, with search and pagination in Vue. For large installations, add server-side pagination in each module's list service.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## Fresh checkout or MySQL setup
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+.env files stay on your machine and are not included in Git. The existing local `.env` selects SQLite. `.env.example` shows the original MySQL option with a separate database name and blank payment credentials. Never reuse the original project's database for initial seeding.
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+```bash
+git clone https://gitlab.com/nakei/dreamtour.git dreamtoursystem
+cd dreamtoursystem/BACKEND
+composer install
+cp .env.example .env
+# Configure your new local MySQL database and credentials in .env first.
+php artisan key:generate
+php artisan migrate --seed
+cd ../FRONTEND
+npm ci
+cp .env.example .env
+```
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+For SQLite on a fresh checkout, create `BACKEND/database/database.sqlite` and set `DB_CONNECTION=sqlite` and `DB_DATABASE=database/database.sqlite` instead. Run the seeders once on the empty database. Avoid `migrate:fresh` on databases with data to keep.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+The copied `public/storage` directory contains sample media and is used by the attachment disk. Do not replace it blindly with `storage:link`. Optional source-image reconversion still needs `sharp` and the source image library; existing converted fixtures work without it.
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+The frontend dev server proxies `/backend` to Laravel. Production hosting must provide the equivalent same-origin proxy, SPA history fallback, and serve Laravel from `BACKEND/public`.
 
-## License
-For open source projects, say how it is licensed.
+## Checks
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+```bash
+cd BACKEND
+php artisan test
+cd ../FRONTEND
+npm run typecheck
+npm run build
+```
+
+Tests use a separate in-memory SQLite database. See `FRONTEND/docs/MIGRATION.md` for migration notes and verification evidence.

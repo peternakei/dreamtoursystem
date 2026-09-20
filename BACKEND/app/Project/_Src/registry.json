@@ -1,0 +1,720 @@
+{
+  "modules": {
+    "Users": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Users",
+      "routes": {
+        "web": [
+          "app/Project/Modules/Core/Users/Routes/web_user.php"
+        ],
+        "api": [
+          "app/Project/Modules/Core/Users/Routes/api_user.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\Core\\Users\\User",
+        "App\\Project\\Modules\\Core\\Users\\SystemUser"
+      ]
+    },
+    "Library": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Library",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Library/Routes/web_library.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Library\\HasLibraryMedia"
+      ]
+    },
+    "Activities": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Activities",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Activities/Routes/web_activity.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Activities\\Activity",
+        "App\\Project\\Modules\\System\\Activities\\ActivityPrice"
+      ]
+    },
+    "Inquiries": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Inquiries",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Inquiries/Routes/web_inquiry.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/Inquiries/Routes/api_inquiry.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Inquiries\\Inquiry"
+      ]
+    },
+    "Invoices": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Invoices",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Invoices/Routes/web_invoice.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Invoices\\Invoice",
+        "App\\Project\\Modules\\System\\Invoices\\InvoiceStatus"
+      ]
+    },
+    "Quotations": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Quotations",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Quotations/Routes/web_quotation.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/Quotations/Routes/api_public.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Quotations\\QuotationTerm",
+        "App\\Project\\Modules\\System\\Quotations\\QuotationStatus",
+        "App\\Project\\Modules\\System\\Quotations\\QuotationPriceLine",
+        "App\\Project\\Modules\\System\\Quotations\\QuotationDay",
+        "App\\Project\\Modules\\System\\Quotations\\QuotationShare",
+        "App\\Project\\Modules\\System\\Quotations\\QuotationDayActivity",
+        "App\\Project\\Modules\\System\\Quotations\\QuotationVersion",
+        "App\\Project\\Modules\\System\\Quotations\\QuotationPaymentTerm",
+        "App\\Project\\Modules\\System\\Quotations\\Quotation"
+      ]
+    },
+    "DiscountTypes": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/DiscountTypes",
+      "routes": {},
+      "models": [
+        "App\\Project\\Modules\\Core\\DiscountTypes\\DiscountType"
+      ]
+    },
+    "Banks": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Banks",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Banks/Routes/web_bank.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Banks\\Bank"
+      ]
+    },
+    "BankDetails": {
+      "group": "System",
+      "path": "app/Project/Modules/System/BankDetails",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/BankDetails/Routes/web_bank_detail.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\BankDetails\\BankDetail"
+      ]
+    },
+    "ExchangeRates": {
+      "group": "System",
+      "path": "app/Project/Modules/System/ExchangeRates",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/ExchangeRates/Routes/web_exchange_rate.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/ExchangeRates/Routes/api_exchange_rate.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\ExchangeRates\\ExchangeRate"
+      ]
+    },
+    "Regions": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Regions",
+      "routes": {
+        "web": [
+          "app/Project/Modules/Core/Regions/Routes/web_region.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\Core\\Regions\\Region"
+      ]
+    },
+    "Currencies": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Currencies",
+      "routes": {},
+      "models": [
+        "App\\Project\\Modules\\Core\\Currencies\\Currency"
+      ]
+    },
+    "DurationTypes": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/DurationTypes",
+      "routes": {},
+      "models": [
+        "App\\Project\\Modules\\Core\\DurationTypes\\DurationType"
+      ]
+    },
+    "Districts": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Districts",
+      "routes": {
+        "web": [
+          "app/Project/Modules/Core/Districts/Routes/web_district.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\Core\\Districts\\District"
+      ]
+    },
+    "Countries": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Countries",
+      "routes": {
+        "web": [
+          "app/Project/Modules/Core/Countries/Routes/web_country.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\Core\\Countries\\Country"
+      ]
+    },
+    "AgeRanges": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/AgeRanges",
+      "routes": {},
+      "models": [
+        "App\\Project\\Modules\\Core\\AgeRanges\\AgeRange"
+      ]
+    },
+    "Genders": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Genders",
+      "routes": {},
+      "models": [
+        "App\\Project\\Modules\\Core\\Genders\\Gender"
+      ]
+    },
+    "AgeGroups": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/AgeGroups",
+      "routes": {},
+      "models": [
+        "App\\Project\\Modules\\Core\\AgeGroups\\AgeGroup"
+      ]
+    },
+    "Locations": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Locations",
+      "routes": {
+        "web": [
+          "app/Project/Modules/Core/Locations/Routes/web_location.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\Core\\Locations\\Location"
+      ]
+    },
+    "PaymentModes": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/PaymentModes",
+      "routes": {},
+      "models": [
+        "App\\Project\\Modules\\Core\\PaymentModes\\PaymentMode"
+      ]
+    },
+    "Addons": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Addons",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Addons/Routes/web_addon.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Addons\\Addon"
+      ]
+    },
+    "Vehicles": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Vehicles",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Vehicles/Routes/web_vehicle.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Vehicles\\Vehicle"
+      ]
+    },
+    "Testimonials": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Testimonials",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Testimonials/Routes/web_testimonial.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/Testimonials/Routes/api_testimonial.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Testimonials\\Testimonial"
+      ]
+    },
+    "Faqs": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Faqs",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Faqs/Routes/web_faq.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/Faqs/Routes/api_faq.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Faqs\\FaqCategory",
+        "App\\Project\\Modules\\System\\Faqs\\Faq"
+      ]
+    },
+    "Trips": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Trips",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Trips/Routes/web_trip.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/Trips/Routes/api_trip.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Trips\\TripAddon",
+        "App\\Project\\Modules\\System\\Trips\\TripPrice",
+        "App\\Project\\Modules\\System\\Trips\\TripCategory",
+        "App\\Project\\Modules\\System\\Trips\\TripSource",
+        "App\\Project\\Modules\\System\\Trips\\TripCategoryActivity",
+        "App\\Project\\Modules\\System\\Trips\\TripGroup",
+        "App\\Project\\Modules\\System\\Trips\\TripDay",
+        "App\\Project\\Modules\\System\\Trips\\TripStatus",
+        "App\\Project\\Modules\\System\\Trips\\TripGroupCamp",
+        "App\\Project\\Modules\\System\\Trips\\TripDestination",
+        "App\\Project\\Modules\\System\\Trips\\TripType",
+        "App\\Project\\Modules\\System\\Trips\\TripDayActivity",
+        "App\\Project\\Modules\\System\\Trips\\Trip",
+        "App\\Project\\Modules\\System\\Trips\\TripPoint",
+        "App\\Project\\Modules\\System\\Trips\\Category"
+      ]
+    },
+    "Attachments": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Attachments",
+      "routes": {},
+      "models": [
+        "App\\Project\\Modules\\System\\Attachments\\AttachmentType",
+        "App\\Project\\Modules\\System\\Attachments\\Attachment"
+      ]
+    },
+    "Ratings": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Ratings",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Ratings/Routes/web_rating.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/Ratings/Routes/api_rating.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Ratings\\Rating"
+      ]
+    },
+    "Tourists": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Tourists",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Tourists/Routes/web_tourist.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Tourists\\Tourist"
+      ]
+    },
+    "Pages": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Pages",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Pages/Routes/web_page.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Pages\\Page"
+      ]
+    },
+    "Refunds": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Refunds",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Refunds/Routes/web_refund.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Refunds\\Refund",
+        "App\\Project\\Modules\\System\\Refunds\\RefundStatus"
+      ]
+    },
+    "Seasons": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Seasons",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Seasons/Routes/web_season.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Seasons\\Season",
+        "App\\Project\\Modules\\System\\Seasons\\ServiceClass",
+        "App\\Project\\Modules\\System\\Seasons\\Budget",
+        "App\\Project\\Modules\\System\\Seasons\\SeasonDate"
+      ]
+    },
+    "Destinations": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Destinations",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Destinations/Routes/web_destination.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/Destinations/Routes/api_destination.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Destinations\\DestinationFact",
+        "App\\Project\\Modules\\System\\Destinations\\Destination",
+        "App\\Project\\Modules\\System\\Destinations\\DestinationCategory",
+        "App\\Project\\Modules\\System\\Destinations\\DestinationActivity"
+      ]
+    },
+    "Receipts": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Receipts",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Receipts/Routes/web_receipt.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Receipts\\Receipt"
+      ]
+    },
+    "Subscriptions": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Subscriptions",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Subscriptions/Routes/web_subscription.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/Subscriptions/Routes/api_subscription.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Subscriptions\\Subscription"
+      ]
+    },
+    "Likes": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Likes",
+      "routes": {
+        "api": [
+          "app/Project/Modules/System/Likes/Routes/api_like.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Likes\\Like"
+      ]
+    },
+    "Blogs": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Blogs",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Blogs/Routes/web_blog.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Blogs\\BlogCategory",
+        "App\\Project\\Modules\\System\\Blogs\\Blog"
+      ]
+    },
+    "Cart": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Cart",
+      "routes": {
+        "api": [
+          "app/Project/Modules/System/Cart/Routes/api_cart.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Cart\\CartItem"
+      ]
+    },
+    "Bookings": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Bookings",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Bookings/Routes/web_booking.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/Bookings/Routes/api_booking.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Bookings\\BookingTraveller",
+        "App\\Project\\Modules\\System\\Bookings\\BookingType",
+        "App\\Project\\Modules\\System\\Bookings\\BookingStatus",
+        "App\\Project\\Modules\\System\\Bookings\\BookingSource",
+        "App\\Project\\Modules\\System\\Bookings\\Booking"
+      ]
+    },
+    "Accommodations": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Accommodations",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Accommodations/Routes/web_accommodation.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\System\\Accommodations\\Accommodation",
+        "App\\Project\\Modules\\System\\Accommodations\\StayType"
+      ]
+    },
+    "Roles": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Roles",
+      "routes": {
+        "web": [
+          "app/Project/Modules/Core/Roles/Routes/web_role.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\Core\\Roles\\ModelHasRole",
+        "App\\Project\\Modules\\Core\\Roles\\RoleHasPermission"
+      ]
+    },
+    "Statuses": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Statuses",
+      "routes": {},
+      "models": [
+        "App\\Project\\Modules\\Core\\Statuses\\Status"
+      ]
+    },
+    "Menus": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Menus",
+      "routes": {
+        "web": [
+          "app/Project/Modules/Core/Menus/Routes/web_menu.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\Core\\Menus\\PermissionMenu",
+        "App\\Project\\Modules\\Core\\Menus\\Menu"
+      ]
+    },
+    "Permissions": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Permissions",
+      "routes": {
+        "web": [
+          "app/Project/Modules/Core/Permissions/Routes/web_permission.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\Core\\Permissions\\ModelHasPermission"
+      ]
+    },
+    "SystemConfigurations": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/SystemConfigurations",
+      "routes": {
+        "web": [
+          "app/Project/Modules/Core/SystemConfigurations/Routes/web_system_configuration.php"
+        ]
+      },
+      "models": [
+        "App\\Project\\Modules\\Core\\SystemConfigurations\\SystemConfigurationType",
+        "App\\Project\\Modules\\Core\\SystemConfigurations\\SystemConfiguration"
+      ]
+    },
+    "Reports": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Reports",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Reports/Routes/web_report.php"
+        ]
+      },
+      "models": []
+    },
+    "Budgets": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Budgets",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Budgets/Routes/web_budget.php"
+        ]
+      },
+      "models": []
+    },
+    "Categories": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Categories",
+      "routes": {
+        "web": [
+          "app/Project/Modules/System/Categories/Routes/web_category.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/Categories/Routes/api_category.php"
+        ]
+      },
+      "models": []
+    },
+    "Dashboard": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Dashboard",
+      "routes": {
+        "web": [
+          "app/Project/Modules/Core/Dashboard/Routes/web_dashboard.php"
+        ],
+        "api": [
+          "app/Project/Modules/Core/Dashboard/Routes/api_dashboard.php"
+        ]
+      },
+      "models": []
+    },
+    "Auth": {
+      "group": "Auth",
+      "path": "app/Project/Auth",
+      "routes": {
+        "web": [
+          "app/Project/Auth/Routes/web_auth.php"
+        ],
+        "api": [
+          "app/Project/Auth/Routes/api_authentication.php"
+        ]
+      },
+      "models": []
+    },
+    "Splash": {
+      "group": "System",
+      "path": "app/Project/Modules/System/Splash",
+      "routes": {
+        "api": [
+          "app/Project/Modules/System/Splash/Routes/api_splash.php"
+        ]
+      },
+      "models": []
+    },
+    "FaqCategory": {
+      "group": "System",
+      "path": "app/Project/Modules/System/FaqCategory",
+      "routes": {},
+      "models": []
+    },
+    "Infrastructure": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Infrastructure",
+      "routes": {},
+      "models": []
+    },
+    "Logs": {
+      "group": "Core",
+      "path": "app/Project/Modules/Core/Logs",
+      "routes": {},
+      "models": []
+    }
+  },
+  "routes": {
+    "web": [
+      "app/Project/Auth/Routes/web_auth.php",
+      "app/Project/Modules/Core/Dashboard/Routes/web_dashboard.php",
+      "app/Project/Modules/Core/Permissions/Routes/web_permission.php",
+      "app/Project/Modules/Core/Roles/Routes/web_role.php",
+      "app/Project/Modules/Core/Menus/Routes/web_menu.php",
+      "app/Project/Modules/Core/Users/Routes/web_user.php",
+      "app/Project/Modules/Core/SystemConfigurations/Routes/web_system_configuration.php",
+      "app/Project/Modules/System/Bookings/Routes/web_booking.php",
+      "app/Project/Modules/System/Invoices/Routes/web_invoice.php",
+      "app/Project/Modules/System/Tourists/Routes/web_tourist.php",
+      "app/Project/Modules/System/Destinations/Routes/web_destination.php",
+      "app/Project/Modules/System/Library/Routes/web_library.php",
+      "app/Project/Modules/System/Vehicles/Routes/web_vehicle.php",
+      "app/Project/Modules/System/Accommodations/Routes/web_accommodation.php",
+      "app/Project/Modules/System/Trips/Routes/web_trip.php",
+      "app/Project/Modules/System/Quotations/Routes/web_quotation.php",
+      "app/Project/Modules/System/Receipts/Routes/web_receipt.php",
+      "app/Project/Modules/System/Refunds/Routes/web_refund.php",
+      "app/Project/Modules/System/Blogs/Routes/web_blog.php",
+      "app/Project/Modules/System/Ratings/Routes/web_rating.php",
+      "app/Project/Modules/System/Faqs/Routes/web_faq.php",
+      "app/Project/Modules/System/Pages/Routes/web_page.php",
+      "app/Project/Modules/System/Subscriptions/Routes/web_subscription.php",
+      "app/Project/Modules/System/Testimonials/Routes/web_testimonial.php",
+      "app/Project/Modules/System/Reports/Routes/web_report.php",
+      "app/Project/Modules/System/Banks/Routes/web_bank.php",
+      "app/Project/Modules/System/BankDetails/Routes/web_bank_detail.php",
+      "app/Project/Modules/System/ExchangeRates/Routes/web_exchange_rate.php",
+      "app/Project/Modules/System/Seasons/Routes/web_season.php",
+      "app/Project/Modules/Core/Countries/Routes/web_country.php",
+      "app/Project/Modules/Core/Regions/Routes/web_region.php",
+      "app/Project/Modules/Core/Districts/Routes/web_district.php",
+      "app/Project/Modules/Core/Locations/Routes/web_location.php",
+      "app/Project/Modules/System/Activities/Routes/web_activity.php",
+      "app/Project/Modules/System/Categories/Routes/web_category.php",
+      "app/Project/Modules/System/Addons/Routes/web_addon.php",
+      "app/Project/Modules/System/Budgets/Routes/web_budget.php",
+      "app/Project/Modules/System/Inquiries/Routes/web_inquiry.php"
+    ],
+    "api": [
+      "app/Project/Modules/System/Splash/Routes/api_splash.php",
+      "app/Project/Modules/System/Categories/Routes/api_category.php",
+      "app/Project/Modules/System/ExchangeRates/Routes/api_exchange_rate.php",
+      "app/Project/Modules/System/Destinations/Routes/api_destination.php",
+      "app/Project/Modules/System/Trips/Routes/api_trip.php",
+      "app/Project/Modules/System/Bookings/Routes/api_booking.php",
+      "app/Project/Auth/Routes/api_authentication.php",
+      "app/Project/Modules/System/Testimonials/Routes/api_testimonial.php",
+      "app/Project/Modules/System/Subscriptions/Routes/api_subscription.php",
+      "app/Project/Modules/System/Likes/Routes/api_like.php",
+      "app/Project/Modules/System/Ratings/Routes/api_rating.php",
+      "app/Project/Modules/System/Cart/Routes/api_cart.php",
+      "app/Project/Modules/Core/Dashboard/Routes/api_dashboard.php",
+      "app/Project/Modules/Core/Users/Routes/api_user.php",
+      "app/Project/Modules/System/Faqs/Routes/api_faq.php",
+      "app/Project/Modules/System/Inquiries/Routes/api_inquiry.php",
+      "app/Project/Modules/System/Quotations/Routes/api_public.php"
+    ]
+  }
+}

@@ -1,0 +1,186 @@
+:root {
+    --brand-primary: #FFA319;
+    --brand-primary-dark: #288479;
+    --brand-secondary: #288479;
+    --brand-accent-deep: #288479;
+    --brand-sand: #F7EFDF;
+    --brand-ink: #101010;
+    --bs-primary: #FFA319;
+    --bs-primary-rgb: 255, 163, 25;
+    --bs-secondary: #288479;
+    --bs-secondary-rgb: 40, 132, 121;
+    --bs-link-color: #FFA319;
+    --bs-link-hover-color: #288479;
+}
+
+body {
+    color: var(--brand-ink);
+    background-color: var(--brand-sand);
+}
+
+a {
+    color: var(--brand-primary);
+}
+
+a:hover {
+    color: var(--brand-primary-dark);
+}
+
+.btn-primary,
+.bg-primary,
+.badge.bg-primary,
+.page-item.active .page-link {
+    background-color: var(--brand-primary) !important;
+    border-color: var(--brand-primary) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: var(--brand-primary-dark) !important;
+    border-color: var(--brand-primary-dark) !important;
+}
+
+.btn-outline-primary {
+    color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+
+.leftside-menu {
+    background: var(--brand-accent-deep);
+}
+
+.leftside-menu .logo-lg,
+.leftside-menu .logo-sm {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leftside-menu .logo-lg img {
+    max-width: 100%;
+    width: auto;
+    height: 48px;
+    object-fit: contain;
+}
+
+.leftside-menu .logo-sm img {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+}
+
+.leftside-menu .logo {
+    height: 84px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-accent-deep);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.navbar-custom {
+    background: #fff;
+    border-bottom: 1px solid rgba(19, 58, 94, 0.08);
+}
+
+.navbar-custom .button-toggle-menu,
+.topbar-menu .nav-link,
+.topbar-menu .dropdown-toggle,
+.topbar-menu .dropdown-toggle h5,
+.topbar-menu .dropdown-toggle h6 {
+    color: var(--brand-accent-deep) !important;
+}
+
+.side-nav .side-nav-link,
+.side-nav .side-nav-link i,
+.leftbar-user-name {
+    color: rgba(255, 255, 255, 0.82) !important;
+}
+
+.side-nav .side-nav-link:hover,
+.side-nav .side-nav-link:focus,
+.side-nav .side-nav-item.menuitem-active > .side-nav-link,
+.side-nav .side-nav-link.active {
+    color: #fff !important;
+    background: rgba(255, 163, 25, 0.18);
+}
+
+.side-nav-second-level li a:hover,
+.side-nav-third-level li a:hover {
+    color: var(--brand-primary) !important;
+}
+
+.card,
+.table,
+.modal-content {
+    background-color: #fff;
+}
+
+.password-toggle-btn {
+    border-color: #dee2e6;
+    color: var(--brand-accent-deep);
+}
+
+.password-toggle-btn:hover,
+.password-toggle-btn:focus {
+    background-color: var(--brand-sand);
+    border-color: var(--brand-primary);
+    color: var(--brand-primary-dark);
+}
+
+html[data-sidenav-size="condensed"]:not([data-layout="topnav"]) .leftside-menu .logo-lg {
+    display: none !important;
+}
+
+html[data-sidenav-size="condensed"]:not([data-layout="topnav"]) .leftside-menu .logo-sm {
+    display: flex !important;
+}
+
+html[data-sidenav-size="condensed"]:not([data-layout="topnav"]) .leftside-menu,
+html[data-sidenav-size="condensed"]:not([data-layout="topnav"]) .leftside-menu .logo {
+    background: var(--brand-accent-deep) !important;
+}
+
+@media (max-width: 1140px) {
+    .leftside-menu .logo {
+        padding: 0.5rem;
+    }
+
+    .leftside-menu .logo-lg {
+        display: none !important;
+    }
+
+    .leftside-menu .logo-sm {
+        display: flex !important;
+    }
+}
+
+/* Dream Travel and Tours: readable text on orange actions and teal links. */
+.btn-primary, .bg-primary, .badge.bg-primary, .page-item.active .page-link { color: #101010 !important; }
+a { color: #288479; }
+.footer { background: #288479; color: #FFFFFF; }
+.auth-brand img, .leftside-menu .logo-lg img { height: auto !important; width: 220px; max-width: 100%; }
+
+[style*="background-color: #FFA319"] { color: #101010 !important; }
+
+/* Teal page shell matches the supplied 14.png artwork. */
+body, .content-page { background-color: #288479; color: #F7EFDF; }
+.card, .modal-content, .table { background-color: #F7EFDF; color: #101010; }
+.navbar-custom { background: #288479; border-color: #589E95; }
+.navbar-custom .button-toggle-menu, .topbar-menu .nav-link,
+.topbar-menu .dropdown-toggle, .topbar-menu .dropdown-toggle h5,
+.topbar-menu .dropdown-toggle h6 { color: #F7EFDF !important; }
+.page-title, .page-title-box .breadcrumb-item, .page-title-box .breadcrumb-item a { color: #F7EFDF; }
+.footer { color: #F7EFDF; }
+.auth-fluid-form-box { background: #288479 !important; color: #F7EFDF; }
+.auth-fluid-form-box .text-muted { color: #F7EFDF !important; }
+.auth-fluid-form-box a:not(.btn) { color: #F7EFDF; }
+.auth-brand img, .leftside-menu .logo-lg img { width: 220px; height: 82px !important; object-fit: cover; object-position: center; }

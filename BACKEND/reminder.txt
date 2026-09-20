@@ -1,0 +1,8 @@
+1. APIs
+    - Search Hotel ???
+    - Book hotel ????
+    - Get Pages (Teams CEO)
+    - Recommended Trips for logged in users based on past trips & Destinations
+    - Get all Blogs
+    - Tourist Docs (Passport,Itenaries,Proof of Payments,Insurance files) per booking
+ 
