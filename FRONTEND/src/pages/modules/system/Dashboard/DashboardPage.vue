@@ -145,63 +145,6 @@ const quickActions = [
     <div class="space-y-6">
 
       <!-- Header -->
-      <div
-          class="relative overflow-hidden rounded-2xl border bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 py-7 text-white shadow-sm"
-      >
-        <div class="relative z-10">
-          <div class="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
-
-            <div>
-              <div class="mb-2 flex items-center gap-2 text-sm text-slate-300">
-                <CalendarDays class="h-4 w-4"/>
-                <span>Travel Operations</span>
-              </div>
-
-              <h1 class="text-2xl font-bold tracking-tight sm:text-3xl">
-                Welcome back, {{ user?.name }}
-              </h1>
-
-              <p class="mt-2 max-w-xl text-sm text-slate-300">
-                Manage your trips, destinations, inquiries,
-                accommodations and quotations from one place.
-              </p>
-            </div>
-
-            <div class="flex flex-wrap gap-2">
-              <RouterLink to="/inquiries/create">
-                <Button class="bg-white text-slate-900 hover:bg-slate-100">
-                  <Plus class="mr-2 h-4 w-4"/>
-                  New Inquiry
-                </Button>
-              </RouterLink>
-
-              <RouterLink to="/trips/list">
-                <Button
-                    variant="outline"
-                    class="border-slate-600 bg-transparent text-white hover:bg-white/10 hover:text-white"
-                >
-                  View Trips
-                  <ArrowUpRight class="ml-2 h-4 w-4"/>
-                </Button>
-              </RouterLink>
-            </div>
-          </div>
-        </div>
-
-        <!-- Decorative elements -->
-        <div
-            class="absolute -right-10 -top-16 h-48 w-48 rounded-full bg-white/5"
-        />
-
-        <div
-            class="absolute -bottom-24 right-24 h-56 w-56 rounded-full bg-white/5"
-        />
-
-        <Plane
-            class="absolute bottom-6 right-8 h-16 w-16 rotate-[-15deg] text-white/5 sm:h-24 sm:w-24"
-        />
-      </div>
-
 
       <!-- Error -->
       <div
@@ -235,22 +178,24 @@ const quickActions = [
       <!-- Statistics -->
       <div
           v-if="!loading"
-          class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6"
+          class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6"
       >
         <RouterLink
             v-for="item in stats"
             :key="item.key"
             :to="item.href"
-            class="group"
+            class="group min-w-0"
         >
           <Card
-              class="h-full transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+              class="h-full border transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
           >
-            <CardContent class="p-5">
+            <CardContent class="p-4">
 
-              <div class="flex items-start justify-between">
+              <div class="flex items-center gap-3">
+
+                <!-- Icon -->
                 <div
-                    class="flex h-11 w-11 items-center justify-center rounded-xl"
+                    class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
                     :class="item.bgClass"
                 >
                   <component
@@ -260,23 +205,28 @@ const quickActions = [
                   />
                 </div>
 
-                <ArrowUpRight
-                    class="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100"
-                />
-              </div>
+                <!-- Title + description -->
+                <div class="min-w-0 flex-1">
+                  <p
+                      class="truncate text-xs font-medium text-muted-foreground"
+                  >
+                    {{ item.title }}
+                  </p>
 
-              <div class="mt-4">
-                <p class="text-sm text-muted-foreground">
-                  {{ item.title }}
-                </p>
+                  <p
+                      class="mt-0.5 truncate text-xs text-muted-foreground/70"
+                  >
+                    {{ item.description }}
+                  </p>
+                </div>
 
-                <p class="mt-1 text-2xl font-bold tracking-tight">
-                  {{ item.value.toLocaleString() }}
-                </p>
+                <!-- Number -->
+                <div class="shrink-0 text-right">
+                  <p class="text-xl font-bold tracking-tight">
+                    {{ item.value.toLocaleString() }}
+                  </p>
+                </div>
 
-                <p class="mt-1 text-xs text-muted-foreground">
-                  {{ item.description }}
-                </p>
               </div>
 
             </CardContent>
@@ -302,292 +252,166 @@ const quickActions = [
           </CardHeader>
 
           <CardContent>
-
-            <div class="grid gap-4 sm:grid-cols-2">
+            <div class="grid gap-3 sm:grid-cols-2">
 
               <!-- Inquiry -->
               <RouterLink
                   to="/inquiries/list"
-                  class="group rounded-xl border p-4 transition hover:bg-muted/50"
+                  class="group rounded-xl border bg-card p-4 transition-all hover:border-blue-200 hover:bg-muted/40 hover:shadow-sm"
               >
-                <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+
+                  <!-- Icon -->
                   <div
-                      class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-50 dark:bg-blue-950/30"
+                      class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-blue-50 dark:bg-blue-950/30"
                   >
                     <MessageSquare class="h-5 w-5 text-blue-600"/>
                   </div>
 
-                  <ArrowRight
-                      class="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1"
-                  />
+                  <!-- Details -->
+                  <div class="min-w-0 flex-1">
+                    <p class="truncate text-sm font-semibold">
+                      Customer Inquiries
+                    </p>
+
+                    <p class="mt-1 text-xs text-muted-foreground">
+                      Customer requests
+                    </p>
+                  </div>
+
+                  <!-- Number + Arrow -->
+                  <div class="flex items-center gap-3">
+                    <p class="text-2xl font-bold tracking-tight">
+                      {{ getCount('inquiries').toLocaleString() }}
+                    </p>
+
+                    <ArrowRight
+                        class="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1"
+                    />
+                  </div>
+
                 </div>
-
-                <p class="mt-4 text-sm font-medium">
-                  Customer Inquiries
-                </p>
-
-                <p class="mt-1 text-2xl font-bold">
-                  {{ getCount('inquiries').toLocaleString() }}
-                </p>
-
-                <p class="mt-1 text-xs text-muted-foreground">
-                  Manage customer requests
-                </p>
               </RouterLink>
 
 
               <!-- Trips -->
               <RouterLink
                   to="/trips/list"
-                  class="group rounded-xl border p-4 transition hover:bg-muted/50"
+                  class="group rounded-xl border bg-card p-4 transition-all hover:border-emerald-200 hover:bg-muted/40 hover:shadow-sm"
               >
-                <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+
+                  <!-- Icon -->
                   <div
-                      class="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-50 dark:bg-emerald-950/30"
+                      class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-50 dark:bg-emerald-950/30"
                   >
                     <Compass class="h-5 w-5 text-emerald-600"/>
                   </div>
 
-                  <ArrowRight
-                      class="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1"
-                  />
+                  <!-- Details -->
+                  <div class="min-w-0 flex-1">
+                    <p class="truncate text-sm font-semibold">
+                      Travel Packages
+                    </p>
+
+                    <p class="mt-1 text-xs text-muted-foreground">
+                      Active trips
+                    </p>
+                  </div>
+
+                  <!-- Number + Arrow -->
+                  <div class="flex items-center gap-3">
+                    <p class="text-2xl font-bold tracking-tight">
+                      {{ getCount('trips').toLocaleString() }}
+                    </p>
+
+                    <ArrowRight
+                        class="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1"
+                    />
+                  </div>
+
                 </div>
-
-                <p class="mt-4 text-sm font-medium">
-                  Travel Packages
-                </p>
-
-                <p class="mt-1 text-2xl font-bold">
-                  {{ getCount('trips').toLocaleString() }}
-                </p>
-
-                <p class="mt-1 text-xs text-muted-foreground">
-                  Active trips and packages
-                </p>
               </RouterLink>
 
 
               <!-- Quotations -->
               <RouterLink
                   to="/quotations/list"
-                  class="group rounded-xl border p-4 transition hover:bg-muted/50"
+                  class="group rounded-xl border bg-card p-4 transition-all hover:border-rose-200 hover:bg-muted/40 hover:shadow-sm"
               >
-                <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+
+                  <!-- Icon -->
                   <div
-                      class="flex h-10 w-10 items-center justify-center rounded-lg bg-rose-50 dark:bg-rose-950/30"
+                      class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-rose-50 dark:bg-rose-950/30"
                   >
                     <FileText class="h-5 w-5 text-rose-600"/>
                   </div>
 
-                  <ArrowRight
-                      class="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1"
-                  />
+                  <!-- Details -->
+                  <div class="min-w-0 flex-1">
+                    <p class="truncate text-sm font-semibold">
+                      Quotations
+                    </p>
+
+                    <p class="mt-1 text-xs text-muted-foreground">
+                      Customer quotations
+                    </p>
+                  </div>
+
+                  <!-- Number + Arrow -->
+                  <div class="flex items-center gap-3">
+                    <p class="text-2xl font-bold tracking-tight">
+                      {{ getCount('quotations').toLocaleString() }}
+                    </p>
+
+                    <ArrowRight
+                        class="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1"
+                    />
+                  </div>
+
                 </div>
-
-                <p class="mt-4 text-sm font-medium">
-                  Quotations
-                </p>
-
-                <p class="mt-1 text-2xl font-bold">
-                  {{ getCount('quotations').toLocaleString() }}
-                </p>
-
-                <p class="mt-1 text-xs text-muted-foreground">
-                  Customer quotations
-                </p>
               </RouterLink>
 
 
               <!-- Destinations -->
               <RouterLink
                   to="/destinations/list"
-                  class="group rounded-xl border p-4 transition hover:bg-muted/50"
+                  class="group rounded-xl border bg-card p-4 transition-all hover:border-orange-200 hover:bg-muted/40 hover:shadow-sm"
               >
-                <div class="flex items-center justify-between">
+                <div class="flex items-center gap-4">
+
+                  <!-- Icon -->
                   <div
-                      class="flex h-10 w-10 items-center justify-center rounded-lg bg-orange-50 dark:bg-orange-950/30"
+                      class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-50 dark:bg-orange-950/30"
                   >
                     <MapPin class="h-5 w-5 text-orange-600"/>
                   </div>
 
-                  <ArrowRight
-                      class="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1"
-                  />
+                  <!-- Details -->
+                  <div class="min-w-0 flex-1">
+                    <p class="truncate text-sm font-semibold">
+                      Destinations
+                    </p>
+
+                    <p class="mt-1 text-xs text-muted-foreground">
+                      Travel locations
+                    </p>
+                  </div>
+
+                  <!-- Number + Arrow -->
+                  <div class="flex items-center gap-3">
+                    <p class="text-2xl font-bold tracking-tight">
+                      {{ getCount('destinations').toLocaleString() }}
+                    </p>
+
+                    <ArrowRight
+                        class="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1"
+                    />
+                  </div>
+
                 </div>
-
-                <p class="mt-4 text-sm font-medium">
-                  Destinations
-                </p>
-
-                <p class="mt-1 text-2xl font-bold">
-                  {{ getCount('destinations').toLocaleString() }}
-                </p>
-
-                <p class="mt-1 text-xs text-muted-foreground">
-                  Places available for travel
-                </p>
               </RouterLink>
-
-            </div>
-
-          </CardContent>
-        </Card>
-
-
-        <!-- Quick actions -->
-        <Card>
-          <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-            <p class="text-sm text-muted-foreground">
-              Frequently used operations
-            </p>
-          </CardHeader>
-
-          <CardContent class="space-y-2">
-
-            <RouterLink
-                v-for="action in quickActions"
-                :key="action.title"
-                :to="action.href"
-                class="group flex items-center gap-3 rounded-xl border p-3 transition hover:bg-muted/50"
-            >
-              <div
-                  class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-muted"
-              >
-                <component
-                    :is="action.icon"
-                    class="h-4 w-4"
-                />
-              </div>
-
-              <div class="min-w-0 flex-1">
-                <p class="text-sm font-medium">
-                  {{ action.title }}
-                </p>
-
-                <p class="truncate text-xs text-muted-foreground">
-                  {{ action.description }}
-                </p>
-              </div>
-
-              <ArrowRight
-                  class="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1"
-              />
-            </RouterLink>
-
-          </CardContent>
-        </Card>
-
-      </div>
-
-
-      <!-- Bottom section -->
-      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-
-        <!-- Upcoming -->
-        <Card>
-          <CardHeader>
-            <div class="flex items-center justify-between">
-              <CardTitle>Upcoming Trips</CardTitle>
-              <Clock3 class="h-5 w-5 text-muted-foreground"/>
-            </div>
-          </CardHeader>
-
-          <CardContent>
-            <div class="flex flex-col items-center justify-center py-8 text-center">
-              <div
-                  class="flex h-12 w-12 items-center justify-center rounded-full bg-muted"
-              >
-                <CalendarDays class="h-5 w-5 text-muted-foreground"/>
-              </div>
-
-              <p class="mt-3 text-sm font-medium">
-                No upcoming trips
-              </p>
-
-              <p class="mt-1 max-w-xs text-xs text-muted-foreground">
-                Upcoming scheduled trips will appear here.
-              </p>
-
-              <RouterLink
-                  to="/trips/list"
-                  class="mt-4"
-              >
-                <Button variant="outline" size="sm">
-                  View trips
-                  <ArrowRight class="ml-2 h-4 w-4"/>
-                </Button>
-              </RouterLink>
-            </div>
-          </CardContent>
-        </Card>
-
-
-        <!-- Recent activity -->
-        <Card>
-          <CardHeader>
-            <div class="flex items-center justify-between">
-              <CardTitle>Recent Activity</CardTitle>
-              <Eye class="h-5 w-5 text-muted-foreground"/>
-            </div>
-          </CardHeader>
-
-          <CardContent>
-            <div class="space-y-5">
-
-              <div class="flex gap-3">
-                <div
-                    class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-50 dark:bg-emerald-950/30"
-                >
-                  <CheckCircle2 class="h-4 w-4 text-emerald-600"/>
-                </div>
-
-                <div>
-                  <p class="text-sm font-medium">
-                    System is ready
-                  </p>
-
-                  <p class="text-xs text-muted-foreground">
-                    Your travel operations dashboard is active.
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex gap-3">
-                <div
-                    class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 dark:bg-blue-950/30"
-                >
-                  <Users class="h-4 w-4 text-blue-600"/>
-                </div>
-
-                <div>
-                  <p class="text-sm font-medium">
-                    Customer management
-                  </p>
-
-                  <p class="text-xs text-muted-foreground">
-                    Manage inquiries and customer requests.
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex gap-3">
-                <div
-                    class="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-50 dark:bg-orange-950/30"
-                >
-                  <CircleDollarSign class="h-4 w-4 text-orange-600"/>
-                </div>
-
-                <div>
-                  <p class="text-sm font-medium">
-                    Quotations
-                  </p>
-
-                  <p class="text-xs text-muted-foreground">
-                    Prepare and manage customer quotations.
-                  </p>
-                </div>
-              </div>
 
             </div>
           </CardContent>
@@ -666,6 +490,7 @@ const quickActions = [
 
           </CardContent>
         </Card>
+
 
       </div>
 
