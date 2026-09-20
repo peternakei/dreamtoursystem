@@ -1,0 +1,16 @@
+<script setup lang="ts">
+import {ref,onMounted,computed} from 'vue'
+import MainLayout from '@/layouts/MainLayout.vue'
+import Field from '@/components/services/ServiceField.vue'
+import LocalizedFields from '@/components/services/LocalizedFields.vue'
+import {formError} from '@/components/services/formErrors'
+import {Button} from '@/components/ui/button'
+import api from '@/axiosClient'
+const data=ref<any>({trips:[],destinations:[]}),type=ref('trips'),selected=ref(''),form=ref<any>(null),busy=ref(false),error=ref(''),notice=ref('')
+const choices=computed(()=>[{value:'',label:'Select existing content'},...data.value[type.value].map((r:any)=>({value:r.uuid,label:r.name}))])
+async function load(){try{data.value=(await api.get('/workspace/travel-content')).data.data}catch(e){error.value=formError(e)}}
+function choose(uuid:string){const row=data.value[type.value].find((r:any)=>r.uuid===uuid);form.value=row?{...row,service_details:{...row.service_details},translations:row.translations??{}}:null}
+async function save(){busy.value=true;error.value='';try{await api.put('/workspace/travel-content/'+type.value+'/'+form.value.uuid,form.value);await load();notice.value='Content saved'}catch(e){error.value=formError(e)}finally{busy.value=false}}
+onMounted(load)
+</script>
+<template><MainLayout title="Travel content"><div class="space-y-5"><h2 class="text-xl font-semibold">Existing trips and destinations</h2><p class="text-sm text-muted-foreground">Add service descriptions and translations. Existing pricing and publication rules continue to apply.</p><p v-if="error" role="alert" class="text-destructive">{{error}}</p><p v-if="notice" role="status">{{notice}}</p><div class="space-y-4 rounded-xl border bg-card p-5 text-card-foreground"><div class="grid gap-4 sm:grid-cols-2"><Field v-model="type" label="Content type" type="select" :options="[{value:'trips',label:'Trips and offers'},{value:'destinations',label:'Destinations'}]" @update:model-value="selected='';form=null"/><Field v-model="selected" label="Existing record" type="select" :options="choices" @update:model-value="choose($event)"/></div><form v-if="form" class="mt-4 space-y-4" @submit.prevent="save"><h3 class="font-semibold">{{form.name}}</h3><div v-if="type==='trips'" class="grid gap-4 sm:grid-cols-2"><Field v-model="form.service_details.purpose" label="Travel purpose"/><Field v-model="form.service_details.geography" label="Geography" type="select" :options="[{value:'',label:'Not specified'},{value:'local',label:'Local'},{value:'international',label:'International'}]"/><Field v-for="key in ['industry','route','duration','price_basis']" :key="key" v-model="form.service_details[key]" :label="key.replaceAll('_',' ')"/><Field v-model="form.service_details.travellers" label="Traveller count" type="number" :min="1"/><Field v-for="key in ['company_services','transport','accommodation','inclusions','terms']" :key="key" v-model="form.service_details[key]" :label="key.replaceAll('_',' ')" type="textarea"/></div><LocalizedFields v-model="form.translations" :fields="['name','description']"/><Button type="submit" :disabled="busy">Save content</Button><RouterLink :to="'/'+type+'/'+form.uuid+'/details'" class="ml-3 underline">Open existing record</RouterLink></form></div></div></MainLayout></template>

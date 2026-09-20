@@ -1,0 +1,200 @@
+[
+  {
+    "name": "Rental catalog",
+    "method": "GET",
+    "path": "/api/rental-offers?purpose=wedding&limit=1&offset=0",
+    "body": null,
+    "status": 200,
+    "response": {
+      "status": true,
+      "code": 200,
+      "message": "Retrieved successfully",
+      "data": {
+        "rental_offers": [
+          {
+            "uuid": "a2ca7f4c-6986-4923-bbd5-1f8c52453273",
+            "title": "Wedding chauffeur service",
+            "description": null,
+            "purpose": "wedding",
+            "vehicle_type": "luxury",
+            "vehicle_uuids": [
+              "a2ca7f4c-5fd3-4de6-bc17-65c087776e55"
+            ],
+            "price_unit": "day",
+            "price": null,
+            "quotation_required": true,
+            "driver_policy": "included",
+            "fuel_policy": "excluded",
+            "details": {
+              "extras": [
+                {
+                  "code": "decoration",
+                  "title": "Wedding decoration"
+                }
+              ],
+              "terms": "Supply and price confirmed by quotation."
+            },
+            "is_featured": false,
+            "images": [],
+            "availability": "manual_verification_required",
+            "locale": "en",
+            "fallback_locale": "en"
+          }
+        ],
+        "total": 6,
+        "limit": 1,
+        "offset": 0
+      }
+    }
+  },
+  {
+    "name": "Rental inquiry",
+    "method": "POST",
+    "path": "/api/save-service-inquiry",
+    "body": {
+      "service_type": "rental",
+      "firstName": "Example",
+      "lastName": "Traveller",
+      "email": "api-example@example.test",
+      "phone": "255700009999",
+      "country": 1,
+      "message": "Two luxury cars with drivers; decoration to be quoted separately.",
+      "locale": "en",
+      "details": {
+        "offer_uuid": "a2ca7f4c-6986-4923-bbd5-1f8c52453273",
+        "purpose": "wedding",
+        "vehicle_type": "luxury",
+        "start_at": "2026-09-30T10:00",
+        "end_at": "2026-10-01T10:00",
+        "quantity": 2,
+        "driver": "with_driver",
+        "pickup": "Dar es Salaam",
+        "dropoff": "Dar es Salaam"
+      }
+    },
+    "status": 200,
+    "response": {
+      "status": true,
+      "code": 200,
+      "message": "Inquiry submitted successfully",
+      "data": {
+        "inquiry": {
+          "uuid": "a2ca8380-94ab-4f4e-8553-1a7ee0d6df20",
+          "inquiry_code": "INQ0002",
+          "status": "pending",
+          "is_approved": false,
+          "service_type": "rental",
+          "locale": "en",
+          "currency_id": null,
+          "contact": {
+            "firstName": "Example",
+            "lastName": "Traveller",
+            "email": "api-example@example.test",
+            "phone": "255700009999",
+            "country": 1
+          },
+          "details": {
+            "offer_uuid": "a2ca7f4c-6986-4923-bbd5-1f8c52453273",
+            "purpose": "wedding",
+            "vehicle_type": "luxury",
+            "start_at": "2026-09-30T10:00",
+            "end_at": "2026-10-01T10:00",
+            "quantity": 2,
+            "driver": "with_driver",
+            "pickup": "Dar es Salaam",
+            "dropoff": "Dar es Salaam",
+            "duration_days": 1,
+            "timezone": "Africa/Dar_es_Salaam",
+            "day_count_rule": "elapsed_24_hours_rounded_up",
+            "estimated_total": null,
+            "quotation_required": true,
+            "fuel": "excluded"
+          },
+          "offer": {
+            "uuid": "a2ca7f4c-6986-4923-bbd5-1f8c52453273",
+            "title": "Wedding chauffeur service",
+            "description": null,
+            "purpose": "wedding",
+            "vehicle_type": "luxury",
+            "vehicle_uuids": [
+              "a2ca7f4c-5fd3-4de6-bc17-65c087776e55"
+            ],
+            "price_unit": "day",
+            "price": null,
+            "quotation_required": true,
+            "driver_policy": "included",
+            "fuel_policy": "excluded",
+            "details": {
+              "extras": [
+                {
+                  "code": "decoration",
+                  "title": "Wedding decoration"
+                }
+              ],
+              "terms": "Supply and price confirmed by quotation."
+            },
+            "is_featured": false,
+            "images": [],
+            "availability": "manual_verification_required",
+            "locale": "en",
+            "fallback_locale": "en"
+          },
+          "startDate": "2026-09-30",
+          "endDate": "2026-10-01",
+          "guests": 1,
+          "message": "Two luxury cars with drivers; decoration to be quoted separately.",
+          "budget": null,
+          "agreed_price": null,
+          "booking_id": null,
+          "created_at": "2026-09-20 15:18:53",
+          "fulfilment": []
+        }
+      }
+    }
+  },
+  {
+    "name": "Rental validation error",
+    "method": "POST",
+    "path": "/api/save-service-inquiry",
+    "body": {
+      "service_type": "rental",
+      "firstName": "Example",
+      "lastName": "Traveller",
+      "email": "api-example@example.test",
+      "phone": "255700009999",
+      "country": 1,
+      "message": "Two luxury cars with drivers; decoration to be quoted separately.",
+      "locale": "en",
+      "details": {
+        "offer_uuid": "a2ca7f4c-6986-4923-bbd5-1f8c52453273",
+        "purpose": "wedding",
+        "vehicle_type": "luxury",
+        "start_at": "2026-09-30T10:00",
+        "end_at": "2026-10-01T10:00",
+        "quantity": 0,
+        "driver": "with_driver",
+        "pickup": "Dar es Salaam",
+        "dropoff": "Dar es Salaam"
+      }
+    },
+    "status": 422,
+    "response": {
+      "message": "The details.quantity field must be at least 1.",
+      "errors": {
+        "details.quantity": [
+          "The details.quantity field must be at least 1."
+        ]
+      }
+    }
+  },
+  {
+    "name": "Unauthorized history",
+    "method": "GET",
+    "path": "/api/get-service-inquiries",
+    "body": null,
+    "status": 401,
+    "response": {
+      "message": "Unauthenticated."
+    }
+  }
+]

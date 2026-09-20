@@ -1,0 +1,3 @@
+<script setup lang="ts">defineProps<{value:any}>();
+</script>
+<template><dl v-if="value && typeof value==='object'" class="grid gap-3 sm:grid-cols-2"><div v-for="(v,k) in value" :key="k" class="min-w-0 rounded-md border p-3"><dt class="mb-1 text-xs font-semibold capitalize text-muted-foreground">{{typeof k==='number'?'Leg / item '+(k+1):String(k).replaceAll('_',' ')}}</dt><dd class="whitespace-pre-wrap break-words text-sm"><DetailValues v-if="v && typeof v==='object'" :value="v"/><span v-else>{{v===true?'Yes':v===false?'No':v??'—'}}</span></dd></div></dl><span v-else>{{value??'—'}}</span></template>
