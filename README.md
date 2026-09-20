@@ -87,7 +87,7 @@ Current list endpoints preserve the source application's load-all behaviour, wit
 .env files stay on your machine and are not included in Git. The existing local `.env` selects SQLite. `.env.example` shows the original MySQL option with a separate database name and blank payment credentials. Never reuse the original project's database for initial seeding.
 
 ```bash
-git clone https://gitlab.com/nakei/dreamtour.git dreamtoursystem
+git clone https://github.com/peternakei/dreamtoursystem.git dreamtoursystem
 cd dreamtoursystem/BACKEND
 composer install
 cp .env.example .env
