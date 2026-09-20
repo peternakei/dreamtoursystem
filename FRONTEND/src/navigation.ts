@@ -1,5 +1,5 @@
 import type {Component} from 'vue'
-import {CalendarDays, Compass, Wallet, FileText, SlidersHorizontal, MapPin, ShieldCheck} from 'lucide-vue-next'
+import {CalendarDays, Compass, Wallet, FileText, SlidersHorizontal, MapPin, ShieldCheck, ScrollText} from 'lucide-vue-next'
 import modules from '@/modules.json'
 
 export interface NavigationLink {
@@ -68,6 +68,14 @@ export const navigation: NavigationSection[] = [
             {
                 id: 'access', title: 'Access & permissions', icon: ShieldCheck,
                 items: links('users', 'roles', 'permissions', 'menus')
+            },
+            {
+                id: 'logs', title: 'Logs', icon: ScrollText,
+                items: [
+                    { slug: 'logs/activity', title: 'Activity logs' },
+                    { slug: 'logs/requests', title: 'Request logs' },
+                    { slug: 'logs/errors', title: 'Error logs' },
+                ]
             },
         ],
     },

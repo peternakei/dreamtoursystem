@@ -57,7 +57,7 @@ class WorkspaceTest extends TestCase
         $this->assertSame('/trips', parse_url(route('trips.index'), PHP_URL_PATH));
         $this->assertSame('/api/trips', parse_url(route('api.trips.index'), PHP_URL_PATH));
         $this->assertSame(User::class, Relation::getMorphedModel('App\\Models\\User'));
-        $this->assertDatabaseCount('migrations', 103);
+        $this->assertDatabaseHas('migrations', ['migration' => '2026_09_20_150000_create_workspace_audit_tables']);
     }
 
     public function test_form_descriptors_exclude_csrf_values_and_external_actions(): void

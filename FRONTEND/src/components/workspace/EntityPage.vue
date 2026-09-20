@@ -14,7 +14,12 @@ import api, {errorMessage} from '@/axiosClient'
 import {toast} from 'vue-sonner'
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://127.0.0.1:8001'
-const props = withDefaults(defineProps<{ module: string; details?: boolean; dateField?: string; showDateFilter?: boolean }>(), { dateField: '', showDateFilter: true }), route = useRoute(), router = useRouter()
+const props = withDefaults(defineProps<{
+  module: string;
+  details?: boolean;
+  dateField?: string;
+  showDateFilter?: boolean
+}>(), {dateField: '', showDateFilter: true}), route = useRoute(), router = useRouter()
 const data = ref<Page | null>(null), loading = ref(true), error = ref(''),
     selected = ref<Form | null>(null), open = ref(false)
 const title = computed(() => data.value?.module.title || props.module.replaceAll('_', ' '))
@@ -108,8 +113,8 @@ watch(() => [props.module, route.params.id], () => {
     </div>
     <p v-if="error" role="alert" class="mb-4 rounded-md bg-destructive/10 p-4 text-sm text-destructive">{{ error }}</p>
     <DataTableReport v-if="!details" :key="module"
-      :columns="columns" :rows="data?.records || []" :loading="loading"
-      :date-field="dateField" :show-date-filter="showDateFilter" :search-keys="fields"
+                     :columns="columns" :rows="data?.records || []" :loading="loading"
+                     :date-field="dateField" :show-date-filter="showDateFilter" :search-keys="fields"
     >
       <template #cell-actions="{ row }">
         <div class="flex items-center justify-end gap-1">
@@ -117,7 +122,8 @@ watch(() => [props.module, route.params.id], () => {
             <Button variant="outline" size="sm">View</Button>
           </RouterLink>
           <Button v-for="(form,fi) in (data?.forms||[]).filter(f=>f.recordKey===row.uuid)" :key="fi"
-            variant="ghost" size="sm" @click="choose(form)">{{ form.title }}</Button>
+                  variant="ghost" size="sm" @click="choose(form)">{{ form.title }}
+          </Button>
         </div>
       </template>
     </DataTableReport>

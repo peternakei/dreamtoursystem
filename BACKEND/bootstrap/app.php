@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->prepend(\App\Project\Modules\Core\Logs\RequestLoggingMiddleware::class);
         $middleware->alias([
             'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
         ]);
@@ -27,5 +28,7 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        $exceptions->report(function (\Throwable $exception) {
+            \App\Project\Modules\Core\Logs\AuditLogger::error($exception);
+        });
     })->create();

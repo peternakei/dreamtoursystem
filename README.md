@@ -116,3 +116,7 @@ npm run build
 ```
 
 Tests use a separate in-memory SQLite database. See `FRONTEND/docs/MIGRATION.md` for migration notes and verification evidence.
+
+## Activity and system logs
+
+Use **Administration → Logs** to view activity, requests and errors. Tables are created by `php artisan migrate` on the configured log database. See [logging setup and coverage](FRONTEND/docs/LOGS.md).

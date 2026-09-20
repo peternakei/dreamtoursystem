@@ -15,3 +15,9 @@ Route::prefix('workspace')->name('workspace.')->controller(WorkspaceController::
         Route::get('modules/{module}/{id}', 'show')->name('show');
     });
 });
+
+Route::prefix('workspace/logs')->name('workspace.logs.')->middleware(['auth:web', WorkspaceAccess::class])
+    ->controller(\App\Project\Modules\Core\Logs\LogsController::class)->group(function () {
+        Route::get('{type}', 'index')->name('index');
+        Route::get('{type}/{uuid}', 'show')->whereUuid('uuid')->name('show');
+    });
