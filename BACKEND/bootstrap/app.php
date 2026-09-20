@@ -18,6 +18,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'PDF' => Barryvdh\DomPDF\Facade\Pdf::class,
         ]);
 
+        $middleware->prependToGroup('web', \App\Project\Workspace\WorkspaceLanding::class);
+
         $middleware->appendToGroup('web', [
             EnsurePasswordIsChanged::class,
             \App\Project\Workspace\WorkspaceResponse::class,

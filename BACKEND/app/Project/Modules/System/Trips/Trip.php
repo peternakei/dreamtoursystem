@@ -29,7 +29,10 @@ class Trip extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $casts = ['service_details' => 'array', 'translations' => 'array'];
+
     protected $fillable = [
+        'service_details', 'translations',
         'trip_code',
         'name',
         'slug',

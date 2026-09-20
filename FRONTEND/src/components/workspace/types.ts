@@ -1,3 +1,3 @@
-export interface Field {name:string;label:string;type:string;value:any;options:{value:string;label:string}[];required:boolean;multiple:boolean;disabled:boolean;min:string;max:string;maxlength:string;placeholder:string}
-export interface Form {recordKey?:string|null;title:string;action:string;method:string;fields:Field[]}
-export interface Page {module:{title:string;slug:string;showPath:string|null};records:Record<string,any>[];details:Record<string,Record<string,any>>;forms:Form[]}
+export interface Field {step?:string;name:string;label:string;type:string;value:any;options:{value:string;label:string}[];required:boolean;multiple:boolean;disabled:boolean;min:string;max:string;maxlength:string;placeholder:string}
+export interface Form {repeaters?:{label:string;fields:Field[]}[];description?:string;recordKey?:string|null;title:string;action:string;method:string;fields:Field[]}
+export interface Page {module:{title:string;slug:string;showPath:string|null};records:Record<string,any>[];details:Record<string,Record<string,any>>;forms:Form[];media?:{type:string;uuid:string;images:any[]};planner?:any;documents?:{url:string;title:string}[];sections?:{title:string;module:string;rows:Record<string,any>[];columns?:any[]}[];links?:{label:string;to:string}[];notices?:string[];actions?:{can_create_quotation?:boolean}}

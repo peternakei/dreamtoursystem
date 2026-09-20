@@ -94,6 +94,9 @@ class LibraryMediaController extends Controller
         ]);
 
         $media = Attachment::findOrFail($attachment);
+        if ($media->attachmentable instanceof \App\Project\Modules\System\Vehicles\RentalOffer || $media->attachmentable instanceof \App\Project\Modules\System\Pages\Page) {
+            app(\App\Project\Modules\System\Inquiries\ServiceAccess::class)->handle(request(), fn () => null, $media->attachmentable instanceof \App\Project\Modules\System\Pages\Page ? 'manage_page_content' : 'manage_rental_offers');
+        }
         $media->update([
             'title' => $request->input('title'),
             'updated_by' => Auth::id(),
@@ -105,6 +108,9 @@ class LibraryMediaController extends Controller
     public function destroy(int $attachment)
     {
         $media = Attachment::findOrFail($attachment);
+        if ($media->attachmentable instanceof \App\Project\Modules\System\Vehicles\RentalOffer || $media->attachmentable instanceof \App\Project\Modules\System\Pages\Page) {
+            app(\App\Project\Modules\System\Inquiries\ServiceAccess::class)->handle(request(), fn () => null, $media->attachmentable instanceof \App\Project\Modules\System\Pages\Page ? 'manage_page_content' : 'manage_rental_offers');
+        }
         $media->update(['updated_by' => Auth::id()]);
         $media->delete();
 
@@ -165,6 +171,9 @@ class LibraryMediaController extends Controller
         }
 
         $modelClass = $map[$type];
+        if (in_array($type, ['rental-offers', 'pages'], true)) {
+            app(\App\Project\Modules\System\Inquiries\ServiceAccess::class)->handle(request(), fn () => null, $type === 'pages' ? 'manage_page_content' : 'manage_rental_offers');
+        }
         $entity = $modelClass::where('uuid', $uuid)->first();
         if (!$entity) {
             abort(404, ucfirst($type) . ' not found');

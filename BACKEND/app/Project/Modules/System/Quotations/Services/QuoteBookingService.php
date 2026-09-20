@@ -29,6 +29,9 @@ class QuoteBookingService
         SaveBookingFormAction $saveAction
     ): array {
         $version->loadMissing(['trip', 'quotation.inquiry.tourist']);
+        if ($version->quotation?->inquiry?->serviceDetails) {
+            return ['ok' => false, 'message' => 'This service requires staff verification and an agreed service quotation. Contact the team to confirm.'];
+        }
         $existingTourist = $version->quotation?->inquiry?->tourist;
 
         $validated['lname'] = $validated['lname'] ?? '';

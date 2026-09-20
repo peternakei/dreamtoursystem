@@ -7,7 +7,13 @@
   },
   "auth": {
     "type": "bearer",
-    "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }]
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
   },
   "event": [
     {
@@ -81,7 +87,10 @@
     }
   ],
   "variable": [
-    { "key": "base_url", "value": "http://localhost:8000/api" }
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000/api"
+    }
   ],
   "item": [
     {
@@ -113,8 +122,21 @@
           ],
           "request": {
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
-            "url": { "raw": "{{base_url}}/splash", "host": ["{{base_url}}"], "path": ["splash"] }
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/splash",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "splash"
+              ]
+            }
           }
         }
       ]
@@ -143,14 +165,33 @@
             }
           ],
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"name\": \"{{full_name}}\",\n  \"phone\": \"{{user_phone}}\",\n  \"email\": \"{{user_email}}\",\n  \"country\": {{country_id}},\n  \"address\": \"{{user_address}}\",\n  \"gender\": {{gender_id}},\n  \"password\": \"{{user_password}}\",\n  \"confirm-password\": \"{{user_password}}\"\n}" },
-            "url": { "raw": "{{base_url}}/register", "host": ["{{base_url}}"], "path": ["register"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"{{full_name}}\",\n  \"phone\": \"{{user_phone}}\",\n  \"email\": \"{{user_email}}\",\n  \"country\": {{country_id}},\n  \"address\": \"{{user_address}}\",\n  \"gender\": {{gender_id}},\n  \"password\": \"{{user_password}}\",\n  \"confirm-password\": \"{{user_password}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "register"
+              ]
+            }
           }
         },
         {
@@ -178,40 +219,97 @@
             }
           ],
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"email\": \"{{user_email}}\",\n  \"password\": \"{{user_password}}\"\n}" },
-            "url": { "raw": "{{base_url}}/login", "host": ["{{base_url}}"], "path": ["login"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{user_email}}\",\n  \"password\": \"{{user_password}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "login"
+              ]
+            }
           }
         },
         {
           "name": "Forgot Password",
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"email\": \"{{user_email}}\"\n}" },
-            "url": { "raw": "{{base_url}}/forgot-password", "host": ["{{base_url}}"], "path": ["forgot-password"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{user_email}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/forgot-password",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "forgot-password"
+              ]
+            }
           }
         },
         {
           "name": "Reset Password",
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"username\": \"{{user_email}}\",\n  \"password\": \"{{new_password}}\",\n  \"token\": \"{{reset_token}}\"\n}" },
-            "url": { "raw": "{{base_url}}/reset-password", "host": ["{{base_url}}"], "path": ["reset-password"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"{{user_email}}\",\n  \"password\": \"{{new_password}}\",\n  \"token\": \"{{reset_token}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/reset-password",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "reset-password"
+              ]
+            }
           }
         },
         {
@@ -219,11 +317,28 @@
           "request": {
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"current_password\": \"{{user_password}}\",\n  \"new_password\": \"{{new_password}}\"\n}" },
-            "url": { "raw": "{{base_url}}/change_password", "host": ["{{base_url}}"], "path": ["change_password"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"current_password\": \"{{user_password}}\",\n  \"new_password\": \"{{new_password}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/change_password",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "change_password"
+              ]
+            }
           }
         }
       ]
@@ -234,14 +349,33 @@
         {
           "name": "Get Rate",
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"currency\": \"{{currency_uuid}}\"\n}" },
-            "url": { "raw": "{{base_url}}/exchange-rate", "host": ["{{base_url}}"], "path": ["exchange-rate"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"{{currency_uuid}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/exchange-rate",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "exchange-rate"
+              ]
+            }
           }
         }
       ]
@@ -270,16 +404,33 @@
             }
           ],
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
               "raw": "{{base_url}}/destinations?limit=10&offset=0",
-              "host": ["{{base_url}}"],
-              "path": ["destinations"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "destinations"
+              ],
               "query": [
-                { "key": "limit", "value": "10" },
-                { "key": "offset", "value": "0" }
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
               ]
             }
           }
@@ -287,17 +438,33 @@
         {
           "name": "Get Destination Details",
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{}" },
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
             "url": {
               "raw": "{{base_url}}/destinations/{{destination_uuid}}",
-              "host": ["{{base_url}}"],
-              "path": ["destinations", "{{destination_uuid}}"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "destinations",
+                "{{destination_uuid}}"
+              ]
             }
           }
         },
@@ -322,17 +489,37 @@
             }
           ],
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
               "raw": "{{base_url}}/destinations?product_family=safari&limit=10&offset=0",
-              "host": ["{{base_url}}"],
-              "path": ["destinations"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "destinations"
+              ],
               "query": [
-                { "key": "product_family", "value": "safari" },
-                { "key": "limit", "value": "10" },
-                { "key": "offset", "value": "0" }
+                {
+                  "key": "product_family",
+                  "value": "safari"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
               ]
             }
           }
@@ -358,17 +545,37 @@
             }
           ],
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
               "raw": "{{base_url}}/destinations?product_family=zanzibar_tour&limit=10&offset=0",
-              "host": ["{{base_url}}"],
-              "path": ["destinations"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "destinations"
+              ],
               "query": [
-                { "key": "product_family", "value": "zanzibar_tour" },
-                { "key": "limit", "value": "10" },
-                { "key": "offset", "value": "0" }
+                {
+                  "key": "product_family",
+                  "value": "zanzibar_tour"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
               ]
             }
           }
@@ -399,16 +606,33 @@
             }
           ],
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
               "raw": "{{base_url}}/categories?limit=4&offset=0",
-              "host": ["{{base_url}}"],
-              "path": ["categories"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "categories"
+              ],
               "query": [
-                { "key": "limit", "value": "4" },
-                { "key": "offset", "value": "0" }
+                {
+                  "key": "limit",
+                  "value": "4"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
               ]
             }
           }
@@ -440,16 +664,33 @@
             }
           ],
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
               "raw": "{{base_url}}/trips?limit=10&offset=0",
-              "host": ["{{base_url}}"],
-              "path": ["trips"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "trips"
+              ],
               "query": [
-                { "key": "limit", "value": "10" },
-                { "key": "offset", "value": "0" }
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
               ]
             }
           }
@@ -457,17 +698,33 @@
         {
           "name": "Get Trip Details",
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"id\": \"{{trip_uuid}}\"\n}" },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"{{trip_uuid}}\"\n}"
+            },
             "url": {
               "raw": "{{base_url}}/trips/{{trip_id}}",
-              "host": ["{{base_url}}"],
-              "path": ["trips", "{{trip_id}}"]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "trips",
+                "{{trip_id}}"
+              ]
             }
           }
         },
@@ -493,17 +750,37 @@
             }
           ],
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
               "raw": "{{base_url}}/trips?category_uuid={{category_uuid}}&limit=10&offset=0",
-              "host": ["{{base_url}}"],
-              "path": ["trips"],
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "trips"
+              ],
               "query": [
-                { "key": "category_uuid", "value": "{{category_uuid}}" },
-                { "key": "limit", "value": "10" },
-                { "key": "offset", "value": "0" }
+                {
+                  "key": "category_uuid",
+                  "value": "{{category_uuid}}"
+                },
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
               ]
             }
           }
@@ -530,14 +807,33 @@
             }
           ],
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"location\": {{location_id}},\n  \"guest_count\": 2,\n  \"check_in\": \"{{travel_date}}\",\n  \"check_out\": \"{{travel_end_date}}\",\n  \"category_uuid\": \"{{category_uuid}}\"\n}" },
-            "url": { "raw": "{{base_url}}/search_trip", "host": ["{{base_url}}"], "path": ["search_trip"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"location\": {{location_id}},\n  \"guest_count\": 2,\n  \"check_in\": \"{{travel_date}}\",\n  \"check_out\": \"{{travel_end_date}}\",\n  \"category_uuid\": \"{{category_uuid}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/search_trip",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "search_trip"
+              ]
+            }
           }
         }
       ]
@@ -564,34 +860,80 @@
             }
           ],
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"trip_uuid\": \"{{trip_uuid}}\",\n  \"trip_group_uuid\": \"{{trip_group_uuid}}\",\n  \"class_id\": {{service_class_id}},\n  \"season_id\": {{season_id}},\n  \"guest_count\": 2,\n  \"gender\": \"{{gender_id}}\",\n  \"country\": \"{{country_id}}\",\n  \"start_date\": \"{{travel_date}}\",\n  \"phone\": \"{{user_phone}}\",\n  \"email\": \"{{user_email}}\",\n  \"fname\": \"{{first_name}}\",\n  \"lname\": \"{{last_name}}\",\n  \"note\": \"Booking created from the Postman collection.\",\n  \"address\": \"{{user_address}}\"\n}" },
-            "url": { "raw": "{{base_url}}/save_booking", "host": ["{{base_url}}"], "path": ["save_booking"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"trip_uuid\": \"{{trip_uuid}}\",\n  \"trip_group_uuid\": \"{{trip_group_uuid}}\",\n  \"class_id\": {{service_class_id}},\n  \"season_id\": {{season_id}},\n  \"guest_count\": 2,\n  \"gender\": \"{{gender_id}}\",\n  \"country\": \"{{country_id}}\",\n  \"start_date\": \"{{travel_date}}\",\n  \"phone\": \"{{user_phone}}\",\n  \"email\": \"{{user_email}}\",\n  \"fname\": \"{{first_name}}\",\n  \"lname\": \"{{last_name}}\",\n  \"note\": \"Booking created from the Postman collection.\",\n  \"address\": \"{{user_address}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/save_booking",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "save_booking"
+              ]
+            }
           }
         },
         {
           "name": "Get Bookings (auth)",
           "request": {
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
-            "url": { "raw": "{{base_url}}/get-bookings", "host": ["{{base_url}}"], "path": ["get-bookings"] }
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/get-bookings",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "get-bookings"
+              ]
+            }
           }
         },
         {
           "name": "Get Booking Details (auth)",
           "request": {
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
               "raw": "{{base_url}}/get-booking-details?uuid={{booking_uuid}}",
-              "host": ["{{base_url}}"],
-              "path": ["get-booking-details"],
-              "query": [{ "key": "uuid", "value": "{{booking_uuid}}" }]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "get-booking-details"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "{{booking_uuid}}"
+                }
+              ]
             }
           }
         },
@@ -600,11 +942,28 @@
           "request": {
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"uuid\": \"{{booking_uuid}}\",\n  \"remarks\": \"Change of plans\"\n}" },
-            "url": { "raw": "{{base_url}}/cancel-booking", "host": ["{{base_url}}"], "path": ["cancel-booking"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"{{booking_uuid}}\",\n  \"remarks\": \"Change of plans\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/cancel-booking",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cancel-booking"
+              ]
+            }
           }
         }
       ]
@@ -632,11 +991,29 @@
           "request": {
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"cartable_type\": \"{{item_type}}\",\n  \"cartable_uuid\": \"{{item_uuid}}\",\n  \"quantity\": 2,\n  \"start_date\": \"{{travel_date}}\",\n  \"end_date\": \"{{travel_end_date}}\"\n}" },
-            "url": { "raw": "{{base_url}}/cart/add", "host": ["{{base_url}}"], "path": ["cart", "add"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cartable_type\": \"{{item_type}}\",\n  \"cartable_uuid\": \"{{item_uuid}}\",\n  \"quantity\": 2,\n  \"start_date\": \"{{travel_date}}\",\n  \"end_date\": \"{{travel_end_date}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/cart/add",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cart",
+                "add"
+              ]
+            }
           }
         },
         {
@@ -644,35 +1021,96 @@
           "request": {
             "method": "PUT",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"quantity\": 3,\n  \"start_date\": \"{{travel_date}}\",\n  \"end_date\": \"{{travel_end_date}}\"\n}" },
-            "url": { "raw": "{{base_url}}/cart/{{cart_item_uuid}}", "host": ["{{base_url}}"], "path": ["cart", "{{cart_item_uuid}}"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantity\": 3,\n  \"start_date\": \"{{travel_date}}\",\n  \"end_date\": \"{{travel_end_date}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/cart/{{cart_item_uuid}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cart",
+                "{{cart_item_uuid}}"
+              ]
+            }
           }
         },
         {
           "name": "Remove from Cart",
           "request": {
             "method": "DELETE",
-            "header": [{ "key": "Accept", "value": "application/json" }],
-            "url": { "raw": "{{base_url}}/cart/{{cart_item_uuid}}", "host": ["{{base_url}}"], "path": ["cart", "{{cart_item_uuid}}"] }
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/cart/{{cart_item_uuid}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "cart",
+                "{{cart_item_uuid}}"
+              ]
+            }
           }
         },
         {
           "name": "Clear Cart",
           "request": {
             "method": "DELETE",
-            "header": [{ "key": "Accept", "value": "application/json" }],
-            "url": { "raw": "{{base_url}}/user/cart/clear", "host": ["{{base_url}}"], "path": ["user", "cart", "clear"] }
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/user/cart/clear",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "cart",
+                "clear"
+              ]
+            }
           }
         },
         {
           "name": "Get User Cart",
           "request": {
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
-            "url": { "raw": "{{base_url}}/user/cart", "host": ["{{base_url}}"], "path": ["user", "cart"] }
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/user/cart",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "cart"
+              ]
+            }
           }
         }
       ]
@@ -685,31 +1123,77 @@
           "request": {
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"likeable_type\": \"{{item_type}}\",\n  \"likeable_uuid\": \"{{item_uuid}}\"\n}" },
-            "url": { "raw": "{{base_url}}/toggle_like", "host": ["{{base_url}}"], "path": ["toggle_like"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"likeable_type\": \"{{item_type}}\",\n  \"likeable_uuid\": \"{{item_uuid}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/toggle_like",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "toggle_like"
+              ]
+            }
           }
         },
         {
           "name": "Get User Likes",
           "request": {
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
-            "url": { "raw": "{{base_url}}/user/likes", "host": ["{{base_url}}"], "path": ["user", "likes"] }
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/user/likes",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "likes"
+              ]
+            }
           }
         },
         {
           "name": "Check Like Status",
           "request": {
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
               "raw": "{{base_url}}/user/check-like-{{item_type}}?uuid={{item_uuid}}",
-              "host": ["{{base_url}}"],
-              "path": ["user", "check-like-{{item_type}}"],
-              "query": [{ "key": "uuid", "value": "{{item_uuid}}" }]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "check-like-{{item_type}}"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "{{item_uuid}}"
+                }
+              ]
             }
           }
         }
@@ -738,11 +1222,28 @@
           "request": {
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"rateable_type\": \"{{item_type}}\",\n  \"rateable_uuid\": \"{{item_uuid}}\",\n  \"rating\": 5,\n  \"comment\": \"Amazing safari!\"\n}" },
-            "url": { "raw": "{{base_url}}/submit_rating", "host": ["{{base_url}}"], "path": ["submit_rating"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rateable_type\": \"{{item_type}}\",\n  \"rateable_uuid\": \"{{item_uuid}}\",\n  \"rating\": 5,\n  \"comment\": \"Amazing safari!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/submit_rating",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "submit_rating"
+              ]
+            }
           }
         },
         {
@@ -750,39 +1251,100 @@
           "request": {
             "method": "PUT",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"rating\": 4,\n  \"comment\": \"Updated review\"\n}" },
-            "url": { "raw": "{{base_url}}/ratings/{{rating_uuid}}", "host": ["{{base_url}}"], "path": ["ratings", "{{rating_uuid}}"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 4,\n  \"comment\": \"Updated review\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/ratings/{{rating_uuid}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "ratings",
+                "{{rating_uuid}}"
+              ]
+            }
           }
         },
         {
           "name": "Delete Rating",
           "request": {
             "method": "DELETE",
-            "header": [{ "key": "Accept", "value": "application/json" }],
-            "url": { "raw": "{{base_url}}/ratings/{{rating_uuid}}", "host": ["{{base_url}}"], "path": ["ratings", "{{rating_uuid}}"] }
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/ratings/{{rating_uuid}}",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "ratings",
+                "{{rating_uuid}}"
+              ]
+            }
           }
         },
         {
           "name": "Get User Ratings",
           "request": {
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
-            "url": { "raw": "{{base_url}}/user/ratings", "host": ["{{base_url}}"], "path": ["user", "ratings"] }
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/user/ratings",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "ratings"
+              ]
+            }
           }
         },
         {
           "name": "Check Rating Status",
           "request": {
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
               "raw": "{{base_url}}/user/check-rating-{{item_type}}?uuid={{item_uuid}}",
-              "host": ["{{base_url}}"],
-              "path": ["user", "check-rating-{{item_type}}"],
-              "query": [{ "key": "uuid", "value": "{{item_uuid}}" }]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "check-rating-{{item_type}}"
+              ],
+              "query": [
+                {
+                  "key": "uuid",
+                  "value": "{{item_uuid}}"
+                }
+              ]
             }
           }
         }
@@ -796,20 +1358,52 @@
           "request": {
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"comments\": \"Best trip ever with Seren Blue Safaris!\"\n}" },
-            "url": { "raw": "{{base_url}}/save-testimonal", "host": ["{{base_url}}"], "path": ["save-testimonal"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comments\": \"Best trip ever with Seren Blue Safaris!\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/save-testimonal",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "save-testimonal"
+              ]
+            }
           }
         },
         {
           "name": "Get Testimonials",
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
-            "url": { "raw": "{{base_url}}/get-testimonals", "host": ["{{base_url}}"], "path": ["get-testimonals"] }
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/get-testimonals",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "get-testimonals"
+              ]
+            }
           }
         }
       ]
@@ -820,14 +1414,33 @@
         {
           "name": "Subscribe",
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"email\": \"{{user_email}}\"\n}" },
-            "url": { "raw": "{{base_url}}/subscribe", "host": ["{{base_url}}"], "path": ["subscribe"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"{{user_email}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/subscribe",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "subscribe"
+              ]
+            }
           }
         }
       ]
@@ -839,8 +1452,22 @@
           "name": "Get User Dashboard",
           "request": {
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
-            "url": { "raw": "{{base_url}}/user/dashboard", "host": ["{{base_url}}"], "path": ["user", "dashboard"] }
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/user/dashboard",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "dashboard"
+              ]
+            }
           }
         }
       ]
@@ -852,12 +1479,31 @@
           "name": "Check Interaction Status",
           "request": {
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
               "raw": "{{base_url}}/user/check-{{item_type}}?type={{item_type}}&uuid={{item_uuid}}",
-              "host": ["{{base_url}}"],
-              "path": ["user", "check-{{item_type}}"],
-              "query": [{ "key": "type", "value": "{{item_type}}" }, { "key": "uuid", "value": "{{item_uuid}}" }]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "user",
+                "check-{{item_type}}"
+              ],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "{{item_type}}"
+                },
+                {
+                  "key": "uuid",
+                  "value": "{{item_uuid}}"
+                }
+              ]
             }
           }
         }
@@ -869,10 +1515,25 @@
         {
           "name": "Get FAQs",
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
-            "url": { "raw": "{{base_url}}/faqs", "host": ["{{base_url}}"], "path": ["faqs"] }
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/faqs",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "faqs"
+              ]
+            }
           }
         }
       ]
@@ -898,27 +1559,62 @@
             }
           ],
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"firstName\": \"{{first_name}}\",\n  \"lastName\": \"{{last_name}}\",\n  \"email\": \"{{user_email}}\",\n  \"phone\": \"{{user_phone}}\",\n  \"country\": {{country_id}},\n  \"tripType\": {{trip_type_id}},\n  \"destinations\": [{{destination_id}}],\n  \"locations\": [{{location_id}}],\n  \"serviceClass\": {{service_class_id}},\n  \"guests\": 2,\n  \"startDate\": \"{{travel_date}}\",\n  \"endDate\": \"{{travel_end_date}}\",\n  \"budget\": \"Mid-range\",\n  \"message\": \"I would like details on the Serengeti package.\"\n}" },
-            "url": { "raw": "{{base_url}}/save-inquiry", "host": ["{{base_url}}"], "path": ["save-inquiry"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"{{first_name}}\",\n  \"lastName\": \"{{last_name}}\",\n  \"email\": \"{{user_email}}\",\n  \"phone\": \"{{user_phone}}\",\n  \"country\": {{country_id}},\n  \"tripType\": {{trip_type_id}},\n  \"destinations\": [{{destination_id}}],\n  \"locations\": [{{location_id}}],\n  \"serviceClass\": {{service_class_id}},\n  \"guests\": 2,\n  \"startDate\": \"{{travel_date}}\",\n  \"endDate\": \"{{travel_end_date}}\",\n  \"budget\": \"Mid-range\",\n  \"message\": \"I would like details on the Serengeti package.\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/save-inquiry",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "save-inquiry"
+              ]
+            }
           }
         },
         {
           "name": "Get Inquiries",
           "request": {
-            "auth": { "type": "noauth" },
+            "auth": {
+              "type": "noauth"
+            },
             "method": "GET",
-            "header": [{ "key": "Accept", "value": "application/json" }],
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
             "url": {
               "raw": "{{base_url}}/get-inquiries?email={{user_email}}",
-              "host": ["{{base_url}}"],
-              "path": ["get-inquiries"],
-              "query": [{ "key": "email", "value": "{{user_email}}" }]
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "get-inquiries"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "{{user_email}}"
+                }
+              ]
             }
           }
         },
@@ -927,12 +1623,2174 @@
           "request": {
             "method": "POST",
             "header": [
-              { "key": "Accept", "value": "application/json" },
-              { "key": "Content-Type", "value": "application/json" }
+              {
+                "key": "Accept",
+                "value": "application/json"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
             ],
-            "body": { "mode": "raw", "raw": "{\n  \"uuid\": \"{{inquiry_uuid}}\"\n}" },
-            "url": { "raw": "{{base_url}}/get-inquiry", "host": ["{{base_url}}"], "path": ["get-inquiry"] }
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uuid\": \"{{inquiry_uuid}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/get-inquiry",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "get-inquiry"
+              ]
+            }
           }
+        }
+      ]
+    },
+    {
+      "name": "Dream Tour — additive services",
+      "description": "See docs/DREAM_TOUR_API.md. Existing SerenBlue requests above are unchanged. Rental offers are quotation-only with manual availability.",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const date = days => { const d = new Date(); d.setUTCDate(d.getUTCDate() + days); return d.toISOString().slice(0,10); };",
+              "for (const [key,value] of Object.entries({travel_date:date(10),travel_end_date:date(12),rental_start_at:date(10)+\"T10:00\",rental_end_at:date(11)+\"T10:00\",quote_valid_until:date(5)+\"T18:00\"})) if (!pm.environment.get(key)) pm.environment.set(key,value);"
+            ]
+          }
+        }
+      ],
+      "item": [
+        {
+          "name": "Staff session (existing authentication)",
+          "item": [
+            {
+              "name": "Get session and CSRF token",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/session",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "session"
+                  ]
+                },
+                "description": "Use the existing web session. Postman retains the session cookie and captures csrf_token."
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Existing workspace login",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/login",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "login"
+                  ]
+                },
+                "description": "Supply your own existing staff credentials locally. Do not export populated passwords or tokens.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"{{staff_username}}\",\n  \"password\": \"{{staff_password}}\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Public catalog and content",
+          "item": [
+            {
+              "name": "Locales and configured currencies",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/service-preferences",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "service-preferences"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Published rental vehicles",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/rental-vehicles?vehicle_type=luxury&locale=en&limit=20&offset=0",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rental-vehicles"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Published rental offers",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/rental-offers?purpose=wedding&locale=en&limit=20&offset=0",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rental-offers"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [
+                {
+                  "name": "Rental catalog",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{base_url}}/rental-offers?purpose=wedding&locale=en&limit=20&offset=0",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "rental-offers"
+                      ]
+                    },
+                    "description": ""
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"status\": true,\n  \"code\": 200,\n  \"message\": \"Retrieved successfully\",\n  \"data\": {\n    \"rental_offers\": [\n      {\n        \"uuid\": \"a2ca7f4c-6986-4923-bbd5-1f8c52453273\",\n        \"title\": \"Wedding chauffeur service\",\n        \"description\": null,\n        \"purpose\": \"wedding\",\n        \"vehicle_type\": \"luxury\",\n        \"vehicle_uuids\": [\n          \"a2ca7f4c-5fd3-4de6-bc17-65c087776e55\"\n        ],\n        \"price_unit\": \"day\",\n        \"price\": null,\n        \"quotation_required\": true,\n        \"driver_policy\": \"included\",\n        \"fuel_policy\": \"excluded\",\n        \"details\": {\n          \"extras\": [\n            {\n              \"code\": \"decoration\",\n              \"title\": \"Wedding decoration\"\n            }\n          ],\n          \"terms\": \"Supply and price confirmed by quotation.\"\n        },\n        \"is_featured\": false,\n        \"images\": [],\n        \"availability\": \"manual_verification_required\",\n        \"locale\": \"en\",\n        \"fallback_locale\": \"en\"\n      }\n    ],\n    \"total\": 6,\n    \"limit\": 1,\n    \"offset\": 0\n  }\n}",
+                  "_postman_previewlanguage": "json"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Rental offer detail",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/rental-offers/{{rental_offer_uuid}}?locale=fr",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "rental-offers",
+                    "{{rental_offer_uuid}}"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Published page",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/content-pages/home?locale=sw",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "content-pages",
+                    "home"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Localized existing trip details",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/travel-content/trips/{{trip_uuid}}?locale=fr",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "travel-content",
+                    "trips",
+                    "{{trip_uuid}}"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Customer service inquiries",
+          "item": [
+            {
+              "name": "Wedding rental inquiry (signed in)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/save-service-inquiry",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "save-service-inquiry"
+                  ]
+                },
+                "description": "Existing Sanctum Tourist account. Two luxury vehicles for one day. Driver/extras must match the selected offer. Notes never become included priced extras. Omit optional offer_uuid/vehicle_uuid/extras for an unselected quotation request.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Example\",\n  \"lastName\": \"Traveller\",\n  \"email\": \"example-traveller@example.test\",\n  \"phone\": \"+255700009998\",\n  \"country\": \"{{country_id}}\",\n  \"locale\": \"en\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"message\": \"Please contact me to discuss these requirements.\",\n  \"service_type\": \"rental\",\n  \"details\": {\n    \"offer_uuid\": \"{{rental_offer_uuid}}\",\n    \"purpose\": \"wedding\",\n    \"vehicle_type\": \"luxury\",\n    \"start_at\": \"{{rental_start_at}}\",\n    \"end_at\": \"{{rental_end_at}}\",\n    \"duration_days\": 1,\n    \"quantity\": 2,\n    \"passengers\": 4,\n    \"driver\": \"with_driver\",\n    \"pickup\": \"Dar es Salaam\",\n    \"dropoff\": \"Dar es Salaam\",\n    \"extras\": [\n      \"decoration\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "Rental inquiry",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{base_url}}/save-service-inquiry",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "save-service-inquiry"
+                      ]
+                    },
+                    "description": "Existing Sanctum Tourist account. Two luxury vehicles for one day. Driver/extras must match the selected offer. Notes never become included priced extras. Omit optional offer_uuid/vehicle_uuid/extras for an unselected quotation request.",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"firstName\": \"Example\",\n  \"lastName\": \"Traveller\",\n  \"email\": \"example-traveller@example.test\",\n  \"phone\": \"+255700009998\",\n  \"country\": \"{{country_id}}\",\n  \"locale\": \"en\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"message\": \"Please contact me to discuss these requirements.\",\n  \"service_type\": \"rental\",\n  \"details\": {\n    \"offer_uuid\": \"{{rental_offer_uuid}}\",\n    \"purpose\": \"wedding\",\n    \"vehicle_type\": \"luxury\",\n    \"start_at\": \"{{rental_start_at}}\",\n    \"end_at\": \"{{rental_end_at}}\",\n    \"duration_days\": 1,\n    \"quantity\": 2,\n    \"passengers\": 4,\n    \"driver\": \"with_driver\",\n    \"pickup\": \"Dar es Salaam\",\n    \"dropoff\": \"Dar es Salaam\",\n    \"extras\": [\n      \"decoration\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"status\": true,\n  \"code\": 200,\n  \"message\": \"Inquiry submitted successfully\",\n  \"data\": {\n    \"inquiry\": {\n      \"uuid\": \"a2ca8380-94ab-4f4e-8553-1a7ee0d6df20\",\n      \"inquiry_code\": \"INQ0002\",\n      \"status\": \"pending\",\n      \"is_approved\": false,\n      \"service_type\": \"rental\",\n      \"locale\": \"en\",\n      \"currency_id\": null,\n      \"contact\": {\n        \"firstName\": \"Example\",\n        \"lastName\": \"Traveller\",\n        \"email\": \"api-example@example.test\",\n        \"phone\": \"255700009999\",\n        \"country\": 1\n      },\n      \"details\": {\n        \"offer_uuid\": \"a2ca7f4c-6986-4923-bbd5-1f8c52453273\",\n        \"purpose\": \"wedding\",\n        \"vehicle_type\": \"luxury\",\n        \"start_at\": \"2026-09-30T10:00\",\n        \"end_at\": \"2026-10-01T10:00\",\n        \"quantity\": 2,\n        \"driver\": \"with_driver\",\n        \"pickup\": \"Dar es Salaam\",\n        \"dropoff\": \"Dar es Salaam\",\n        \"duration_days\": 1,\n        \"timezone\": \"Africa/Dar_es_Salaam\",\n        \"day_count_rule\": \"elapsed_24_hours_rounded_up\",\n        \"estimated_total\": null,\n        \"quotation_required\": true,\n        \"fuel\": \"excluded\"\n      },\n      \"offer\": {\n        \"uuid\": \"a2ca7f4c-6986-4923-bbd5-1f8c52453273\",\n        \"title\": \"Wedding chauffeur service\",\n        \"description\": null,\n        \"purpose\": \"wedding\",\n        \"vehicle_type\": \"luxury\",\n        \"vehicle_uuids\": [\n          \"a2ca7f4c-5fd3-4de6-bc17-65c087776e55\"\n        ],\n        \"price_unit\": \"day\",\n        \"price\": null,\n        \"quotation_required\": true,\n        \"driver_policy\": \"included\",\n        \"fuel_policy\": \"excluded\",\n        \"details\": {\n          \"extras\": [\n            {\n              \"code\": \"decoration\",\n              \"title\": \"Wedding decoration\"\n            }\n          ],\n          \"terms\": \"Supply and price confirmed by quotation.\"\n        },\n        \"is_featured\": false,\n        \"images\": [],\n        \"availability\": \"manual_verification_required\",\n        \"locale\": \"en\",\n        \"fallback_locale\": \"en\"\n      },\n      \"startDate\": \"2026-09-30\",\n      \"endDate\": \"2026-10-01\",\n      \"guests\": 1,\n      \"message\": \"Two luxury cars with drivers; decoration to be quoted separately.\",\n      \"budget\": null,\n      \"agreed_price\": null,\n      \"booking_id\": null,\n      \"created_at\": \"2026-09-20 15:18:53\",\n      \"fulfilment\": []\n    }\n  }\n}",
+                  "_postman_previewlanguage": "json"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Invalid rental quantity",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/save-service-inquiry",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "save-service-inquiry"
+                  ]
+                },
+                "description": "",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Example\",\n  \"lastName\": \"Traveller\",\n  \"email\": \"example-traveller@example.test\",\n  \"phone\": \"+255700009998\",\n  \"country\": \"{{country_id}}\",\n  \"locale\": \"en\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"message\": \"Please contact me to discuss these requirements.\",\n  \"service_type\": \"rental\",\n  \"details\": {\n    \"offer_uuid\": \"{{rental_offer_uuid}}\",\n    \"purpose\": \"wedding\",\n    \"vehicle_type\": \"luxury\",\n    \"start_at\": \"{{rental_start_at}}\",\n    \"end_at\": \"{{rental_end_at}}\",\n    \"duration_days\": 1,\n    \"quantity\": 0,\n    \"passengers\": 4,\n    \"driver\": \"with_driver\",\n    \"pickup\": \"Dar es Salaam\",\n    \"dropoff\": \"Dar es Salaam\",\n    \"extras\": [\n      \"decoration\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [
+                {
+                  "name": "Rental validation error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{base_url}}/save-service-inquiry",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "save-service-inquiry"
+                      ]
+                    },
+                    "description": "",
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"firstName\": \"Example\",\n  \"lastName\": \"Traveller\",\n  \"email\": \"example-traveller@example.test\",\n  \"phone\": \"+255700009998\",\n  \"country\": \"{{country_id}}\",\n  \"locale\": \"en\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"message\": \"Please contact me to discuss these requirements.\",\n  \"service_type\": \"rental\",\n  \"details\": {\n    \"offer_uuid\": \"{{rental_offer_uuid}}\",\n    \"purpose\": \"wedding\",\n    \"vehicle_type\": \"luxury\",\n    \"start_at\": \"{{rental_start_at}}\",\n    \"end_at\": \"{{rental_end_at}}\",\n    \"duration_days\": 1,\n    \"quantity\": 0,\n    \"passengers\": 4,\n    \"driver\": \"with_driver\",\n    \"pickup\": \"Dar es Salaam\",\n    \"dropoff\": \"Dar es Salaam\",\n    \"extras\": [\n      \"decoration\"\n    ]\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    }
+                  },
+                  "status": "Unprocessable Entity",
+                  "code": 422,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"message\": \"The details.quantity field must be at least 1.\",\n  \"errors\": {\n    \"details.quantity\": [\n      \"The details.quantity field must be at least 1.\"\n    ]\n  }\n}",
+                  "_postman_previewlanguage": "json"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Guest rental inquiry",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/save-service-inquiry",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "save-service-inquiry"
+                  ]
+                },
+                "description": "Guest submission receives its own reference only. History requires a verified owner and is not unlocked by email/phone lookup.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Example\",\n  \"lastName\": \"Traveller\",\n  \"email\": \"example-traveller@example.test\",\n  \"phone\": \"+255700009998\",\n  \"country\": \"{{country_id}}\",\n  \"locale\": \"en\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"message\": \"Please contact me to discuss these requirements.\",\n  \"service_type\": \"rental\",\n  \"details\": {\n    \"purpose\": \"private\",\n    \"vehicle_type\": \"suv\",\n    \"start_at\": \"{{rental_start_at}}\",\n    \"duration_days\": 1,\n    \"quantity\": 1,\n    \"driver\": \"with_driver\",\n    \"pickup\": \"Dar es Salaam\",\n    \"dropoff\": \"Dar es Salaam\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "business travel inquiry",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/save-service-inquiry",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "save-service-inquiry"
+                  ]
+                },
+                "description": "Use existing destinations, serviceClass and trip_uuid where applicable. Purpose and geography are independent.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Example\",\n  \"lastName\": \"Traveller\",\n  \"email\": \"example-traveller@example.test\",\n  \"phone\": \"+255700009998\",\n  \"country\": \"{{country_id}}\",\n  \"locale\": \"en\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"message\": \"Please contact me to discuss these requirements.\",\n  \"service_type\": \"business\",\n  \"startDate\": \"{{travel_date}}\",\n  \"endDate\": \"{{travel_end_date}}\",\n  \"guests\": 4,\n  \"details\": {\n    \"company\": \"Example Company\",\n    \"contact_person\": \"Example Traveller\",\n    \"industry\": \"Trade\",\n    \"purpose\": \"Conference\",\n    \"geography\": \"international\",\n    \"country_city\": \"Paris\",\n    \"meeting_details\": \"Two meeting days\",\n    \"transport\": \"Airport transfers\",\n    \"accommodation\": \"Business hotel\",\n    \"selected_services\": [\n      \"Airport transfers\",\n      \"Accommodation\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "international travel inquiry",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/save-service-inquiry",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "save-service-inquiry"
+                  ]
+                },
+                "description": "Use existing destinations, serviceClass and trip_uuid where applicable. Purpose and geography are independent.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Example\",\n  \"lastName\": \"Traveller\",\n  \"email\": \"example-traveller@example.test\",\n  \"phone\": \"+255700009998\",\n  \"country\": \"{{country_id}}\",\n  \"locale\": \"en\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"message\": \"Please contact me to discuss these requirements.\",\n  \"service_type\": \"international\",\n  \"startDate\": \"{{travel_date}}\",\n  \"endDate\": \"{{travel_end_date}}\",\n  \"guests\": 4,\n  \"details\": {\n    \"purpose\": \"Recreation\",\n    \"geography\": \"international\",\n    \"country_city\": \"Paris\",\n    \"sector\": \"tourism\",\n    \"accommodation\": \"Hotel\",\n    \"places_of_interest\": \"Museums\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "local travel inquiry",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/save-service-inquiry",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "save-service-inquiry"
+                  ]
+                },
+                "description": "Use existing destinations, serviceClass and trip_uuid where applicable. Purpose and geography are independent.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Example\",\n  \"lastName\": \"Traveller\",\n  \"email\": \"example-traveller@example.test\",\n  \"phone\": \"+255700009998\",\n  \"country\": \"{{country_id}}\",\n  \"locale\": \"en\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"message\": \"Please contact me to discuss these requirements.\",\n  \"service_type\": \"local\",\n  \"startDate\": \"{{travel_date}}\",\n  \"endDate\": \"{{travel_end_date}}\",\n  \"guests\": 4,\n  \"details\": {\n    \"purpose\": \"Meeting\",\n    \"geography\": \"local\",\n    \"destination_region\": \"Arusha\",\n    \"transport\": \"Road transfer\",\n    \"accommodation\": \"Hotel\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "group travel inquiry",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/save-service-inquiry",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "save-service-inquiry"
+                  ]
+                },
+                "description": "Use existing destinations, serviceClass and trip_uuid where applicable. Purpose and geography are independent.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Example\",\n  \"lastName\": \"Traveller\",\n  \"email\": \"example-traveller@example.test\",\n  \"phone\": \"+255700009998\",\n  \"country\": \"{{country_id}}\",\n  \"locale\": \"en\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"message\": \"Please contact me to discuss these requirements.\",\n  \"service_type\": \"group\",\n  \"startDate\": \"{{travel_date}}\",\n  \"endDate\": \"{{travel_end_date}}\",\n  \"guests\": 4,\n  \"details\": {\n    \"purpose\": \"Customized group holiday\",\n    \"customized\": true,\n    \"route\": \"Arusha and selected destinations\",\n    \"accommodation\": \"Lodge\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "safari travel inquiry",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/save-service-inquiry",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "save-service-inquiry"
+                  ]
+                },
+                "description": "Use existing destinations, serviceClass and trip_uuid where applicable. Purpose and geography are independent.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Example\",\n  \"lastName\": \"Traveller\",\n  \"email\": \"example-traveller@example.test\",\n  \"phone\": \"+255700009998\",\n  \"country\": \"{{country_id}}\",\n  \"locale\": \"en\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"message\": \"Please contact me to discuss these requirements.\",\n  \"service_type\": \"safari\",\n  \"startDate\": \"{{travel_date}}\",\n  \"endDate\": \"{{travel_end_date}}\",\n  \"guests\": 4,\n  \"details\": {\n    \"purpose\": \"Safari\",\n    \"customized\": true,\n    \"route\": \"Selected safari destinations\",\n    \"accommodation\": \"Lodge\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Multi-city flight request",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/save-service-inquiry",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "save-service-inquiry"
+                  ]
+                },
+                "description": "Flight legs are ordered. one_way requires one leg; round_trip requires two reversing legs; multi_city needs at least two. This is an inquiry, not an issued ticket.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Example\",\n  \"lastName\": \"Traveller\",\n  \"email\": \"example-traveller@example.test\",\n  \"phone\": \"+255700009998\",\n  \"country\": \"{{country_id}}\",\n  \"locale\": \"en\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"message\": \"Please contact me to discuss these requirements.\",\n  \"service_type\": \"flight\",\n  \"details\": {\n    \"trip_type\": \"multi_city\",\n    \"geography\": \"international\",\n    \"adults\": 2,\n    \"children\": 1,\n    \"infants\": 0,\n    \"cabin\": \"economy\",\n    \"flexibility\": \"One day either side\",\n    \"airline_preference\": \"No preference\",\n    \"group_travel\": false,\n    \"legs\": [\n      {\n        \"origin\": \"DAR\",\n        \"destination\": \"DXB\",\n        \"departure_date\": \"{{travel_date}}\"\n      },\n      {\n        \"origin\": \"DXB\",\n        \"destination\": \"CDG\",\n        \"departure_date\": \"{{travel_end_date}}\"\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Owned service history",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/get-service-inquiries?limit=20&offset=0",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "get-service-inquiries"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Owned service detail and quotes",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/get-service-inquiry/{{service_inquiry_uuid}}",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "get-service-inquiry",
+                    "{{service_inquiry_uuid}}"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Request cancellation review",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer {{token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/service-inquiries/{{service_inquiry_uuid}}/request-cancellation",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "service-inquiries",
+                    "{{service_inquiry_uuid}}",
+                    "request-cancellation"
+                  ]
+                },
+                "description": "Staff review the recorded service terms. This does not automatically cancel or refund the booking.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"My plans have changed.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "History without authentication",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{base_url}}/get-service-inquiries",
+                  "host": [
+                    "{{base_url}}"
+                  ],
+                  "path": [
+                    "get-service-inquiries"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [
+                {
+                  "name": "Unauthorized history",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{base_url}}/get-service-inquiries",
+                      "host": [
+                        "{{base_url}}"
+                      ],
+                      "path": [
+                        "get-service-inquiries"
+                      ]
+                    },
+                    "description": ""
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n  \"message\": \"Unauthenticated.\"\n}",
+                  "_postman_previewlanguage": "json"
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Staff rental operations",
+          "item": [
+            {
+              "name": "Rental offers and catalog choices",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/rental-offers",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "rental-offers"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Create rental offer",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/rental-offers",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "rental-offers"
+                  ]
+                },
+                "description": "Creates an unpublished, quotation-only offer. Set is_published only after entering real commercial terms.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Wedding chauffeur service\",\n  \"description\": \"Two-car and group selections are quoted by our team.\",\n  \"purpose\": \"wedding\",\n  \"vehicle_type\": \"luxury\",\n  \"vehicle_uuids\": [],\n  \"price_unit\": \"day\",\n  \"driver_policy\": \"included\",\n  \"fuel_policy\": \"excluded\",\n  \"is_active\": true,\n  \"is_published\": false,\n  \"is_featured\": false,\n  \"sort_order\": 0,\n  \"details\": {\n    \"duration\": \"Daily hire\",\n    \"inclusions\": \"Driver\",\n    \"exclusions\": \"Fuel and unquoted extras\",\n    \"terms\": \"Subject to manual supply verification and an agreed quotation.\",\n    \"mileage\": \"Mileage allowance and additional distance agreed in quotation.\",\n    \"extras\": [\n      {\n        \"code\": \"decoration\",\n        \"title\": \"Wedding decoration\",\n        \"description\": \"Optional; priced separately by quotation.\"\n      }\n    ],\n    \"service_locations\": [\n      \"Dar es Salaam\"\n    ]\n  },\n  \"translations\": {\n    \"fr\": {\n      \"title\": \"Service avec chauffeur pour mariage\"\n    },\n    \"sw\": {\n      \"title\": \"Huduma ya magari ya harusi yenye madereva\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Update / publish rental offer",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/rental-offers/{{rental_offer_uuid}}",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "rental-offers",
+                    "{{rental_offer_uuid}}"
+                  ]
+                },
+                "description": "",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Wedding chauffeur service\",\n  \"description\": \"Two-car and group selections are quoted by our team.\",\n  \"purpose\": \"wedding\",\n  \"vehicle_type\": \"luxury\",\n  \"vehicle_uuids\": [],\n  \"price_unit\": \"day\",\n  \"driver_policy\": \"included\",\n  \"fuel_policy\": \"excluded\",\n  \"is_active\": true,\n  \"is_published\": true,\n  \"is_featured\": false,\n  \"sort_order\": 0,\n  \"details\": {\n    \"duration\": \"Daily hire\",\n    \"inclusions\": \"Driver\",\n    \"exclusions\": \"Fuel and unquoted extras\",\n    \"terms\": \"Subject to manual supply verification and an agreed quotation.\",\n    \"mileage\": \"Mileage allowance and additional distance agreed in quotation.\",\n    \"extras\": [\n      {\n        \"code\": \"decoration\",\n        \"title\": \"Wedding decoration\",\n        \"description\": \"Optional; priced separately by quotation.\"\n      }\n    ],\n    \"service_locations\": [\n      \"Dar es Salaam\"\n    ]\n  },\n  \"translations\": {\n    \"fr\": {\n      \"title\": \"Service avec chauffeur pour mariage\"\n    },\n    \"sw\": {\n      \"title\": \"Huduma ya magari ya harusi yenye madereva\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Extend existing vehicle for rental",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/vehicles/{{vehicle_uuid}}/rental",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "vehicles",
+                    "{{vehicle_uuid}}",
+                    "rental"
+                  ]
+                },
+                "description": "Does not create a fleet allocation or change existing trip categories.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_rental_published\": true,\n  \"rental_specs\": {\n    \"vehicle_type\": \"luxury\",\n    \"make\": \"Example make\",\n    \"model\": \"Example model\",\n    \"seats\": 4,\n    \"transmission\": \"automatic\",\n    \"fuel_type\": \"petrol\",\n    \"features\": [\n      \"Air conditioning\"\n    ],\n    \"luggage_capacity\": \"Two suitcases\",\n    \"service_locations\": [\n      \"Dar es Salaam\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Staff service operations",
+          "item": [
+            {
+              "name": "Service inquiry queue",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/service-inquiries?service_type=rental&limit=25&offset=0",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "service-inquiries"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Service inquiry details",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/service-inquiries/{{service_inquiry_uuid}}",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "service-inquiries",
+                    "{{service_inquiry_uuid}}"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Assign and record supply check",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/service-inquiries/{{service_inquiry_uuid}}",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "service-inquiries",
+                    "{{service_inquiry_uuid}}"
+                  ]
+                },
+                "description": "Use supply_verified=true only after actually checking the requested vehicles and date range.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assigned_to\": null,\n  \"comments\": \"Staff follow-up recorded.\",\n  \"is_approved\": true,\n  \"operations\": {\n    \"internal_notes\": \"Supplier contact details stay private.\",\n    \"customer_notes\": \"We are preparing your quotation.\",\n    \"supply_verified\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Create service quotation using existing engine",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/service-inquiries/{{service_inquiry_uuid}}/quotations",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "service-inquiries",
+                    "{{service_inquiry_uuid}}",
+                    "quotations"
+                  ]
+                },
+                "description": "Server computes totals using the existing pricing service. Sent records the staff-selected state; this endpoint sends no automatic email or WhatsApp.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Wedding rental quotation\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"valid_until\": \"{{quote_valid_until}}\",\n  \"status\": \"sent\",\n  \"vat_enabled\": false,\n  \"terms\": \"Two luxury vehicles with drivers for one day. Decoration and fuel are excluded unless explicitly quoted. Cancellation subject to these agreed terms.\",\n  \"price_lines\": [\n    {\n      \"description\": \"Daily vehicle hire with driver\",\n      \"quantity\": 2,\n      \"unit_price\": \"100.00\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Create flight quotation",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/service-inquiries/{{service_inquiry_uuid}}/quotations",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "service-inquiries",
+                    "{{service_inquiry_uuid}}",
+                    "quotations"
+                  ]
+                },
+                "description": "The selected inquiry must be a flight request. No live fare lookup is performed.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"Flight quotation\",\n  \"currency_id\": \"{{currency_id}}\",\n  \"valid_until\": \"{{quote_valid_until}}\",\n  \"status\": \"sent\",\n  \"vat_enabled\": false,\n  \"terms\": \"Fare conditions supplied below.\",\n  \"price_lines\": [\n    {\n      \"description\": \"Flight fare\",\n      \"quantity\": 1,\n      \"unit_price\": \"250.00\"\n    }\n  ],\n  \"flight_offer\": {\n    \"itinerary\": \"DAR to DXB on the requested date\",\n    \"airline\": \"Example airline\",\n    \"cabin\": \"Economy\",\n    \"baggage\": \"As offered by the airline\",\n    \"fare_conditions\": \"Specify actual change/cancellation conditions.\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Record agreed booking",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/service-inquiries/{{service_inquiry_uuid}}/book",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "service-inquiries",
+                    "{{service_inquiry_uuid}}",
+                    "book"
+                  ]
+                },
+                "description": "Requires a sent, unexpired, positive quote. Rentals also require verified supply. Creates the existing Reserved booking, never automatic payment or ticket issuance. Repeating returns the existing booking.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quotation_uuid\": \"{{quotation_uuid}}\",\n  \"customer_agreed\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Record actual flight issuance",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/service-inquiries/{{service_inquiry_uuid}}",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "service-inquiries",
+                    "{{service_inquiry_uuid}}"
+                  ]
+                },
+                "description": "Only after actual issuance and after a booking is recorded. No ticket documents are uploaded to the public library.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assigned_to\": null,\n  \"is_approved\": true,\n  \"operations\": {\n    \"issuance_state\": \"issued\",\n    \"booking_reference\": \"ACTUAL-AIRLINE-REFERENCE\",\n    \"issued_at\": \"{{actual_issued_at}}\",\n    \"customer_notes\": \"Your ticket has been issued.\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Staff content operations",
+          "item": [
+            {
+              "name": "Existing CMS pages",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/pages-content",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "pages-content"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Create page in existing CMS",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/pages-content",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "pages-content"
+                  ]
+                },
+                "description": "Choose a unique existing-convention name; seeded home already exists. This does not replace an existing page.",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"home\",\n  \"title\": \"Dream Travel and Tours\",\n  \"sub_title\": \"Plan your next journey\",\n  \"description\": \"Tell us your travel requirements.\",\n  \"is_published\": false,\n  \"sort_order\": 0,\n  \"sections\": [\n    {\n      \"key\": \"hero\",\n      \"type\": \"hero\",\n      \"title\": \"Plan with Dream Travel and Tours\",\n      \"text\": \"Tell us where you would like to go.\",\n      \"cta_label\": \"Explore tours\",\n      \"cta_url\": \"/tours\"\n    }\n  ],\n  \"seo\": {\n    \"title\": \"Dream Travel and Tours\",\n    \"description\": \"Travel planning and service enquiries.\"\n  },\n  \"translations\": {\n    \"fr\": {\n      \"title\": \"Voyagez avec Dream Travel and Tours\"\n    },\n    \"sw\": {\n      \"title\": \"Safari na Dream Travel and Tours\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Update existing page",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/pages-content/{{page_uuid}}",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "pages-content",
+                    "{{page_uuid}}"
+                  ]
+                },
+                "description": "",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"home\",\n  \"title\": \"Dream Travel and Tours\",\n  \"sub_title\": \"Plan your next journey\",\n  \"description\": \"Tell us your travel requirements.\",\n  \"is_published\": false,\n  \"sort_order\": 0,\n  \"sections\": [\n    {\n      \"key\": \"hero\",\n      \"type\": \"hero\",\n      \"title\": \"Plan with Dream Travel and Tours\",\n      \"text\": \"Tell us where you would like to go.\",\n      \"cta_label\": \"Explore tours\",\n      \"cta_url\": \"/tours\"\n    }\n  ],\n  \"seo\": {\n    \"title\": \"Dream Travel and Tours\",\n    \"description\": \"Travel planning and service enquiries.\"\n  },\n  \"translations\": {\n    \"fr\": {\n      \"title\": \"Voyagez avec Dream Travel and Tours\"\n    },\n    \"sw\": {\n      \"title\": \"Safari na Dream Travel and Tours\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Existing travel content choices",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/travel-content",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "travel-content"
+                  ]
+                },
+                "description": ""
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Add business offer details to an existing trip",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/workspace/travel-content/trips/{{trip_uuid}}",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "workspace",
+                    "travel-content",
+                    "trips",
+                    "{{trip_uuid}}"
+                  ]
+                },
+                "description": "",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"service_details\": {\n    \"purpose\": \"Business\",\n    \"geography\": \"international\",\n    \"company_services\": \"Airport transfers and accommodation coordination\",\n    \"industry\": \"Trade\",\n    \"route\": \"As quoted\",\n    \"duration\": \"As requested\",\n    \"travellers\": 4,\n    \"transport\": \"As quoted\",\n    \"accommodation\": \"As quoted\",\n    \"inclusions\": \"As quoted\",\n    \"terms\": \"As agreed\",\n    \"price_basis\": \"Quotation required\"\n  },\n  \"translations\": {\n    \"fr\": {\n      \"name\": \"Voyage professionnel\"\n    },\n    \"sw\": {\n      \"name\": \"Safari ya kikazi\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Existing media upload",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "X-CSRF-TOKEN",
+                    "value": "{{csrf_token}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{backend_url}}/library/rental-offers/{{rental_offer_uuid}}/media",
+                  "host": [
+                    "{{backend_url}}"
+                  ],
+                  "path": [
+                    "library",
+                    "rental-offers",
+                    "{{rental_offer_uuid}}",
+                    "media"
+                  ]
+                },
+                "description": "Use multipart form-data: role=gallery or cover, optional title, files[] with actual images. Existing library size/type rules and ordering apply. For CMS images replace rental-offers with pages."
+              },
+              "response": [],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "let body; try { body = pm.response.json(); } catch (_) {}",
+                      "if (body?.csrf_token) pm.environment.set(\"csrf_token\", body.csrf_token);",
+                      "if (body?.data?.rental_offer?.uuid) pm.environment.set(\"rental_offer_uuid\", body.data.rental_offer.uuid);",
+                      "if (body?.data?.inquiry?.uuid) pm.environment.set(\"service_inquiry_uuid\", body.data.inquiry.uuid);",
+                      "if (body?.data?.quotation_uuid) pm.environment.set(\"quotation_uuid\", body.data.quotation_uuid);",
+                      "if (body?.data?.page?.uuid) pm.environment.set(\"page_uuid\", body.data.page.uuid);"
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     }

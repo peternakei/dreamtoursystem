@@ -34,11 +34,11 @@ export const navigation: NavigationSection[] = [
         menus: [
             {
                 id: 'reservations', title: 'Reservations', icon: CalendarDays,
-                items: links('inquiries', 'quotations', 'bookings', 'tourists')
+                items: [...links('inquiries', 'quotations', 'bookings', 'tourists'), {slug:'service_inquiries',title:'Service requests'}]
             },
             {
                 id: 'safari-planning', title: 'Safari planning', icon: Compass,
-                items: links('trips', 'destinations', 'accommodations', 'vehicles')
+                items: [...links('trips', 'destinations', 'accommodations', 'vehicles'), {slug:'rental_offers',title:'Car rental'}]
             },
             {
                 id: 'finance', title: 'Finance', icon: Wallet,

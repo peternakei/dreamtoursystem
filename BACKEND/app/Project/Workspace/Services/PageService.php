@@ -5,6 +5,8 @@ namespace App\Project\Workspace\Services;
 use App\Project\Modules\System\Blogs\Blog;
 use App\Project\Modules\System\Pages\Page;
 use App\Project\Modules\System\Refunds\Refund;
+use App\Project\Modules\System\Seasons\Season;
+use App\Project\Modules\System\Seasons\ServiceClass;
 use DOMDocument;
 use DOMXPath;
 use Illuminate\Contracts\Pagination\Paginator;
@@ -27,7 +29,15 @@ class PageService
 
     public static function page(string $slug, ?string $id = null): array
     {
+        return WorkspaceToolsService::enhance($slug, $id, self::basePage($slug, $id));
+    }
+
+    private static function basePage(string $slug, ?string $id = null): array
+    {
         $definition = self::definition($slug);
+        if (OperationsPageService::supports($slug)) {
+            return OperationsPageService::page($slug, $id);
+        }
         $controller = app($definition['controller']);
         $view = $id === null ? app()->call([$controller, 'index']) : app()->call([$controller, 'show'], ['id' => $id]);
         if (! $view instanceof View && $id !== null) {
@@ -68,15 +78,34 @@ class PageService
                 $records = $value instanceof Paginator ? $value->items() : $value->all();
             }
         }
+        // Resolve display relations in batches; identifiers and source model fields stay intact.
+        $displayRelations = [
+            'bookings' => ['tourist', 'trip', 'currency', 'status'],
+            'quotations' => ['tourist', 'currency', 'status', 'currentVersion.currency'],
+            'invoices' => ['tourist', 'booking', 'currency', 'status'],
+            'receipts' => ['invoice', 'currency', 'paymentMode'],
+            'tourists' => ['country'], 'exchange_rates' => ['currency'],
+            'trips' => ['tripType', 'tripStatus'], 'ratings' => ['tourist'],
+            'testimonials' => ['tourist'], 'regions' => ['country'], 'districts' => ['region'],
+            'bank_details' => ['bank', 'currency'], 'faqs' => ['faqCategory'],
+            'users' => ['login.roles'],
+        ];
+        if ($records && isset($displayRelations[$slug])) {
+            (new \Illuminate\Database\Eloquent\Collection($records))->loadMissing($displayRelations[$slug]);
+        }
         // Render the existing forms server-side to retain their field names,
         // validation constraints, lookup options and action URLs during migration.
         // Only structured descriptors are returned; Vue never executes this HTML.
         $html = $view->render();
 
-        return ['module' => $definition, 'records' => $records, 'details' => $details, 'forms' => self::forms($html, $definition['path'])];
+        return ['module' => $definition, 'records' => $records, 'details' => $details, 'forms' => self::forms($html, $definition['path']),
+            'actions' => $slug === 'inquiries' && $id !== null ? [
+                'can_create_quotation' => (bool) ($details['inquiry']?->is_approved && auth()->user()?->can('change-inquiries-status')),
+            ] : [],
+        ];
     }
 
-    public static function forms(string $html, string $modulePath): array
+    public static function forms(string $html, string $modulePath, ?string $recordId = null): array
     {
         $dom = new DOMDocument;
         $previous = libxml_use_internal_errors(true);
@@ -88,6 +117,12 @@ class PageService
         foreach ($xpath->query('//form') as $form) {
             $action = $form->getAttribute('action');
             $path = parse_url($action, PHP_URL_PATH) ?: '';
+            if (! $path && $recordId) {
+                $override = $xpath->query('.//input[@name="_method"]', $form)->item(0)?->getAttribute('value');
+                if (in_array(strtoupper($override ?? ''), ['PUT', 'DELETE'], true)) {
+                    $path = $modulePath.'/'.$recordId;
+                }
+            }
             if (! $path || in_array($path, ['/logout', '/login'])) {
                 continue;
             }
@@ -134,7 +169,71 @@ class PageService
                         break;
                     }
                 }
-                $fields[] = ['name' => $name, 'label' => $label, 'type' => $type === 'input' ? 'text' : $type, 'value' => $value, 'options' => $options, 'required' => $input->hasAttribute('required'), 'multiple' => $input->hasAttribute('multiple'), 'disabled' => $input->hasAttribute('disabled'), 'min' => $input->getAttribute('min'), 'max' => $input->getAttribute('max'), 'maxlength' => $input->getAttribute('maxlength'), 'placeholder' => $input->getAttribute('placeholder')];
+                if ($type === 'checkbox' && str_ends_with($name, '[]')) {
+                    $cells = $xpath->query('ancestor::tr[1]/td[1]', $input);
+                    if ($cells->length) {
+                        $label = trim($cells->item(0)->textContent);
+                    }
+                }
+                if (preg_match('/^prices\[(\d+)\]\[(\d+)\]$/', $name, $matrix)) {
+                    $season = Season::find($matrix[1]);
+                    $class = ServiceClass::find($matrix[2]);
+                    $label = ($season?->name ?? $matrix[1]).' / '.($class?->name ?? $matrix[2]);
+                }
+                if ($name === 'description' && $type === 'hidden') {
+                    $type = 'richtext';
+                }
+                $fields[] = ['name' => $name, 'label' => trim(preg_replace('/\s*\*$/', '', $label)), 'type' => $type === 'input' ? 'text' : $type, 'value' => $value, 'optionValue' => $input->getAttribute('value'), 'step' => $input->getAttribute('step'), 'options' => $options, 'required' => $input->hasAttribute('required'), 'multiple' => $input->hasAttribute('multiple'), 'disabled' => $input->hasAttribute('disabled'), 'min' => $input->getAttribute('min'), 'max' => $input->getAttribute('max'), 'maxlength' => $input->getAttribute('maxlength'), 'placeholder' => $input->getAttribute('placeholder')];
+            }
+            // Describe repeatable table rows instead of relying on old JavaScript.
+            $repeaterNames = [];
+            foreach ($xpath->query('.//table//tbody//tr', $form) as $row) {
+                $names = [];
+                foreach ($xpath->query('.//input | .//select | .//textarea', $row) as $input) {
+                    $name = $input->getAttribute('name');
+                    if (str_ends_with($name, '[]') && ! $input->hasAttribute('multiple') && $input->getAttribute('type') !== 'checkbox') {
+                        $names[] = $name;
+                    }
+                }
+                if ($names) {
+                    $repeaterNames[] = $names;
+                }
+            }
+            $repeaters = [];
+            $used = [];
+            foreach ($repeaterNames as $names) {
+                $key = implode('|', $names);
+                if (isset($used[$key])) {
+                    continue;
+                }
+                $used[$key] = true;
+                $group = [];
+                foreach ($names as $name) {
+                    foreach ($fields as $field) {
+                        if ($field['name'] === $name) {
+                            $group[] = $field;
+                            break;
+                        }
+                    }
+                }
+                $fields = array_values(array_filter($fields, fn ($f) => ! in_array($f['name'], $names, true)));
+                $repeaters[] = ['label' => 'Items', 'fields' => $group];
+            }
+            // A checkbox list is a multi-select of IDs, not a single boolean.
+            $checks = [];
+            foreach ($fields as $field) {
+                if ($field['type'] === 'checkbox' && str_ends_with($field['name'], '[]')) {
+                    $checks[$field['name']][] = $field;
+                }
+            }
+            foreach ($checks as $name => $items) {
+                $fields = array_values(array_filter($fields, fn ($f) => $f['name'] !== $name));
+                $field = $items[0];
+                $field['type'] = 'select';
+                $field['multiple'] = true;
+                $field['options'] = array_map(fn ($f) => ['value' => $f['optionValue'], 'label' => $f['label']], $items);
+                $field['value'] = array_column(array_filter($items, fn ($f) => $f['value']), 'optionValue');
+                $fields[] = $field;
             }
             $title = '';
             $node = $form;
@@ -160,7 +259,7 @@ class PageService
                 continue;
             }
             preg_match('/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}/i', $path, $recordMatch);
-            $forms[] = ['recordKey' => $recordMatch[0] ?? null, 'title' => $title ?: 'Save changes', 'action' => $path, 'method' => $method, 'fields' => $fields];
+            $forms[] = ['recordKey' => $recordMatch[0] ?? null, 'title' => $title ?: 'Save changes', 'action' => $path, 'method' => $method, 'fields' => $fields, 'repeaters' => $repeaters];
         }
 
         return $forms;

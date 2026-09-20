@@ -15,6 +15,7 @@ class Vehicle extends Model
     use HasFactory, SoftDeletes, HasLibraryMedia;
 
     protected $fillable = [
+        'rental_specs', 'is_rental_published', 'translations',
         'name',
         'capacity',
         'description',
@@ -27,6 +28,8 @@ class Vehicle extends Model
         'updated_at',
         'deleted_at',
     ];
+
+    protected $casts = ['rental_specs' => 'array', 'translations' => 'array', 'is_rental_published' => 'boolean'];
 
     public function createdBy()
     {

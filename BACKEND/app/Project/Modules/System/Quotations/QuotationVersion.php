@@ -25,6 +25,7 @@ class QuotationVersion extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
+        'service_context',
         'quotation_id',
         'trip_id',
         'version_number',
@@ -68,6 +69,7 @@ class QuotationVersion extends Model
     ];
 
     protected $casts = [
+        'service_context' => 'array',
         'start_date' => 'date',
         'end_date' => 'date',
         'public_expires_at' => 'datetime',

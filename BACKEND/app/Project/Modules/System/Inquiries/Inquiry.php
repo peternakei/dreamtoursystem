@@ -55,6 +55,8 @@ class Inquiry extends Model
         'received_at' => 'datetime',
     ];
 
+    public function serviceDetails() { return $this->hasOne(InquiryServiceDetail::class); }
+
     public function tourist()
     {
         return $this->belongsTo(Tourist::class, 'tourist_id');

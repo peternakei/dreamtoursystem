@@ -16,7 +16,7 @@ class InquiryController extends Controller
     public function index()
     {
         //get inquiries with relationships
-        $inquiries = Inquiry::with(['tourist', 'tripType', 'serviceClass'])
+        $inquiries = Inquiry::query()->when(!ServiceAccess::allowed(auth()->user()), fn($q)=>$q->whereDoesntHave('serviceDetails'))->withExists('serviceDetails')->with(['tourist.country', 'tripType', 'serviceClass', 'assignedTo', 'serviceDetails:id,inquiry_id,service_type'])->withCount('quotations')
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -26,7 +26,7 @@ class InquiryController extends Controller
     public function processed()
     {
         //get inquiries with relationships
-        $inquiries = Inquiry::with(['tourist', 'tripType', 'serviceClass'])
+        $inquiries = Inquiry::query()->when(!ServiceAccess::allowed(auth()->user()), fn($q)=>$q->whereDoesntHave('serviceDetails'))->withExists('serviceDetails')->with(['tourist.country', 'tripType', 'serviceClass', 'assignedTo', 'serviceDetails:id,inquiry_id,service_type'])->withCount('quotations')
             ->where('status', 'approved')
             ->orderBy('created_at', 'desc')
             ->get();
@@ -37,7 +37,7 @@ class InquiryController extends Controller
     public function pending()
     {
         //get inquiries with relationships
-        $inquiries = Inquiry::with(['tourist', 'tripType', 'serviceClass'])
+        $inquiries = Inquiry::query()->when(!ServiceAccess::allowed(auth()->user()), fn($q)=>$q->whereDoesntHave('serviceDetails'))->withExists('serviceDetails')->with(['tourist.country', 'tripType', 'serviceClass', 'assignedTo', 'serviceDetails:id,inquiry_id,service_type'])->withCount('quotations')
             ->where('status', 'pending')
             ->orderBy('created_at', 'desc')
             ->get();
@@ -67,7 +67,8 @@ class InquiryController extends Controller
     public function show(string $id)
     {
         //get inquiry with relationships
-        $inquiry = Inquiry::with(['tourist', 'tripType', 'serviceClass'])
+        $inquiry = Inquiry::query()->when(!ServiceAccess::allowed(auth()->user()), fn($q)=>$q->whereDoesntHave('serviceDetails'))->withExists('serviceDetails')->with(['tourist.country', 'tripType', 'serviceClass', 'assignedTo', 'serviceDetails:id,inquiry_id,service_type'])->withCount('quotations')
+            ->with(['quotations.currency', 'quotations.status', 'quotations.currentVersion.currency'])
             ->where('uuid', $id)
             ->first();
 

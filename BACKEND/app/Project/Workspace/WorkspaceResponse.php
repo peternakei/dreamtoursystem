@@ -22,7 +22,13 @@ class WorkspaceResponse
             }
             $error = $request->session()->get('error');
 
-            return response()->json(['status' => ! $error, 'message' => $error ?: $request->session()->get('success', 'Saved successfully.')], $error ? 422 : 200);
+            $workspacePath = null;
+            $destination = parse_url($response->getTargetUrl(), PHP_URL_PATH);
+            if (preg_match('#^/quotation-versions/[a-f0-9-]{36}/builder$#i', $destination ?? '')) {
+                $workspacePath = $destination;
+            }
+
+            return response()->json(['workspace_path' => $workspacePath, 'status' => ! $error, 'message' => $error ?: $request->session()->get('success', 'Saved successfully.')], $error ? 422 : 200);
         }
 
         return $response;

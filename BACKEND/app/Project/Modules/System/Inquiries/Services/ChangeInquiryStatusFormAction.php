@@ -11,6 +11,9 @@ class ChangeInquiryStatusFormAction
     public function handle(Request $request, $id)
     {
         $inquiry = Inquiry::where('uuid', $id)->first();
+        if ($inquiry?->serviceDetails) {
+            app(\App\Project\Modules\System\Inquiries\ServiceAccess::class)->handle($request, fn()=>null);
+        }
         $status = ($request->new_status == 1) ? true : false;
 
         //update

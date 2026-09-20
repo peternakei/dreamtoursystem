@@ -9,26 +9,16 @@ import {
 } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import {
-  ArrowUpRight,
   ArrowRight,
-  CalendarDays,
   Compass,
   MapPin,
   Hotel,
   Car,
   FileText,
-  Users,
   MessageSquare,
   TrendingUp,
-  Clock3,
-  CheckCircle2,
-  CircleDollarSign,
-  Plane,
-  Plus,
-  Eye,
 } from 'lucide-vue-next'
 import api, { errorMessage } from '@/axiosClient'
-import { user } from '@/composables/useAuth'
 
 const counts = ref<Record<string, number>>({})
 const error = ref('')
@@ -111,32 +101,6 @@ const stats = computed(() => [
   },
 ])
 
-const quickActions = [
-  {
-    title: 'New Trip',
-    description: 'Create a new travel package',
-    icon: Compass,
-    href: '/trips/create',
-  },
-  {
-    title: 'New Inquiry',
-    description: 'Record customer inquiry',
-    icon: MessageSquare,
-    href: '/inquiries/create',
-  },
-  {
-    title: 'New Quotation',
-    description: 'Prepare customer quotation',
-    icon: FileText,
-    href: '/quotations/create',
-  },
-  {
-    title: 'Add Destination',
-    description: 'Create travel destination',
-    icon: MapPin,
-    href: '/destinations/create',
-  },
-]
 </script>
 
 <template>

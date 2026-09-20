@@ -28,7 +28,7 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return app(PageContentController::class)->save($request);
     }
 
     /**
@@ -52,7 +52,7 @@ class PageController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        return app(PageContentController::class)->save($request, $id);
     }
 
     /**

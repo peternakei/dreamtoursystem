@@ -46,10 +46,12 @@
       "path": "app/Project/Modules/System/Inquiries",
       "routes": {
         "web": [
-          "app/Project/Modules/System/Inquiries/Routes/web_inquiry.php"
+          "app/Project/Modules/System/Inquiries/Routes/web_inquiry.php",
+          "app/Project/Modules/System/Inquiries/Routes/web_service_inquiry.php"
         ],
         "api": [
-          "app/Project/Modules/System/Inquiries/Routes/api_inquiry.php"
+          "app/Project/Modules/System/Inquiries/Routes/api_inquiry.php",
+          "app/Project/Modules/System/Inquiries/Routes/api_service_inquiry.php"
         ]
       },
       "models": [
@@ -253,6 +255,9 @@
       "routes": {
         "web": [
           "app/Project/Modules/System/Vehicles/Routes/web_vehicle.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/Vehicles/Routes/api_rental.php"
         ]
       },
       "models": [
@@ -361,6 +366,9 @@
       "routes": {
         "web": [
           "app/Project/Modules/System/Pages/Routes/web_page.php"
+        ],
+        "api": [
+          "app/Project/Modules/System/Pages/Routes/api_content.php"
         ]
       },
       "models": [
@@ -695,7 +703,8 @@
       "app/Project/Modules/System/Categories/Routes/web_category.php",
       "app/Project/Modules/System/Addons/Routes/web_addon.php",
       "app/Project/Modules/System/Budgets/Routes/web_budget.php",
-      "app/Project/Modules/System/Inquiries/Routes/web_inquiry.php"
+      "app/Project/Modules/System/Inquiries/Routes/web_inquiry.php",
+      "app/Project/Modules/System/Inquiries/Routes/web_service_inquiry.php"
     ],
     "api": [
       "app/Project/Modules/System/Splash/Routes/api_splash.php",
@@ -714,7 +723,10 @@
       "app/Project/Modules/Core/Users/Routes/api_user.php",
       "app/Project/Modules/System/Faqs/Routes/api_faq.php",
       "app/Project/Modules/System/Inquiries/Routes/api_inquiry.php",
-      "app/Project/Modules/System/Quotations/Routes/api_public.php"
+      "app/Project/Modules/System/Quotations/Routes/api_public.php",
+      "app/Project/Modules/System/Vehicles/Routes/api_rental.php",
+      "app/Project/Modules/System/Inquiries/Routes/api_service_inquiry.php",
+      "app/Project/Modules/System/Pages/Routes/api_content.php"
     ]
   }
 }

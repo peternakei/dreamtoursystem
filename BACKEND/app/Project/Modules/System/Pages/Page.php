@@ -11,9 +11,10 @@ use Illuminate\Support\Str;
 
 class Page extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, \App\Project\Modules\System\Library\HasLibraryMedia;
 
     protected $fillable = [
+        'is_published', 'sort_order', 'sections', 'translations', 'seo',
         'name',
         'title',
         'sub_title',
@@ -25,6 +26,8 @@ class Page extends Model
         'updated_by',
         'uuid'
     ];
+
+    protected $casts = ['is_published'=>'boolean', 'sections'=>'array', 'translations'=>'array', 'seo'=>'array'];
 
     public function createdBy()
     {

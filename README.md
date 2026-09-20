@@ -120,3 +120,7 @@ Tests use a separate in-memory SQLite database. See `FRONTEND/docs/MIGRATION.md`
 ## Activity and system logs
 
 Use **Administration → Logs** to view activity, requests and errors. Tables are created by `php artisan migrate` on the configured log database. See [logging setup and coverage](FRONTEND/docs/LOGS.md).
+
+## Dream Tour service additions
+
+See [gap map](BACKEND/docs/DREAM_TOUR_GAP_MAP.md) and [setup, workflows and API contract](BACKEND/docs/DREAM_TOUR_API.md). Rental offers use quotations and staff availability checks. Existing inquiries, quotations, bookings and CMS records are extended. The Postman collection includes a Dream Tour folder; import `BACKEND/DreamTour.postman_environment.json` with your own local credentials.

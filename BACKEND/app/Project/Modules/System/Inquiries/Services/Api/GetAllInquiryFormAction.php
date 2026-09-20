@@ -15,7 +15,7 @@ class GetAllInquiryFormAction
 
         if ($user) {
             // User is logged in, get inquiries by their profile_id
-            $inquiries = Inquiry::with([
+            $inquiries = Inquiry::whereDoesntHave('serviceDetails')->with([
                 'tourist' => function ($query) {
                     $query->select('id', 'name', 'phone');
                 }
@@ -29,7 +29,7 @@ class GetAllInquiryFormAction
                     ->first();
 
                 if ($tourist) {
-                    $inquiries = Inquiry::with([
+                    $inquiries = Inquiry::whereDoesntHave('serviceDetails')->with([
                         'tourist' => function ($query) {
                             $query->select('id', 'name', 'phone');
                         }

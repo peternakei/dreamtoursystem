@@ -1,3 +1,25 @@
-<script setup lang="ts">import EntityPage from '@/components/workspace/EntityPage.vue';
+<script setup lang="ts">
+import {computed, ref, watch} from 'vue'
+import {useRoute, useRouter} from 'vue-router'
+import MainLayout from '@/layouts/MainLayout.vue'
+import {Button} from '@/components/ui/button'
+import DataTableReport from '@/components/datatable/DataTableReport.vue'
+import {dateText} from '@/components/workspace/listPresentation'
+import {formError} from '@/components/services/formErrors'
+import api from '@/axiosClient'
+const route=useRoute(),router=useRouter(),quotation=ref<any>(null),loading=ref(false),busy=ref(false),error=ref('')
+const current=computed(()=>quotation.value?.current_version)
+const servicePath=computed(()=>quotation.value?.inquiry?.service_details ? '/inquiries/'+quotation.value.inquiry.uuid+'/services' : '')
+const rows=computed(()=>(quotation.value?.versions||[]).map((v:any)=>({...v,currency_name:v.currency?.short_name,publication:v.public_url_enabled?'Enabled':'Hidden'})))
+const money=(v:any)=>v==null?'—':Number(v).toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2})
+const columns=[{key:'reference_number',label:'Reference',sortable:true},{key:'title',label:'Title',sortable:true},{key:'start_date',label:'From',formatter:dateText},{key:'end_date',label:'To',formatter:dateText},{key:'guest_count',label:'Guests'},{key:'currency_name',label:'Currency'},{key:'total_amount',label:'Total',formatter:money},{key:'status',label:'Status'},{key:'publication',label:'Guest link'},{key:'actions',label:'Actions'}]
+async function load(){loading.value=true;error.value='';quotation.value=null;try{quotation.value=(await api.get('/workspace/quotations/'+route.params.id)).data.quotation}catch(e){error.value=formError(e)}finally{loading.value=false}}
+async function duplicate(){busy.value=true;error.value='';try{const {data}=await api.post('/workspace/quotations/'+route.params.id+'/duplicate');await router.push('/quotation-versions/'+data.version_uuid+'/builder')}catch(e){error.value=formError(e)}finally{busy.value=false}}
+watch(()=>route.params.id,load,{immediate:true})
 </script>
-<template><EntityPage module="quotations" details/></template>
+<template><MainLayout :title="quotation?.quotation_number || 'Quotation'"><div class="space-y-5">
+<div class="flex flex-wrap items-center justify-between gap-3"><div><RouterLink to="/quotations/list" class="text-sm underline">Back to quotations</RouterLink><h2 class="mt-2 text-xl font-semibold">{{quotation?.quotation_number || 'Quotation'}}</h2></div><div v-if="current" class="flex flex-wrap gap-2"><RouterLink v-if="servicePath" :to="servicePath"><Button>Manage service request</Button></RouterLink><RouterLink v-else :to="'/quotation-versions/'+current.uuid+'/builder'"><Button>Open builder</Button></RouterLink><RouterLink :to="'/quotation-versions/'+current.uuid+'/preview'"><Button variant="outline">Preview &amp; share</Button></RouterLink><Button v-if="!servicePath" variant="outline" :disabled="busy" @click="duplicate">{{busy?'Creating version…':'Duplicate version'}}</Button></div></div>
+<p v-if="error" role="alert" class="rounded border border-destructive p-4 text-destructive">{{error}}</p><p v-if="loading" role="status">Loading quotation…</p>
+<template v-if="quotation"><div class="grid gap-4 md:grid-cols-3"><section class="rounded-xl border bg-card p-5 text-card-foreground"><h3 class="mb-3 font-semibold">Customer</h3><p>{{quotation.tourist?.name || 'Guest'}}</p><p class="break-words text-sm">{{quotation.tourist?.email || '—'}}</p><p class="text-sm">{{quotation.tourist?.phone || '—'}}</p><RouterLink v-if="quotation.inquiry" :to="servicePath || '/inquiries/'+quotation.inquiry.uuid+'/details'" class="mt-3 inline-block text-sm underline">Inquiry {{quotation.inquiry.request_reference || quotation.inquiry.inquiry_code}}</RouterLink></section><section class="rounded-xl border bg-card p-5 text-card-foreground"><h3 class="mb-3 font-semibold">Current version</h3><p>{{current?.reference_number || 'No version yet'}}</p><p class="text-sm">{{current?.title}}</p><p class="mt-2 text-sm">{{dateText(current?.start_date)}} – {{dateText(current?.end_date)}} · {{current?.guest_count || '—'}} guests</p><p class="text-sm">{{quotation.created_from_trip?.name || 'Tailor-made'}}</p></section><section class="rounded-xl border bg-card p-5 text-card-foreground"><h3 class="mb-3 font-semibold">Commercial summary</h3><p class="text-2xl font-semibold">{{current?.currency?.short_name || quotation.currency?.short_name}} {{money(current?.total_amount ?? quotation.total_amount)}}</p><p class="mt-2 text-sm">Quotation: {{quotation.status?.name || '—'}} · Version: {{current?.status || '—'}}</p><p v-if="current" class="mt-2 text-sm">{{current.days_count}} itinerary days · {{current.price_lines_count}} price lines · {{current.payment_terms_count}} payment terms</p></section></div>
+<h3 class="text-lg font-semibold">Version history</h3><DataTableReport :rows="rows" :columns="columns" :show-date-filter="false"><template #cell-actions="{row}"><div class="flex gap-2"><RouterLink v-if="!servicePath" :to="'/quotation-versions/'+row.uuid+'/builder'"><Button size="sm" variant="outline">Edit</Button></RouterLink><RouterLink :to="'/quotation-versions/'+row.uuid+'/preview'"><Button size="sm" variant="outline">Preview</Button></RouterLink></div></template></DataTableReport></template>
+</div></MainLayout></template>

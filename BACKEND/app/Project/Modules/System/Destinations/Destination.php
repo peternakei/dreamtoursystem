@@ -21,7 +21,10 @@ class Destination extends Model
 {
     use HasFactory, SoftDeletes, HasLibraryMedia;
 
+    protected $casts = ['translations' => 'array'];
+
     protected $fillable = [
+        'translations',
         'name',
         'location_id',
         'latitude',

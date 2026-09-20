@@ -17,6 +17,8 @@ return [
     */
 
     'entities' => [
+        'rental-offers' => \App\Project\Modules\System\Vehicles\RentalOffer::class,
+        'pages' => \App\Project\Modules\System\Pages\Page::class,
         'destinations' => \App\Project\Modules\System\Destinations\Destination::class,
         'vehicles' => \App\Project\Modules\System\Vehicles\Vehicle::class,
         'accommodations' => \App\Project\Modules\System\Accommodations\Accommodation::class,

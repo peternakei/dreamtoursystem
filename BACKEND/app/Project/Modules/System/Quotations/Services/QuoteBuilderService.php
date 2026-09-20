@@ -32,6 +32,7 @@ class QuoteBuilderService
 
     public function createFromInquiry(Inquiry $inquiry, array $attributes, int $userId): QuotationVersion
     {
+        if ($inquiry->serviceDetails) app(\App\Project\Modules\System\Inquiries\ServiceAccess::class)->handle(request(), fn()=>null);
         return DB::transaction(function () use ($inquiry, $attributes, $userId) {
             if (!$inquiry->request_reference) {
                 $inquiry->update([
@@ -160,6 +161,10 @@ class QuoteBuilderService
 
     public function syncVersionContent(QuotationVersion $version, array $payload, int $userId): QuotationVersion
     {
+        if ($version->quotation?->inquiry?->serviceDetails) {
+            app(\App\Project\Modules\System\Inquiries\ServiceAccess::class)->handle(request(), fn()=>null);
+            if ($version->booking_id) throw \Illuminate\Validation\ValidationException::withMessages(['quotation' => 'An agreed service quotation is immutable; prepare a new quotation for changes.']);
+        }
         return DB::transaction(function () use ($version, $payload, $userId) {
             $publicEnabled = (bool) ($payload['public_url_enabled'] ?? false);
             $coverImagePath = $this->resolveCoverImagePath($version, $payload);

@@ -67,4 +67,28 @@ class WorkspaceTest extends TestCase
         $this->assertSame(['name', 'capacity'], array_column($forms[0]['fields'], 'name'));
         $this->assertSame('6',$forms[0]['fields'][1]['value']);
     }
+
+    public function test_inquiry_workspace_supplies_customer_assignment_and_quotation_details(): void
+    {
+        $admin = $this->admin();
+        $this->actingAs($admin);
+        $tourist = \App\Project\Modules\System\Tourists\Tourist::create(['country_id' => \App\Project\Modules\Core\Countries\Country::create(['name' => 'Tanzania', 'created_by' => $admin->id])->id, 'name' => 'Inquiry customer', 'email' => 'inquiry@example.test', 'phone' => '255700000002']);
+        $inquiry = \App\Project\Modules\System\Inquiries\Inquiry::create(['tourist_id' => $tourist->id, 'from_date' => '2026-10-01', 'to_date' => '2026-10-04', 'guests' => 2, 'assigned_to' => $admin->id]);
+        $currency = \App\Project\Modules\Core\Currencies\Currency::create(['name' => 'US Dollar', 'short_name' => 'USD', 'symbol' => '$']);
+        $status = \App\Project\Modules\System\Quotations\QuotationStatus::create(['name' => 'Open', 'color' => '#288479']);
+        $quote = \App\Project\Modules\System\Quotations\Quotation::create(['created_by' => $admin->id, 'quotation_number' => 'TEST-QUOTE', 'quotation_date' => '2026-09-20', 'inquiry_id' => $inquiry->id, 'tourist_id' => $tourist->id, 'currency_id' => $currency->id, 'quotation_status_id' => $status->id, 'amount' => 120, 'vat_amount' => 0, 'exchange_rate' => 1, 'total_amount' => 120]);
+        $this->getJson('/workspace/modules/inquiries')->assertOk()
+            ->assertJsonPath('records.0.tourist.email', 'inquiry@example.test')
+            ->assertJsonPath('records.0.assigned_to.username', $admin->username)
+            ->assertJsonPath('records.0.quotations_count', 1)
+            ->assertJsonPath('records.0.service_details_exists', false);
+        $this->getJson('/workspace/modules/inquiries/'.$inquiry->uuid)->assertOk()
+            ->assertJsonPath('details.inquiry.quotations.0.uuid', $quote->uuid)
+            ->assertJsonPath('details.inquiry.quotations.0.currency.short_name', 'USD')
+            ->assertJsonPath('details.inquiry.quotations.0.status.name', 'Open')
+            ->assertJsonPath('actions.can_create_quotation', false);
+        $this->postJson('/inquiries/change_status/'.$inquiry->uuid, ['new_status' => 1, 'comments' => 'Reviewed'])->assertOk();
+        $this->getJson('/workspace/modules/inquiries/'.$inquiry->uuid)->assertOk()
+            ->assertJsonPath('details.inquiry.comments', 'Reviewed');
+    }
 }

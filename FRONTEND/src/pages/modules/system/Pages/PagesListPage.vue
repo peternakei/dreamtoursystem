@@ -1,3 +1,3 @@
-<script setup lang="ts">import EntityPage from '@/components/workspace/EntityPage.vue';
+<script setup lang="ts">import ContentPagesPage from './ContentPagesPage.vue';
 </script>
-<template><EntityPage module="pages"/></template>
+<template><ContentPagesPage/></template>
