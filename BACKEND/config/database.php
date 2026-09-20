@@ -67,6 +67,34 @@ return [
             ]) : [],
         ],
 
+        'logs' => [
+            'driver' => env('LOGS_DB_CONNECTION', 'mysql'),
+            'url' => env('LOGS_DB_URL'),
+            'host' => env('LOGS_DB_HOST', '127.0.0.1'),
+            'port' => env('LOGS_DB_PORT', '3306'),
+            'database' => env('LOGS_DB_DATABASE', 'dreamtours_logs'),
+            'username' => env('LOGS_DB_USERNAME', 'root'),
+            'password' => env('LOGS_DB_PASSWORD', ''),
+            'unix_socket' => env('LOGS_DB_SOCKET', ''),
+            'charset' => env('LOGS_DB_CHARSET', 'utf8mb4'),
+            'collation' => env('LOGS_DB_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'modes' => [
+                'STRICT_TRANS_TABLES',
+                'NO_ZERO_IN_DATE',
+                'NO_ZERO_DATE',
+                'ERROR_FOR_DIVISION_BY_ZERO',
+                // 'NO_AUTO_CREATE_USER',
+                'NO_ENGINE_SUBSTITUTION',
+            ],
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('LOGS_MYSQL_ATTR_SSL_CA', env('MYSQL_ATTR_SSL_CA')),
+            ]) : [],
+        ],
+
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),

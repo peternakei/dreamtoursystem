@@ -4,7 +4,7 @@ A separate copy of the safari backend, reorganized into the feature-module layou
 
 ## Run the supplied local copy
 
-PHP 8.2–8.4, Composer 2, Node 22 and npm are supported by the supplied dependency locks. The existing local installation uses a separate seeded SQLite database. Git excludes dependencies, local `.env` files, application keys, databases, logs, and caches. For a new clone, follow the setup section below first.
+PHP 8.2–8.4, Composer 2, Node 22 and npm are supported by the supplied dependency locks. The existing local installation uses MySQL databases `dreamtours_main` and `dreamtours_logs`, transferred from SQLite with existing records preserved. See [database notes](FRONTEND/docs/DATABASE.md) for connection and backup details. Git excludes dependencies, local `.env` files, application keys, databases, logs, and caches. For a new clone, follow the setup section below first.
 
 ```bash
 cd /mnt/CE8007F58007E337/D/B_PROJECTS/dreamtoursystem
@@ -84,7 +84,7 @@ Current list endpoints preserve the source application's load-all behaviour, wit
 
 ## Fresh checkout or MySQL setup
 
-.env files stay on your machine and are not included in Git. The existing local `.env` selects SQLite. `.env.example` shows the original MySQL option with a separate database name and blank payment credentials. Never reuse the original project's database for initial seeding.
+.env files stay on your machine and are not included in Git. The existing local `.env` selects MySQL. `.env.example` shows the original MySQL option with a separate database name and blank payment credentials. Never reuse the original project's database for initial seeding.
 
 ```bash
 git clone https://github.com/peternakei/dreamtoursystem.git dreamtoursystem
