@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "typecheck": "vue-tsc --noEmit -p tsconfig.app.json",
-    "preview": "vite preview --port 4174"
+    "preview": "vite preview --port 4174",
+    "test:datatable": "node --experimental-strip-types --test tests/datatable.test.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.6",

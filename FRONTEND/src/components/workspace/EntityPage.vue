@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import {computed, ref, watch} from 'vue'
 import {useRoute, useRouter} from 'vue-router'
-import {Plus, Search, RefreshCw, ArrowLeft, ExternalLink, ChevronLeft, ChevronRight} from 'lucide-vue-next'
+import {Plus, RefreshCw, ArrowLeft, ExternalLink} from 'lucide-vue-next'
 import MainLayout from '@/layouts/MainLayout.vue'
 import {Button} from '@/components/ui/button'
-import {Input} from '@/components/ui/input'
+import DataTableReport from '@/components/datatable/DataTableReport.vue'
+import type {Column} from '@/components/datatable/types'
 import {Card, CardContent} from '@/components/ui/card'
 import {Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription} from '@/components/ui/dialog'
 import EntityForm from './EntityForm.vue'
@@ -13,8 +14,8 @@ import api, {errorMessage} from '@/axiosClient'
 import {toast} from 'vue-sonner'
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://127.0.0.1:8001'
-const props = defineProps<{ module: string; details?: boolean }>(), route = useRoute(), router = useRouter()
-const data = ref<Page | null>(null), loading = ref(true), error = ref(''), search = ref(''), page = ref(1),
+const props = withDefaults(defineProps<{ module: string; details?: boolean; dateField?: string; showDateFilter?: boolean }>(), { dateField: '', showDateFilter: true }), route = useRoute(), router = useRouter()
+const data = ref<Page | null>(null), loading = ref(true), error = ref(''),
     selected = ref<Form | null>(null), open = ref(false)
 const title = computed(() => data.value?.module.title || props.module.replaceAll('_', ' '))
 const fields = computed(() => {
@@ -24,12 +25,10 @@ const fields = computed(() => {
   const keys = preferred.filter(k => k in row);
   return keys.length ? keys.slice(0, 5) : Object.keys(row).filter(k => !['id', 'uuid', 'deleted_at', 'created_by', 'updated_by', 'updated_at'].includes(k) && !k.endsWith('_id')).slice(0, 5)
 })
-const filtered = computed(() => {
-  const q = search.value.toLowerCase();
-  return (data.value?.records || []).filter(row => fields.value.some(k => String(row[k] ?? '').toLowerCase().includes(q)))
-})
-const pages = computed(() => Math.max(1, Math.ceil(filtered.value.length / 15))),
-    rows = computed(() => filtered.value.slice((page.value - 1) * 15, page.value * 15))
+const columns = computed<Column[]>(() => [
+  ...fields.value.map(key => ({key, label: label(key), sortable: true, formatter: display})),
+  {key: 'actions', label: 'Actions', align: 'right'},
+])
 const pageForms = computed(() => (data.value?.forms || []).filter(form => props.details || !form.recordKey))
 const detailEntries = computed(() => Object.values(data.value?.details || {})[0] || {})
 const fullPath = computed(() => {
@@ -72,11 +71,8 @@ async function saved() {
 }
 
 watch(() => [props.module, route.params.id], () => {
-  search.value = '';
-  page.value = 1;
   load()
 }, {immediate: true});
-watch(search, () => page.value = 1)
 </script>
 <template>
   <MainLayout :title="title">
@@ -111,56 +107,23 @@ watch(search, () => page.value = 1)
       </div>
     </div>
     <p v-if="error" role="alert" class="mb-4 rounded-md bg-destructive/10 p-4 text-sm text-destructive">{{ error }}</p>
-    <Card>
+    <DataTableReport v-if="!details" :key="module"
+      :columns="columns" :rows="data?.records || []" :loading="loading"
+      :date-field="dateField" :show-date-filter="showDateFilter" :search-keys="fields"
+    >
+      <template #cell-actions="{ row }">
+        <div class="flex items-center justify-end gap-1">
+          <RouterLink v-if="data?.module.showPath" :to="'/'+module+'/'+(row.uuid||row.id)+'/details'">
+            <Button variant="outline" size="sm">View</Button>
+          </RouterLink>
+          <Button v-for="(form,fi) in (data?.forms||[]).filter(f=>f.recordKey===row.uuid)" :key="fi"
+            variant="ghost" size="sm" @click="choose(form)">{{ form.title }}</Button>
+        </div>
+      </template>
+    </DataTableReport>
+    <Card v-else>
       <CardContent class="p-0">
         <p v-if="loading" class="p-8 text-center text-muted-foreground">Loading…</p>
-        <template v-else-if="!details">
-          <div class="flex items-center border-b p-4">
-            <Search class="mr-2 h-4 w-4 text-muted-foreground"/>
-            <Input v-model="search" placeholder="Search records…" aria-label="Search records" class="max-w-sm"/>
-          </div>
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm">
-              <thead class="border-b bg-muted/50 text-muted-foreground">
-              <tr>
-                <th v-for="key in fields" :key="key" class="px-4 py-3 font-medium">{{ label(key) }}</th>
-                <th class="px-4 py-3">
-                  <span class="sr-only">Actions</span>
-                </th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr v-for="(row,i) in rows" :key="row.uuid||row.id||i" class="border-b last:border-0 hover:bg-muted/30">
-                <td v-for="key in fields" :key="key" class="max-w-xs truncate px-4 py-3">{{ display(row[key]) }}</td>
-                <td class="px-4 py-3 text-right">
-                  <RouterLink v-if="data?.module.showPath" :to="'/'+module+'/'+(row.uuid||row.id)+'/details'">
-                    <Button variant="outline" size="sm">View</Button>
-                  </RouterLink>
-                  <Button v-for="(form,fi) in (data?.forms||[]).filter(f=>f.recordKey===row.uuid)" :key="fi"
-                          variant="ghost" size="sm" @click="choose(form)">{{ form.title }}
-                  </Button>
-                </td>
-              </tr>
-              <tr v-if="!rows.length">
-                <td :colspan="fields.length+1" class="p-12 text-center text-muted-foreground">
-                  {{ search ? 'No records match your search.' : 'No records yet.' }}
-                </td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="flex items-center justify-between border-t p-4 text-sm text-muted-foreground">
-            <span>{{ filtered.length }} records · Page {{ page }} of {{ pages }}</span>
-            <div class="flex gap-2">
-              <Button variant="outline" size="icon" :disabled="page<=1" @click="page--" aria-label="Previous page">
-                <ChevronLeft class="h-4 w-4"/>
-              </Button>
-              <Button variant="outline" size="icon" :disabled="page>=pages" @click="page++" aria-label="Next page">
-                <ChevronRight class="h-4 w-4"/>
-              </Button>
-            </div>
-          </div>
-        </template>
         <dl v-else class="grid gap-5 p-6 md:grid-cols-2">
           <template v-for="(value,key) in detailEntries" :key="key">
             <div v-if="!['password','remember_token','deleted_at'].includes(key) && typeof value!=='object'">
