@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             // ],
             [
                 'name' => 'Administrator Emanuel',
-                'email' => 'admin@serenbluesafaris.com',
+                'email' => 'admin@dreamtravelandtours.com',
                 'phone' => '+255777299630',
                 'address' => 'Nungwi, Zanzibar',
                 'password' => bcrypt('1234567890'),

@@ -29,9 +29,9 @@ return [
         'To be the leading and most trusted safari company in Tanzania, recognized globally for our creativity, personalized service, and commitment to preserving the wonders of our destination for future generations.'
     ),
 
-    'address' => env('COMPANY_ADDRESS', 'Nungwi Zanzibar'),
+    'address' => env('COMPANY_ADDRESS', 'Kiembesamaki Zanzibar'),
     'country' => env('COMPANY_COUNTRY', 'Tanzania'),
-    'email' => env('COMPANY_EMAIL', 'info@serenbluesafaris.com'),
+    'email' => env('COMPANY_EMAIL', 'info@dreamtravelsafiris.com'),
     'phone' => env('COMPANY_PHONE', null),
 
     /*

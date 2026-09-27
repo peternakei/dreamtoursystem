@@ -17,7 +17,7 @@ The launcher checks the configured database driver and selects an installed PHP 
 
 Local seeded administrator:
 
-- Email: `admin@serenbluesafaris.com`
+- Email: `admin@dreamtravelandtours.com`
 - Password: `1234567890`
 
 For queued account emails, open another terminal:
