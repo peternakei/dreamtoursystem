@@ -130,7 +130,7 @@ class PublicQuoteResourceContractTest extends TestCase
             'id' => 500,
             'quotation_id' => 300,
             'trip_id' => 400,
-            'reference_number' => 'SBS-20260101-V1',
+            'reference_number' => 'DTT-20260101-V1',
             'title' => '9 Days Romantic',
             'subtitle' => 'Crafted for the Sige family',
             'currency_id' => 1,
@@ -163,7 +163,7 @@ class PublicQuoteResourceContractTest extends TestCase
     private function fakeContext(): array
     {
         return [
-            'document_reference' => 'SBS-20260101-V1',
+            'document_reference' => 'DTT-20260101-V1',
             'agent' => ['name' => 'Nikita Stock', 'email' => 'nikita@serenbluesafaris.com', 'phone' => null],
             'highlights_list' => ['Ngorongoro Crater', 'Central Serengeti'],
             'summary_table' => [],

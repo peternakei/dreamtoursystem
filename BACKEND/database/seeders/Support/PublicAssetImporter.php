@@ -34,7 +34,7 @@ class PublicAssetImporter
      *
      *  - `frontend` paths are resolved against the Next.js project's
      *    `public/assets/images/` directory. Defaults to the sibling
-     *    `serenbluesafaris/` checkout; override with SBS_FRONTEND_ASSETS_PATH.
+     *    `serenbluesafaris/` checkout; override with DTT_FRONTEND_ASSETS_PATH.
      *  - `storage` paths are resolved against this app's
      *    `public/storage/uploads/` (existing fixtures).
      */

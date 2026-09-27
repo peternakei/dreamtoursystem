@@ -56,7 +56,7 @@ class QuoteAssetService
     {
         $name = trim((string) config('app.name'));
 
-        if ($name === '' || strcasecmp($name, 'laravel') === 0 || str_starts_with($name, 'SBS')) {
+        if ($name === '' || strcasecmp($name, 'laravel') === 0 || str_starts_with($name, 'DTT')) {
             return 'Dream Travel and Tours';
         }
 

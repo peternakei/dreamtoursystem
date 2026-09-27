@@ -409,9 +409,9 @@ class QuoteBuilderService
         $travellerName = trim((string) ($version->quotation?->inquiry?->tourist?->name ?? 'Guest'));
         $stamp = ($version->created_at ?? now())->format('Y-m-d-Hi');
 
-        $slug = Str::slug('SBS Quotation for ' . $travellerName . ' ' . $stamp, '-');
+        $slug = Str::slug('DTT Quotation for ' . $travellerName . ' ' . $stamp, '-');
 
-        return $slug ?: 'SBS-Quotation-' . $stamp;
+        return $slug ?: 'DTT-Quotation-' . $stamp;
     }
 
     protected function resolveCoverImagePath(QuotationVersion $version, array $payload): ?string
@@ -437,13 +437,13 @@ class QuoteBuilderService
 
     protected function formatDocumentReference(QuotationVersion $version): string
     {
-        if (str_starts_with((string) $version->reference_number, 'SBS-')) {
+        if (str_starts_with((string) $version->reference_number, 'DTT-')) {
             return (string) $version->reference_number;
         }
 
         $stamp = ($version->created_at ?? now())->format('Ymd-Hi');
 
-        return sprintf('SBS-%s-V%d', $stamp, $version->version_number);
+        return sprintf('DTT-%s-V%d', $stamp, $version->version_number);
     }
 
     public function syncTerms(QuotationVersion $version, array $groupedTerms, int $userId): void
