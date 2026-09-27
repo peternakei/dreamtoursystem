@@ -123,4 +123,4 @@ Use **Administration → Logs** to view activity, requests and errors. Tables ar
 
 ## Dream Tour service additions
 
-See [gap map](BACKEND/docs/DREAM_TOUR_GAP_MAP.md) and [setup, workflows and API contract](BACKEND/docs/DREAM_TOUR_API.md). Rental offers use quotations and staff availability checks. Existing inquiries, quotations, bookings and CMS records are extended. The Postman collection includes a Dream Tour folder; import `BACKEND/DreamTour.postman_environment.json` with your own local credentials.
+See [gap map](BACKEND/docs/DREAM_TOUR_GAP_MAP.md) and [setup, workflows and API contract](BACKEND/docs/DREAM_TOUR_API.md). Rental offers use quotations and staff availability checks. Existing inquiries, quotations, bookings and CMS records are extended. Import [the Dream Tour Postman collection](BACKEND/DreamTour.postman_collection.json) and [environment](BACKEND/DreamTour.postman_environment.json) with your own local credentials. See the [Postman setup and workflows](BACKEND/docs/POSTMAN.md).
