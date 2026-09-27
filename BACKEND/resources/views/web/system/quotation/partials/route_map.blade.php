@@ -41,8 +41,8 @@
             <rect x="0" y="0" width="{{ $svgWidth }}" height="{{ $svgHeight }}" rx="18" fill="#f7f3ec" />
             <defs>
                 <linearGradient id="routeLineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stop-color="#AC5526" />
-                    <stop offset="100%" stop-color="#0097DC" />
+                    <stop offset="0%" stop-color="#288479" />
+                    <stop offset="100%" stop-color="#FFA319" />
                 </linearGradient>
             </defs>
             <polyline
@@ -56,9 +56,9 @@
             />
 
             @foreach ($plotPoints as $point)
-                <circle cx="{{ $point['x'] }}" cy="{{ $point['y'] }}" r="8" fill="#ffffff" stroke="#AC5526" stroke-width="4" />
-                <circle cx="{{ $point['x'] }}" cy="{{ $point['y'] }}" r="3" fill="#0097DC" />
-                <text x="{{ $point['x'] + 10 }}" y="{{ max($point['y'] - 12, 18) }}" font-size="12" fill="#AC5526" font-weight="700">
+                <circle cx="{{ $point['x'] }}" cy="{{ $point['y'] }}" r="8" fill="#ffffff" stroke="#288479" stroke-width="4" />
+                <circle cx="{{ $point['x'] }}" cy="{{ $point['y'] }}" r="3" fill="#FFA319" />
+                <text x="{{ $point['x'] + 10 }}" y="{{ max($point['y'] - 12, 18) }}" font-size="12" fill="#288479" font-weight="700">
                     {{ \Illuminate\Support\Str::limit($point['name'], 18) }}
                 </text>
                 <text x="{{ $point['x'] - 4 }}" y="{{ $point['y'] + 24 }}" font-size="11" fill="#6c757d" font-weight="700">
@@ -70,7 +70,7 @@
         <div style="padding: 12px 0 4px;">
             @forelse ($route_destinations as $index => $destination)
                 <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                    <div style="width: 28px; height: 28px; border-radius: 999px; background: #AC5526; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; margin-right: 10px;">
+                    <div style="width: 28px; height: 28px; border-radius: 999px; background: #288479; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; margin-right: 10px;">
                         {{ $index + 1 }}
                     </div>
                     <div style="font-weight: 600;">{{ $destination->name }}</div>

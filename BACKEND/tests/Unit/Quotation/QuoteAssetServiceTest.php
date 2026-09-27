@@ -69,4 +69,24 @@ class QuoteAssetServiceTest extends TestCase
         // public site routes to its booking checkout.
         $this->assertStringContainsString('/itinerary/abc123/book', $url);
     }
+
+    public function test_pdf_templates_do_not_hardcode_legacy_brand_colors(): void
+    {
+        $doc = file_get_contents(base_path('resources/views/web/system/quotation/partials/document.blade.php')) ?: '';
+        $print = file_get_contents(base_path('resources/views/web/system/quotation/pdf/print.blade.php')) ?: '';
+        $routeMap = file_get_contents(base_path('resources/views/web/system/quotation/partials/route_map.blade.php')) ?: '';
+        $combined = $doc . $print . $routeMap;
+
+        $this->assertStringNotContainsString('#AC5526', $combined);
+        $this->assertStringNotContainsString('#0097DC', $combined);
+    }
+
+    public function test_pdf_branding_prefers_project_logo_asset(): void
+    {
+        $service = new QuoteAssetService();
+        $branding = $service->branding();
+
+        $this->assertNotNull($branding['logo_url']);
+        $this->assertStringContainsString('/images/logo.png', $branding['logo_url']);
+    }
 }

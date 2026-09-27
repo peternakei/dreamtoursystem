@@ -9,27 +9,35 @@ use App\Project\Modules\System\Destinations\Destination;
 use App\Project\Modules\System\Quotations\QuotationVersion;
 use App\Project\Modules\System\Trips\Trip;
 use App\Project\Modules\System\Vehicles\Vehicle;
+use Illuminate\Support\Facades\Schema;
 
 class QuoteAssetService
 {
     public function branding(): array
     {
-        $systemUser = SystemUser::query()->first();
+        $systemUser = Schema::hasTable('system_users')
+            ? SystemUser::query()->first()
+            : null;
         $companyName = $this->companyName();
 
         return [
             'company_name' => $companyName,
             'tagline' => 'Crafting unforgettable Tanzania safaris with heart, detail, and local expertise.',
             'logo_url' => $this->firstExistingAssetUrl([
+                'images/logo.png',
                 'images/dream-logo.png',
                 'assets/images/logo.png',
-                'images/logo.png',
-                'assets/images/logo.jpg',
                 'images/logo.jpg',
-                'assets/images/logo.jpeg',
+                'assets/images/logo.jpg',
                 'images/logo.jpeg',
+                'assets/images/logo.jpeg',
+                'assets/images/logo.webp',
             ]),
-            'logo_pdf_path' => $this->firstDompdfEmbeddablePublicPath(['images/dream-logo.png', 'images/dream-logo-print.jpeg']),
+            'logo_pdf_path' => $this->firstDompdfEmbeddablePublicPath([
+                'images/logo.png',
+                'images/dream-logo.png',
+                'images/dream-logo-print.jpeg',
+            ]),
             'email' => config('mail.from.address') ?: $systemUser?->email,
             'phone' => $systemUser?->phone,
             'address' => $systemUser?->address,
