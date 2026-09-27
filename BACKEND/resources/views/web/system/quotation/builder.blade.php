@@ -13,8 +13,8 @@
         .quote-builder-hero {
             border-radius: 18px;
             background:
-                linear-gradient(135deg, rgba(172, 85, 38, 0.96), rgba(0, 151, 220, 0.92)),
-                #AC5526;
+                linear-gradient(135deg, rgb(40, 132, 121), rgb(251, 155, 11)),
+                #288479;
             color: #fff;
             overflow: hidden;
             position: relative;
@@ -49,7 +49,7 @@
             width: 34px;
             height: 34px;
             border-radius: 999px;
-            background: #AC5526;
+            background: #288479;
             color: #fff;
             font-weight: 700;
         }
@@ -81,7 +81,7 @@
         .builder-kpi .value {
             font-size: 1.25rem;
             font-weight: 700;
-            color: #0097DC;
+            color: #fb9b0b;
         }
 
         .builder-quick-link {
@@ -90,7 +90,7 @@
             padding: 12px 14px;
             border-radius: 14px;
             background: #f7f3ec;
-            color: #0097DC;
+            color: #fb9b0b;
             font-weight: 600;
         }
     </style>

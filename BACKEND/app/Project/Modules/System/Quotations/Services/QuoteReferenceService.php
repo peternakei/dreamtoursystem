@@ -21,7 +21,7 @@ class QuoteReferenceService
 
     public function nextQuotationNumber(): string
     {
-        $base = 'SBS-' . now()->format('Ymd-Hi');
+        $base = 'DTT-' . now()->format('Ymd-Hi');
         $candidate = $base;
         $suffix = 2;
 

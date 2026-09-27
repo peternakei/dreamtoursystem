@@ -79,7 +79,7 @@
 
                 if (latLngs.length > 1) {
                     L.polyline(latLngs, {
-                        color: '#AC5526',
+                        color: '#288479',
                         weight: 4,
                         opacity: 0.9
                     }).addTo(map);
@@ -88,8 +88,8 @@
                 points.forEach(function(point) {
                     const marker = L.circleMarker([Number(point.latitude), Number(point.longitude)], {
                         radius: 8,
-                        color: '#AC5526',
-                        fillColor: '#0097DC',
+                        color: '#288479',
+                        fillColor: '#FFA319',
                         fillOpacity: 1,
                         weight: 3
                     }).addTo(map);

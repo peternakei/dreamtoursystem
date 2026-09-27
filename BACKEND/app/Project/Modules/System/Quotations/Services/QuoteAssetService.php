@@ -40,11 +40,11 @@ class QuoteAssetService
                 $companyName
             ),
             'palette' => [
-                'forest' => '#288479',
-                'sand' => '#F7EFDF',
-                'ink' => '#101010',
-                'sun' => '#FFA319',
-                'mist' => '#F7EFDF',
+                'forest' => '#fffff',
+                'sand' => '#fffff',
+                'ink' => '#fffff',
+                'sun' => '#fffff',
+                'mist' => '#fffff',
             ],
         ];
     }

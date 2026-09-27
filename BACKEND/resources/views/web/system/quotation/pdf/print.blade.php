@@ -19,7 +19,7 @@
             padding: 0;
             background: #f4f1ea;
             font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-            color: #0097DC;
+            color: #FFA319;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
             color-adjust: exact !important;

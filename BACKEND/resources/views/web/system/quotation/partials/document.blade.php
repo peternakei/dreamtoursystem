@@ -9,11 +9,11 @@
     // leaves this false because PDF viewers can't run JS modals.
     $inlineBookingModal = $inlineBookingModal ?? false;
     $palette = $branding['palette'] ?? [
-        'forest' => '#AC5526',
-        'sand' => '#E7D7B4',
-        'ink' => '#AC5526',
-        'sun' => '#0097DC',
-        'mist' => '#F7F3EC',
+        'forest' => '#288479',
+        'sand' => '#288479',
+        'ink' => '#288479',
+        'sun' => '#288479',
+        'mist' => '#288479',
     ];
     // Brand-tinted hero photo: the orange overlay is intentionally light
     // (~50%) so the underlying safari imagery reads clearly. A subtle dark
@@ -27,7 +27,7 @@
     // text content (pricing total, About panel) so the brand color reads
     // first but the photo is still clearly visible behind it.
     $brandedBackdropStyle = $resolvedHero
-        ? "background-image: linear-gradient(rgba(172, 85, 38, 0.6), rgba(172, 85, 38, 0.6)), url('{$resolvedHero}'); background-size: cover; background-position: center;"
+        ? "background-image: linear-gradient(rgba(40, 132, 121), rgba(172, 85, 38, 0.6)), url('{$resolvedHero}'); background-size: cover; background-position: center;"
         : '';
     // Day card and gallery card image cells: when a day/destination has no
     // photo of its own, drop the same default hero photo in so the cell
@@ -82,7 +82,7 @@
         }
 
         .quote-document .quote-brand-strip {
-            background: rgba(172, 85, 38, 1);
+            background: rgb(40, 132, 121);
             color: #fff;
             border-radius: 22px;
             margin-bottom: 18px;
@@ -108,11 +108,12 @@
            Chained selector wins over .quote-section { background: #fff }.
            Inline background-image (when a hero image exists) layers on top. */
         .quote-document .quote-section.quote-cover {
-            background-color: rgba(172, 85, 38, 1);
+            background-color: rgb(4, 165, 144);
             background-image: none;
         }
 
         .quote-document .quote-cover-media {
+            position: absolute;
             position: absolute;
             inset: 0;
             overflow: hidden;
@@ -127,7 +128,7 @@
         .quote-document .quote-cover-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(172, 85, 38, 0.5);
+            background: rgb(40, 132, 121);
         }
 
         .quote-document .quote-cover-content {
@@ -150,7 +151,7 @@
 
         .quote-document .quote-cover-pdf-body {
             padding: 28px 30px 32px;
-            background: rgba(172, 85, 38, 1);
+            background: rgb(40, 132, 121);
             color: #fff;
             vertical-align: top;
         }
@@ -201,7 +202,7 @@
 
         .quote-document .quote-cover-card {
             width: 300px;
-            background: rgba(255, 255, 255, 0.13);
+            background: rgb(255, 163, 25);
             padding: 18px;
             border-radius: 18px;
         }
@@ -259,7 +260,7 @@
         }
 
         .quote-document .quote-subtitle {
-            color: #61736c;
+            color: #288479;
             margin: 0;
         }
 
@@ -306,7 +307,7 @@
         .leaflet-tooltip.quote-route-label {
             background: #ffffff;
             border: 1px solid #d6ddd9;
-            color: #AC5526;
+            color: #288479;
             font-size: 11px;
             font-weight: 700;
             padding: 4px 8px;
@@ -414,7 +415,7 @@
         }
 
         .quote-document .quote-price-highlight {
-            background: rgba(172, 85, 38, 1);
+            background: rgb(40, 132, 121);
             background-size: cover;
             background-position: center;
             color: #fff;
@@ -454,7 +455,7 @@
         }
 
         .quote-document .quote-company {
-            background: rgba(172, 85, 38, 1);
+            background: rgb(40, 132, 121);
             background-size: cover;
             background-position: center;
             color: #fff;
@@ -485,57 +486,57 @@
 
         @if ($isPdf)
             .quote-document .quote-screen-only {
-                display: none !important;
-            }
+            display: none !important;
+        }
 
-            .quote-document .quote-pdf-only {
-                display: block;
-            }
+        .quote-document .quote-pdf-only {
+            display: block;
+        }
 
-            .quote-document .quote-section {
-                box-shadow: none;
-                border: 1px solid #e7ece9;
-            }
+        .quote-document .quote-section {
+            box-shadow: none;
+            border: 1px solid #e7ece9;
+        }
 
-            .quote-document .quote-brand-strip,
-            .quote-document .quote-footer-bar {
-                box-shadow: none;
-            }
+        .quote-document .quote-brand-strip,
+        .quote-document .quote-footer-bar {
+            box-shadow: none;
+        }
 
-            .quote-document .quote-cover {
-                min-height: auto;
-                padding: 0;
-                background: none !important;
-            }
+        .quote-document .quote-cover {
+            min-height: auto;
+            padding: 0;
+            background: none !important;
+        }
 
-            .quote-document .quote-cover-grid td {
-                vertical-align: top;
-            }
+        .quote-document .quote-cover-grid td {
+            vertical-align: top;
+        }
 
-            .quote-document .quote-cover-card {
-                width: auto;
-                background: rgba(255, 255, 255, 0.12);
-            }
+        .quote-document .quote-cover-card {
+            width: auto;
+            background: rgba(255, 255, 255, 0.12);
+        }
 
-            .quote-document .quote-day-image,
-            .quote-document .quote-day-content {
-                display: table-cell;
-                float: none;
-            }
+        .quote-document .quote-day-image,
+        .quote-document .quote-day-content {
+            display: table-cell;
+            float: none;
+        }
 
-            .quote-document .quote-day-image {
-                width: 34%;
-                min-height: 0;
-            }
+        .quote-document .quote-day-image {
+            width: 34%;
+            min-height: 0;
+        }
 
-            .quote-document .quote-day-content {
-                width: 66%;
-                padding: 18px 20px;
-            }
+        .quote-document .quote-day-content {
+            width: 66%;
+            padding: 18px 20px;
+        }
 
-            .quote-document .quote-day-image img {
-                height: 220px;
-            }
+        .quote-document .quote-day-image img {
+            height: 220px;
+        }
         @endif
     </style>
 @endif
@@ -547,13 +548,17 @@
                 <tr>
                     <td style="width: 55%; vertical-align: middle;">
                         @if ($displayLogo)
-                            <img src="{{ $displayLogo }}" alt="{{ $branding['company_name'] }}" class="quote-brand-logo">
-                        @else
-                            <strong>{{ $branding['company_name'] }}</strong>
-                        @endif
-                    </td>
-                    <td style="width: 45%; text-align: right; vertical-align: middle;">
-                        <div style="font-size: 13px; font-weight: 700;">{{ $branding['tagline'] }}</div>
+            <img src="{{ $displayLogo }}" alt="{{ $branding['company_name'] }}" class="quote-brand-logo">
+
+
+        @else
+            <strong>{{ $branding['company_name'] }}</strong>
+
+
+        @endif
+        </td>
+        <td style="width: 45%; text-align: right; vertical-align: middle;">
+            <div style="font-size: 13px; font-weight: 700;">{{ $branding['tagline'] }}</div>
                         <div style="font-size: 12px; opacity: 0.82;">
                             <a href="{{ $website_url }}" style="color: #fff; text-decoration: none;">{{ $website_url }}</a>
                         </div>
@@ -575,70 +580,85 @@
                             <table class="quote-cover-grid">
                                 <tr>
                                     <td style="padding-right: 26px;">
-                                @if ($displayLogo)
-                                    <img src="{{ $displayLogo }}" alt="{{ $branding['company_name'] }}" class="quote-cover-logo">
-                                @else
-                                    <div class="quote-pill">{{ $branding['company_name'] }}</div>
-                                @endif
+                                        @if ($displayLogo)
+                                            <img src="{{ $displayLogo }}" alt="{{ $branding['company_name'] }}"
+                                                 class="quote-cover-logo">
+                                        @else
+                                            <div class="quote-pill">{{ $branding['company_name'] }}</div>
+                                        @endif
 
-                                <div class="quote-pill" style="margin-top: 22px;">Tailor-Made Proposal</div>
-                                <div class="quote-cover-title">{{ $version->title }}</div>
-                                @if ($version->subtitle)
-                                    <div class="quote-cover-subtitle">{{ $version->subtitle }}</div>
-                                @endif
+                                        <div class="quote-pill" style="margin-top: 22px;">Tailor-Made Proposal</div>
+                                        <div class="quote-cover-title">{{ $version->title }}</div>
+                                        @if ($version->subtitle)
+                                            <div class="quote-cover-subtitle">{{ $version->subtitle }}</div>
+                                        @endif
 
-                                @if ($agent_intro_letter)
-                                    <div class="quote-cover-letter" style="margin-top: 18px; padding: 16px 18px; background:  rgba(172, 85, 38, 0.96); border-left: 3px solid #0097DC ; border-radius: 8px; font-size: 13px; line-height: 1.55;">
-                                        <strong style="display:block; margin-bottom: 6px;">Dear {{ $tourist->name ?? 'Guest' }},</strong>
-                                        <div style="white-space: pre-line;">{{ $agent_intro_letter }}</div>
-                                        @if (!empty($agent['name']))
-                                            <div style="margin-top: 12px; opacity: 0.92;">
-                                                <strong>{{ $agent['name'] }}</strong>
-                                                @if (!empty($agent['email']))
-                                                    <span style="display:block; font-size:12px; opacity:0.85;">{{ $agent['email'] }}</span>
+                                        @if ($agent_intro_letter)
+                                            <div class="quote-cover-letter"
+                                                 style="margin-top: 18px; padding: 16px 18px; background:  rgb(255,163,25); border-left: 3px solid #eae9e4 ; border-radius: 8px; font-size: 13px; line-height: 1.55;">
+                                                <strong
+                                                    style="display:block; margin-bottom: 6px;">Dear {{ $tourist->name ?? 'Guest' }}
+                                                    ,</strong>
+                                                <div style="white-space: pre-line;">{{ $agent_intro_letter }}</div>
+                                                @if (!empty($agent['name']))
+                                                    <div style="margin-top: 12px; opacity: 0.92;">
+                                                        <strong>{{ $agent['name'] }}</strong>
+                                                        @if (!empty($agent['email']))
+                                                            <span
+                                                                style="display:block; font-size:12px; opacity:0.85;">{{ $agent['email'] }}</span>
+                                                        @endif
+                                                    </div>
                                                 @endif
                                             </div>
                                         @endif
-                                    </div>
-                                @endif
 
-                                <div class="quote-cta-bar">
-                                    @if ($canBookFromQuote)
-                                        @if ($inlineBookingModal)
-                                            <button type="button" class="quote-cta-button primary" data-bs-toggle="modal" data-bs-target="#quoteBookingModal" style="border: 0; cursor: pointer; font-family: inherit;">Book This Safari</button>
-                                        @elseif ($publicMode)
-                                            <a href="{{ route('public.itinerary.book.confirm', $version->public_token) }}" class="quote-cta-button primary">Book This Safari</a>
-                                        @elseif ($public_booking_url)
-                                            <a href="{{ $public_booking_url }}" class="quote-cta-button primary">Book This Safari</a>
-                                        @endif
-                                    @endif
-                                    @if ($website_url)
-                                        <a href="{{ $website_url }}" @if ($publicMode) target="_blank" rel="noopener" @endif class="quote-cta-button secondary">Visit Our Website</a>
-                                    @endif
-                                </div>
-                            </td>
-                            <td style="width: 320px;">
-                                <div class="quote-cover-card">
-                                    <span class="k">Reference</span>
-                                    <span class="v">{{ $document_reference }}</span>
-                                    <span class="k">Prepared For</span>
-                                    <span class="v">{{ $tourist->name ?? 'Guest' }}</span>
-                                    <span class="k">Travel Window</span>
-                                    <span class="v">{{ $travelWindow }}</span>
-                                    <span class="k">Travelers</span>
-                                    <span class="v">{{ $version->guest_count }} traveler{{ $version->guest_count == 1 ? '' : 's' }}</span>
-                                    <span class="k">Prepared By</span>
-                                    <span class="v">{{ $agent['name'] ?? $branding['company_name'] }}</span>
-                                    @if (!empty($agent['email']))
-                                        <span class="k">Agent Email</span>
-                                        <span class="v" style="word-break: break-all;">{{ $agent['email'] }}</span>
-                                    @endif
-                                    <span class="k">Generated</span>
-                                    <span class="v">{{ $generatedLabel }}</span>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                                        <div class="quote-cta-bar">
+                                            @if ($canBookFromQuote)
+                                                @if ($inlineBookingModal)
+                                                    <button type="button" class="quote-cta-button primary"
+                                                            data-bs-toggle="modal" data-bs-target="#quoteBookingModal"
+                                                            style="border: 0; cursor: pointer; font-family: inherit;">
+                                                        Book This Safari
+                                                    </button>
+                                                @elseif ($publicMode)
+                                                    <a href="{{ route('public.itinerary.book.confirm', $version->public_token) }}"
+                                                       class="quote-cta-button primary">Book This Safari</a>
+                                                @elseif ($public_booking_url)
+                                                    <a href="{{ $public_booking_url }}"
+                                                       class="quote-cta-button primary">Book This Safari</a>
+                                                @endif
+                                            @endif
+                                            @if ($website_url)
+                                                <a href="{{ $website_url }}" @if ($publicMode) target="_blank"
+                                                   rel="noopener" @endif class="quote-cta-button secondary">Visit Our
+                                                    Website</a>
+                                            @endif
+                                        </div>
+                                    </td>
+                                    <td style="width: 320px;">
+                                        <div class="quote-cover-card">
+                                            <span class="k">Reference</span>
+                                            <span class="v">{{ $document_reference }}</span>
+                                            <span class="k">Prepared For</span>
+                                            <span class="v">{{ $tourist->name ?? 'Guest' }}</span>
+                                            <span class="k">Travel Window</span>
+                                            <span class="v">{{ $travelWindow }}</span>
+                                            <span class="k">Travelers</span>
+                                            <span
+                                                class="v">{{ $version->guest_count }} traveler{{ $version->guest_count == 1 ? '' : 's' }}</span>
+                                            <span class="k">Prepared By</span>
+                                            <span class="v">{{ $agent['name'] ?? $branding['company_name'] }}</span>
+                                            @if (!empty($agent['email']))
+                                                <span class="k">Agent Email</span>
+                                                <span class="v"
+                                                      style="word-break: break-all;">{{ $agent['email'] }}</span>
+                                            @endif
+                                            <span class="k">Generated</span>
+                                            <span class="v">{{ $generatedLabel }}</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </td>
                     </tr>
                 </table>
@@ -650,7 +670,8 @@
                         <tr>
                             <td style="padding-right: 26px;">
                                 @if ($displayLogo)
-                                    <img src="{{ $displayLogo }}" alt="{{ $branding['company_name'] }}" class="quote-cover-logo">
+                                    <img src="{{ $displayLogo }}" alt="{{ $branding['company_name'] }}"
+                                         class="quote-cover-logo">
                                 @else
                                     <div class="quote-pill">{{ $branding['company_name'] }}</div>
                                 @endif
@@ -662,14 +683,18 @@
                                 @endif
 
                                 @if ($agent_intro_letter)
-                                    <div class="quote-cover-letter" style="margin-top: 18px; padding: 16px 18px; background: rgba(255,255,255,0.13); border-left: 3px solid #0097DC; border-radius: 8px; font-size: 13px; line-height: 1.55;">
-                                        <strong style="display:block; margin-bottom: 6px;">Dear {{ $tourist->name ?? 'Guest' }},</strong>
+                                    <div class="quote-cover-letter"
+                                         style="margin-top: 18px; padding: 16px 18px; background: rgba(255,255,255,0.13); border-left: 3px solid #0097DC; border-radius: 8px; font-size: 13px; line-height: 1.55;">
+                                        <strong
+                                            style="display:block; margin-bottom: 6px;">Dear {{ $tourist->name ?? 'Guest' }}
+                                            ,</strong>
                                         <div style="white-space: pre-line;">{{ $agent_intro_letter }}</div>
                                         @if (!empty($agent['name']))
                                             <div style="margin-top: 12px; opacity: 0.92;">
                                                 <strong>{{ $agent['name'] }}</strong>
                                                 @if (!empty($agent['email']))
-                                                    <span style="display:block; font-size:12px; opacity:0.85;">{{ $agent['email'] }}</span>
+                                                    <span
+                                                        style="display:block; font-size:12px; opacity:0.85;">{{ $agent['email'] }}</span>
                                                 @endif
                                             </div>
                                         @endif
@@ -681,15 +706,22 @@
                                 <div class="quote-cta-bar">
                                     @if ($canBookFromQuote)
                                         @if ($inlineBookingModal)
-                                            <button type="button" class="quote-cta-button primary" data-bs-toggle="modal" data-bs-target="#quoteBookingModal" style="border: 0; cursor: pointer; font-family: inherit;">Book This Safari</button>
+                                            <button type="button" class="quote-cta-button primary"
+                                                    data-bs-toggle="modal" data-bs-target="#quoteBookingModal"
+                                                    style="border: 0; cursor: pointer; font-family: inherit;">Book This
+                                                Safari
+                                            </button>
                                         @elseif ($publicMode)
-                                            <a href="{{ route('public.itinerary.book.confirm', $version->public_token) }}" class="quote-cta-button primary">Book This Safari</a>
+                                            <a href="{{ route('public.itinerary.book.confirm', $version->public_token) }}"
+                                               class="quote-cta-button primary">Book This Safari</a>
                                         @elseif ($public_booking_url)
-                                            <a href="{{ $public_booking_url }}" class="quote-cta-button primary">Book This Safari</a>
+                                            <a href="{{ $public_booking_url }}" class="quote-cta-button primary">Book
+                                                This Safari</a>
                                         @endif
                                     @endif
                                     @if ($website_url)
-                                        <a href="{{ $website_url }}" @if ($publicMode) target="_blank" rel="noopener" @endif class="quote-cta-button secondary">Visit Our Website</a>
+                                        <a href="{{ $website_url }}" @if ($publicMode) target="_blank" rel="noopener"
+                                           @endif class="quote-cta-button secondary">Visit Our Website</a>
                                     @endif
                                 </div>
                             </td>
@@ -702,7 +734,8 @@
                                     <span class="k">Travel Window</span>
                                     <span class="v">{{ $travelWindow }}</span>
                                     <span class="k">Travelers</span>
-                                    <span class="v">{{ $version->guest_count }} traveler{{ $version->guest_count == 1 ? '' : 's' }}</span>
+                                    <span
+                                        class="v">{{ $version->guest_count }} traveler{{ $version->guest_count == 1 ? '' : 's' }}</span>
                                     <span class="k">Prepared By</span>
                                     <span class="v">{{ $agent['name'] ?? $branding['company_name'] }}</span>
                                     @if (!empty($agent['email']))
@@ -732,12 +765,16 @@
                 <table style="width: 100%; border-collapse: collapse; margin: 18px 0 8px;">
                     <tr>
                         <td style="width: 50%; padding: 8px 12px; background: #f7f3ec; border-radius: 8px;">
-                            <span style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6f7d76;">Start Tour</span>
-                            <div style="font-weight: 800;">{{ $travelStart ?? optional($version->start_date)->format('l, F j, Y') ?? 'TBD' }}</div>
+                            <span
+                                style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6f7d76;">Start Tour</span>
+                            <div
+                                style="font-weight: 800;">{{ $travelStart ?? optional($version->start_date)->format('l, F j, Y') ?? 'TBD' }}</div>
                         </td>
                         <td style="width: 50%; padding: 8px 12px; background: #f7f3ec; border-radius: 8px;">
-                            <span style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6f7d76;">End Tour</span>
-                            <div style="font-weight: 800;">{{ $travelEnd ?? optional($version->end_date)->format('l, F j, Y') ?? 'TBD' }}</div>
+                            <span
+                                style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6f7d76;">End Tour</span>
+                            <div
+                                style="font-weight: 800;">{{ $travelEnd ?? optional($version->end_date)->format('l, F j, Y') ?? 'TBD' }}</div>
                         </td>
                     </tr>
                 </table>
@@ -748,27 +785,29 @@
 
                 <table style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px;">
                     <thead>
-                        <tr style="background: #AC5526; color: #fff;">
-                            <th style="text-align: left; padding: 10px 12px; width: 12%;">Days</th>
-                            <th style="text-align: left; padding: 10px 12px; width: 33%;">Main Destination</th>
-                            <th style="text-align: left; padding: 10px 12px; width: 35%;">Accommodation</th>
-                            <th style="text-align: left; padding: 10px 12px; width: 20%;">Meal Plan</th>
-                        </tr>
+                    <tr style="background: #288479; color: #fff;">
+                        <th style="text-align: left; padding: 10px 12px; width: 12%;">Days</th>
+                        <th style="text-align: left; padding: 10px 12px; width: 33%;">Main Destination</th>
+                        <th style="text-align: left; padding: 10px 12px; width: 35%;">Accommodation</th>
+                        <th style="text-align: left; padding: 10px 12px; width: 20%;">Meal Plan</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        @foreach ($summary_table as $row)
-                            <tr style="border-bottom: 1px solid #e7ece9;">
-                                <td style="padding: 10px 12px; font-weight: 700; color: #AC5526;">Day {{ $row['day_number'] }}</td>
-                                <td style="padding: 10px 12px;">{{ $row['destination_name'] ?: '—' }}</td>
-                                <td style="padding: 10px 12px;">
-                                    {{ $row['accommodation_name'] ?: '—' }}
-                                    @if ($row['stay_type'])
-                                        <span style="display: block; font-size: 11px; color: #6f7d76;">{{ $row['stay_type'] }}</span>
-                                    @endif
-                                </td>
-                                <td style="padding: 10px 12px;">{{ $row['meal_plan'] }}</td>
-                            </tr>
-                        @endforeach
+                    @foreach ($summary_table as $row)
+                        <tr style="border-bottom: 1px solid #e7ece9;">
+                            <td style="padding: 10px 12px; font-weight: 700; color: #288479;">
+                                Day {{ $row['day_number'] }}</td>
+                            <td style="padding: 10px 12px;">{{ $row['destination_name'] ?: '—' }}</td>
+                            <td style="padding: 10px 12px;">
+                                {{ $row['accommodation_name'] ?: '—' }}
+                                @if ($row['stay_type'])
+                                    <span
+                                        style="display: block; font-size: 11px; color: #6f7d76;">{{ $row['stay_type'] }}</span>
+                                @endif
+                            </td>
+                            <td style="padding: 10px 12px;">{{ $row['meal_plan'] }}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
 
@@ -807,18 +846,23 @@
                                     <td style="width: 50%; padding: 0 12px 18px 0; vertical-align: top;">
                                         <div class="quote-gallery-card">
                                             @if (!empty($vehicle['image_resolved']))
-                                                <div class="quote-gallery-image" @if (!$isPdf) style="background-image: url('{{ $vehicle['image_resolved'] }}');" @endif>
+                                                <div class="quote-gallery-image"
+                                                     @if (!$isPdf) style="background-image: url('{{ $vehicle['image_resolved'] }}');" @endif>
                                                     @if ($isPdf)
-                                                        <img src="{{ $vehicle['image_resolved'] }}" alt="{{ $vehicle['name'] }}">
+                                                        <img src="{{ $vehicle['image_resolved'] }}"
+                                                             alt="{{ $vehicle['name'] }}">
                                                     @endif
                                                 </div>
                                             @endif
                                             <div style="padding: 16px;">
-                                                <div style="font-weight: 800; font-size: 18px;">{{ $vehicle['name'] }}</div>
+                                                <div
+                                                    style="font-weight: 800; font-size: 18px;">{{ $vehicle['name'] }}</div>
                                                 @if (!empty($vehicle['capacity']))
-                                                    <div style="font-size: 12px; color: #6f7d76; margin: 4px 0;">{{ $vehicle['capacity'] }}</div>
+                                                    <div
+                                                        style="font-size: 12px; color: #6f7d76; margin: 4px 0;">{{ $vehicle['capacity'] }}</div>
                                                 @endif
-                                                <div class="quote-subtitle" style="margin-top: 6px;">{{ $vehicle['description'] ?? '' }}</div>
+                                                <div class="quote-subtitle"
+                                                     style="margin-top: 6px;">{{ $vehicle['description'] ?? '' }}</div>
                                             </div>
                                         </div>
                                     </td>
@@ -844,7 +888,8 @@
                         <td style="width: 25%; padding-right: 12px;">
                             <div class="quote-summary-box">
                                 <span class="label">Route</span>
-                                <span class="value">{{ $route_destinations->pluck('name')->filter()->implode(' / ') ?: 'Tailor-made route' }}</span>
+                                <span
+                                    class="value">{{ $route_destinations->pluck('name')->filter()->implode(' / ') ?: 'Tailor-made route' }}</span>
                             </div>
                         </td>
                         <td style="width: 25%; padding-right: 12px;">
@@ -882,9 +927,12 @@
                     <tr>
                         <td style="width: 58%; padding-right: 16px; vertical-align: top;">
                             <div class="quote-title">Journey Overview</div>
-                            <p class="quote-subtitle">A stronger visual proposal built from your safari library, shared-ready branding, and the current quote version.</p>
+                            <p class="quote-subtitle">A stronger visual proposal built from your safari library,
+                                shared-ready branding, and the current quote version.</p>
                             <p>
-                                This proposal combines route flow, destination-led imagery, day-by-day detail, and commercial clarity into one guest-facing presentation. It is designed to feel polished from the first share while staying grounded in your internal quote builder data.
+                                This proposal combines route flow, destination-led imagery, day-by-day detail, and
+                                commercial clarity into one guest-facing presentation. It is designed to feel polished
+                                from the first share while staying grounded in your internal quote builder data.
                             </p>
 
                             @if ($tourist)
@@ -900,27 +948,34 @@
                             @endif
 
                             @if ($route_destinations->count() > 0)
-                                <table style="width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 13px;">
+                                <table
+                                    style="width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 13px;">
                                     @if ($start_destination)
                                         <tr>
-                                            <td style="width: 30%; padding: 8px 12px; font-weight: 800; color: #AC5526;">Start Point</td>
+                                            <td style="width: 30%; padding: 8px 12px; font-weight: 800; color: #288479;">
+                                                Start Point
+                                            </td>
                                             <td style="padding: 8px 12px;">{{ $start_destination }}</td>
                                         </tr>
                                     @endif
                                     @foreach ($days as $day)
                                         <tr style="border-top: 1px solid #e7ece9;">
-                                            <td style="width: 30%; padding: 8px 12px; font-weight: 700; color: #AC5526;">Day {{ $day['day_number'] }}</td>
+                                            <td style="width: 30%; padding: 8px 12px; font-weight: 700; color: #288479;">
+                                                Day {{ $day['day_number'] }}</td>
                                             <td style="padding: 8px 12px;">
                                                 <strong>{{ optional($day['destination'])->name ?? $day['title'] }}</strong>
                                                 @if ($day['accommodation_name'])
-                                                    <span style="color: #6f7d76;"> &nbsp;·&nbsp; {{ $day['accommodation_name'] }}</span>
+                                                    <span
+                                                        style="color: #6f7d76;"> &nbsp;·&nbsp; {{ $day['accommodation_name'] }}</span>
                                                 @endif
                                             </td>
                                         </tr>
                                     @endforeach
                                     @if ($end_destination)
                                         <tr style="border-top: 1px solid #e7ece9;">
-                                            <td style="width: 30%; padding: 8px 12px; font-weight: 800; color: #AC5526;">End Point</td>
+                                            <td style="width: 30%; padding: 8px 12px; font-weight: 800; color: #288479;">
+                                                End Point
+                                            </td>
                                             <td style="padding: 8px 12px;">{{ $end_destination }}</td>
                                         </tr>
                                     @endif
@@ -930,7 +985,8 @@
                         <td style="width: 42%; vertical-align: top;">
                             <div class="quote-map-wrap">
                                 <div class="quote-title" style="font-size: 18px;">Route Moodboard</div>
-                                <p class="quote-subtitle" style="margin-bottom: 14px;">A route-led visual summary driven by the selected destinations and available coordinate data.</p>
+                                <p class="quote-subtitle" style="margin-bottom: 14px;">A route-led visual summary driven
+                                    by the selected destinations and available coordinate data.</p>
                                 @include('web.system.quotation.partials.route_map')
                             </div>
                         </td>
@@ -949,7 +1005,8 @@
             <div class="quote-section">
                 <div class="quote-body">
                     <div class="quote-title">Destination Gallery</div>
-                    <p class="quote-subtitle">Images are pulled automatically from the destination and trip media library.</p>
+                    <p class="quote-subtitle">Images are pulled automatically from the destination and trip media
+                        library.</p>
                     <table class="quote-summary-table" style="margin-top: 16px;">
                         @foreach ($cardChunks as $chunk)
                             <tr>
@@ -962,14 +1019,17 @@
                                     @endphp
                                     <td style="width: {{ $cardWidth }}; padding: 0 {{ $singleDestination ? '0' : '12px' }} 12px 0; vertical-align: top;">
                                         <div class="quote-gallery-card">
-                                            <div class="quote-gallery-image" @if (!$isPdf) style="background-image: url('{{ $image }}');" @endif>
+                                            <div class="quote-gallery-image"
+                                                 @if (!$isPdf) style="background-image: url('{{ $image }}');" @endif>
                                                 @if ($isPdf && $image)
                                                     <img src="{{ $image }}" alt="{{ $destination->name }}">
                                                 @endif
                                             </div>
                                             <div style="padding: 16px;">
-                                                <div style="font-weight: 800; font-size: 18px;">{{ $destination->name }}</div>
-                                                <div class="quote-subtitle">{{ \Illuminate\Support\Str::limit(strip_tags($destination->description ?? ''), 120) ?: 'This stop is part of the curated safari route.' }}</div>
+                                                <div
+                                                    style="font-weight: 800; font-size: 18px;">{{ $destination->name }}</div>
+                                                <div
+                                                    class="quote-subtitle">{{ \Illuminate\Support\Str::limit(strip_tags($destination->description ?? ''), 120) ?: 'This stop is part of the curated safari route.' }}</div>
                                             </div>
                                         </div>
                                     </td>
@@ -991,7 +1051,8 @@
         <div class="quote-section">
             <div class="quote-body">
                 <div class="quote-title">Day-by-Day Itinerary</div>
-                <p class="quote-subtitle">Every day can be refined in the builder, but the layout below is generated automatically for proposal sharing.</p>
+                <p class="quote-subtitle">Every day can be refined in the builder, but the layout below is generated
+                    automatically for proposal sharing.</p>
 
                 <div style="margin-top: 18px;">
                     @foreach ($days as $day)
@@ -1001,7 +1062,8 @@
                                 <tr>
                                     @if (!$imageOnRight)
                                         @php $dayImage = $day['image'] ?: $fallbackImage; @endphp
-                                        <td class="quote-day-image" @if (!$isPdf && $dayImage) style="background-image: url('{{ $dayImage }}');" @endif>
+                                        <td class="quote-day-image"
+                                            @if (!$isPdf && $dayImage) style="background-image: url('{{ $dayImage }}');" @endif>
                                             @if ($isPdf && !empty($dayImage))
                                                 <img src="{{ $dayImage }}" alt="{{ $day['title'] }}">
                                             @endif
@@ -1020,7 +1082,8 @@
                                         @if ($day['description'])
                                             <p>{{ $day['description'] }}</p>
                                         @else
-                                            <p>A curated safari moment shaped around your travel plan, destination flow, and the Dream Travel and Tours library.</p>
+                                            <p>A curated safari moment shaped around your travel plan, destination flow,
+                                                and the Dream Travel and Tours library.</p>
                                         @endif
 
                                         @if ($day['accommodation_name'] || $day['stay_type'])
@@ -1060,12 +1123,14 @@
                                         @endif
 
                                         @if ($day['accommodation_notes'])
-                                            <p style="margin-top: 12px;"><strong>Notes:</strong> {{ $day['accommodation_notes'] }}</p>
+                                            <p style="margin-top: 12px;">
+                                                <strong>Notes:</strong> {{ $day['accommodation_notes'] }}</p>
                                         @endif
                                     </td>
                                     @if ($imageOnRight)
                                         @php $dayImage = $day['image'] ?: $fallbackImage; @endphp
-                                        <td class="quote-day-image" @if (!$isPdf && $dayImage) style="background-image: url('{{ $dayImage }}');" @endif>
+                                        <td class="quote-day-image"
+                                            @if (!$isPdf && $dayImage) style="background-image: url('{{ $dayImage }}');" @endif>
                                             @if ($isPdf && !empty($dayImage))
                                                 <img src="{{ $dayImage }}" alt="{{ $day['title'] }}">
                                             @endif
@@ -1085,16 +1150,22 @@
                     <tr>
                         <td style="width: 52%; padding-right: 16px; vertical-align: top;">
                             <div class="quote-title">Safari Hosting and Transport</div>
-                            <p class="quote-subtitle">A guest-ready summary of how this journey is expected to feel on the ground.</p>
+                            <p class="quote-subtitle">A guest-ready summary of how this journey is expected to feel on
+                                the ground.</p>
                             <p>
-                                {{ $branding['company_name'] }} plans each safari around smooth logistics, strong destination pairing, and service levels that match the chosen travel style.
+                                {{ $branding['company_name'] }} plans each safari around smooth logistics, strong
+                                destination pairing, and service levels that match the chosen travel style.
                                 @if ($version->serviceClass)
-                                    This proposal is currently aligned to the <strong>{{ $version->serviceClass->name }}</strong> service class.
+                                    This proposal is currently aligned to the
+                                    <strong>{{ $version->serviceClass->name }}</strong> service class.
                                 @endif
                             </p>
                             <p>
-                                Your itinerary currently covers <strong>{{ $version->duration_days ?: $days->count() ?: 1 }} days</strong> for
-                                <strong>{{ $version->guest_count }}</strong> traveler{{ $version->guest_count == 1 ? '' : 's' }} with meal visibility, stay notes, and activity detail ready for final refinement.
+                                Your itinerary currently covers
+                                <strong>{{ $version->duration_days ?: $days->count() ?: 1 }} days</strong> for
+                                <strong>{{ $version->guest_count }}</strong>
+                                traveler{{ $version->guest_count == 1 ? '' : 's' }} with meal visibility, stay notes,
+                                and activity detail ready for final refinement.
                             </p>
                         </td>
                         <td style="width: 48%; vertical-align: top;">
@@ -1120,26 +1191,36 @@
             <div class="quote-section">
                 <div class="quote-body">
                     <div class="quote-title">Pricing</div>
-                    <p class="quote-subtitle">Built from the current quote version and ready for PDF or digital sharing.</p>
+                    <p class="quote-subtitle">Built from the current quote version and ready for PDF or digital
+                        sharing.</p>
 
                     {{-- Pricing-page strip mirroring SafariOffice's pricing header --}}
                     <table style="width: 100%; border-collapse: collapse; margin: 14px 0 8px;">
                         <tr>
                             <td style="width: 25%; padding: 8px 12px; background: #f7f3ec; border-radius: 8px;">
-                                <span style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6f7d76;">Tour Length</span>
-                                <div style="font-weight: 800;">{{ $version->duration_days ?: $days->count() ?: 1 }} Days / {{ $version->duration_nights ?: max(($days->count() ?: 1) - 1, 0) }} Nights</div>
+                                <span
+                                    style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6f7d76;">Tour Length</span>
+                                <div style="font-weight: 800;">{{ $version->duration_days ?: $days->count() ?: 1 }} Days
+                                    / {{ $version->duration_nights ?: max(($days->count() ?: 1) - 1, 0) }} Nights
+                                </div>
                             </td>
                             <td style="width: 25%; padding: 8px 12px; background: #f7f3ec; border-radius: 8px;">
-                                <span style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6f7d76;">Travelers</span>
-                                <div style="font-weight: 800;">{{ $version->guest_count }} {{ $version->guest_count == 1 ? 'Adult' : 'Adults' }}</div>
+                                <span
+                                    style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6f7d76;">Travelers</span>
+                                <div
+                                    style="font-weight: 800;">{{ $version->guest_count }} {{ $version->guest_count == 1 ? 'Adult' : 'Adults' }}</div>
                             </td>
                             <td style="width: 25%; padding: 8px 12px; background: #f7f3ec; border-radius: 8px;">
-                                <span style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6f7d76;">Start Tour</span>
-                                <div style="font-weight: 800;">{{ optional($version->start_date)->format('F j, Y') ?? 'TBD' }}</div>
+                                <span
+                                    style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6f7d76;">Start Tour</span>
+                                <div
+                                    style="font-weight: 800;">{{ optional($version->start_date)->format('F j, Y') ?? 'TBD' }}</div>
                             </td>
                             <td style="width: 25%; padding: 8px 12px; background: #f7f3ec; border-radius: 8px;">
-                                <span style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6f7d76;">End Tour</span>
-                                <div style="font-weight: 800;">{{ optional($version->end_date)->format('F j, Y') ?? 'TBD' }}</div>
+                                <span
+                                    style="font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #6f7d76;">End Tour</span>
+                                <div
+                                    style="font-weight: 800;">{{ optional($version->end_date)->format('F j, Y') ?? 'TBD' }}</div>
                             </td>
                         </tr>
                     </table>
@@ -1147,28 +1228,28 @@
                     @if (!$version->hide_price_breakdown)
                         <table class="quote-price-table" style="margin-top: 18px;">
                             <thead>
-                                <tr>
-                                    <th>Description</th>
-                                    <th>Type</th>
-                                    <th>Qty</th>
-                                    <th>Unit</th>
-                                    <th>Total</th>
-                                </tr>
+                            <tr>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Qty</th>
+                                <th>Unit</th>
+                                <th>Total</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                @forelse ($price_lines as $line)
-                                    <tr>
-                                        <td>{{ $line->description }}</td>
-                                        <td>{{ $line->traveler_type ?: ($line->is_optional ? 'Optional' : 'Standard') }}</td>
-                                        <td>{{ $line->quantity }}</td>
-                                        <td>{{ $line->currency->short_name ?? $currencyCode }} {{ number_format($line->unit_price ?? 0, 2) }}</td>
-                                        <td>{{ $line->currency->short_name ?? $currencyCode }} {{ number_format($line->total_price ?? 0, 2) }}</td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="5">Pricing is being prepared.</td>
-                                    </tr>
-                                @endforelse
+                            @forelse ($price_lines as $line)
+                                <tr>
+                                    <td>{{ $line->description }}</td>
+                                    <td>{{ $line->traveler_type ?: ($line->is_optional ? 'Optional' : 'Standard') }}</td>
+                                    <td>{{ $line->quantity }}</td>
+                                    <td>{{ $line->currency->short_name ?? $currencyCode }} {{ number_format($line->unit_price ?? 0, 2) }}</td>
+                                    <td>{{ $line->currency->short_name ?? $currencyCode }} {{ number_format($line->total_price ?? 0, 2) }}</td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="5">Pricing is being prepared.</td>
+                                </tr>
+                            @endforelse
                             </tbody>
                         </table>
                     @endif
@@ -1179,12 +1260,17 @@
                                 <tr>
                                     <td style="width: 65%; vertical-align: top;">
                                         <div style="font-size: 24px; font-weight: 800;">Estimated Trip Total</div>
-                                        <div style="opacity: 0.85;">This total reflects visible non-optional lines plus VAT.</div>
+                                        <div style="opacity: 0.85;">This total reflects visible non-optional lines plus
+                                            VAT.
+                                        </div>
                                     </td>
                                     <td style="width: 35%; text-align: right; vertical-align: top;">
-                                        <div style="font-size: 14px; opacity: 0.8;">Subtotal {{ $currencyCode }} {{ number_format($version->amount ?? 0, 2) }}</div>
-                                        <div style="font-size: 14px; opacity: 0.8;">VAT {{ $currencyCode }} {{ number_format($version->vat_amount ?? 0, 2) }}</div>
-                                        <div style="font-size: 30px; font-weight: 800; margin-top: 6px;">{{ $currencyCode }} {{ number_format($version->total_amount ?? 0, 2) }}</div>
+                                        <div style="font-size: 14px; opacity: 0.8;">
+                                            Subtotal {{ $currencyCode }} {{ number_format($version->amount ?? 0, 2) }}</div>
+                                        <div style="font-size: 14px; opacity: 0.8;">
+                                            VAT {{ $currencyCode }} {{ number_format($version->vat_amount ?? 0, 2) }}</div>
+                                        <div
+                                            style="font-size: 30px; font-weight: 800; margin-top: 6px;">{{ $currencyCode }} {{ number_format($version->total_amount ?? 0, 2) }}</div>
                                     </td>
                                 </tr>
                             </table>
@@ -1258,10 +1344,12 @@
                     <tr>
                         <td style="width: 62%; padding-right: 20px; vertical-align: top;">
                             @if ($displayLogo)
-                                <img src="{{ $displayLogo }}" alt="{{ $branding['company_name'] }}" class="quote-cover-logo" style="margin-bottom: 14px;">
+                                <img src="{{ $displayLogo }}" alt="{{ $branding['company_name'] }}"
+                                     class="quote-cover-logo" style="margin-bottom: 14px;">
                             @endif
                             <div class="quote-title">About {{ $branding['company_name'] }}</div>
-                            <p class="quote-subtitle" style="opacity: 0.85;">A proposal that feels complete from the first share, backed by your own destination and trip library.</p>
+                            <p class="quote-subtitle" style="opacity: 0.85;">A proposal that feels complete from the
+                                first share, backed by your own destination and trip library.</p>
                             <p style="margin-top: 14px;">{{ $company_profile }}</p>
 
                             @if (!empty($company_mission))
@@ -1282,16 +1370,19 @@
                             <div style="background: rgba(255,255,255,0.1); border-radius: 18px; padding: 18px;">
                                 <div style="font-size: 18px; font-weight: 800; margin-bottom: 10px;">Contact Us</div>
                                 @if (!empty($company_address))
-                                    <p style="margin: 0 0 8px;"><strong>Address</strong> &nbsp; {{ $company_address }}</p>
+                                    <p style="margin: 0 0 8px;"><strong>Address</strong> &nbsp; {{ $company_address }}
+                                    </p>
                                 @endif
                                 @if (!empty($company_country))
-                                    <p style="margin: 0 0 8px;"><strong>Country</strong> &nbsp; {{ $company_country }}</p>
+                                    <p style="margin: 0 0 8px;"><strong>Country</strong> &nbsp; {{ $company_country }}
+                                    </p>
                                 @endif
                                 @if (!empty($company_email))
                                     <p style="margin: 0 0 8px;"><strong>Email</strong> &nbsp; {{ $company_email }}</p>
                                 @endif
                                 @if (!empty($website_url))
-                                    <p style="margin: 0 0 8px;"><strong>Website</strong> &nbsp; <a href="{{ $website_url }}">{{ $website_url }}</a></p>
+                                    <p style="margin: 0 0 8px;"><strong>Website</strong> &nbsp; <a
+                                            href="{{ $website_url }}">{{ $website_url }}</a></p>
                                 @endif
                                 @if (!empty($company_phone))
                                     <p style="margin: 0;"><strong>Phone</strong> &nbsp; {{ $company_phone }}</p>
@@ -1302,20 +1393,28 @@
                                 $primaryCtaStyle = 'display: inline-block; margin: 0 8px 8px 0; padding: 10px 16px; border-radius: 999px; background: #0097DC; color: #fff; text-decoration: none; font-weight: 800; border: none; cursor: pointer; font-family: inherit;';
                                 $secondaryCtaStyle = 'display: inline-block; margin: 0 0 8px 0; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,0.14); color: #fff; text-decoration: none; font-weight: 800; border: 1px solid rgba(255,255,255,0.28); cursor: pointer; font-family: inherit;';
                             @endphp
-                            <div style="background: rgba(255,255,255,0.1); border-radius: 18px; padding: 18px; margin-top: 16px;">
-                                <div style="font-size: 18px; font-weight: 800; margin-bottom: 10px;">Ready to Confirm?</div>
-                                <p style="margin: 0 0 12px;">Continue the client journey online through {{ $branding['company_name'] }}.</p>
+                            <div
+                                style="background: rgba(255,255,255,0.1); border-radius: 18px; padding: 18px; margin-top: 16px;">
+                                <div style="font-size: 18px; font-weight: 800; margin-bottom: 10px;">Ready to Confirm?
+                                </div>
+                                <p style="margin: 0 0 12px;">Continue the client journey online
+                                    through {{ $branding['company_name'] }}.</p>
                                 @if ($canBookFromQuote)
                                     @if ($inlineBookingModal)
-                                        <button type="button" data-bs-toggle="modal" data-bs-target="#quoteBookingModal" style="{{ $primaryCtaStyle }}">Book This Safari</button>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#quoteBookingModal"
+                                                style="{{ $primaryCtaStyle }}">Book This Safari
+                                        </button>
                                     @elseif ($publicMode)
-                                        <a href="{{ route('public.itinerary.book.confirm', $version->public_token) }}" style="{{ $primaryCtaStyle }}">Book This Safari</a>
+                                        <a href="{{ route('public.itinerary.book.confirm', $version->public_token) }}"
+                                           style="{{ $primaryCtaStyle }}">Book This Safari</a>
                                     @elseif ($public_booking_url)
-                                        <a href="{{ $public_booking_url }}" style="{{ $primaryCtaStyle }}">Book This Safari</a>
+                                        <a href="{{ $public_booking_url }}" style="{{ $primaryCtaStyle }}">Book This
+                                            Safari</a>
                                     @endif
                                 @endif
                                 @if ($website_url)
-                                    <a href="{{ $website_url }}" target="_blank" rel="noopener" style="{{ $secondaryCtaStyle }}">Visit Our Website</a>
+                                    <a href="{{ $website_url }}" target="_blank" rel="noopener"
+                                       style="{{ $secondaryCtaStyle }}">Visit Our Website</a>
                                 @endif
                             </div>
                         </td>
@@ -1330,31 +1429,39 @@
 
         <!-- {{-- Colofon page --}}
         @if (!empty($colofon))
-            <div class="quote-section" style="background: #AC5526; color: #fff; min-height: 540px;">
+            <div class="quote-section" style="background: #288479; color: #fff; min-height: 540px;">
                 <div class="quote-body" style="padding: 60px 40px;">
                     @if (!empty($colofon['quote']))
-                        <div style="font-family: Georgia, 'Times New Roman', serif; font-size: 36px; line-height: 1.25; margin-top: 80px;">
-                            &ldquo;{{ $colofon['quote'] }}&rdquo;
+                <div style="font-family: Georgia, 'Times New Roman', serif; font-size: 36px; line-height: 1.25; margin-top: 80px;">
+&ldquo;{{ $colofon['quote'] }}&rdquo;
                         </div>
                         @if (!empty($colofon['quote_author']))
-                            <div style="margin-top: 18px; font-size: 16px; opacity: 0.85;">— {{ $colofon['quote_author'] }}</div>
-                        @endif
-                    @endif
+                    <div style="margin-top: 18px; font-size: 16px; opacity: 0.85;">— {{ $colofon['quote_author'] }}</div>
 
-                    <div style="margin-top: 80px; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 18px;">
-                        <div style="font-size: 16px; font-weight: 800; margin-bottom: 10px;">Colofon</div>
-                        @if (!empty($colofon['copyright_text']))
-                            <p style="margin: 0 0 6px;"><strong>Copyright Text</strong> &nbsp; {{ $colofon['copyright_text'] }}</p>
-                        @endif
-                        @if (!empty($colofon['copyright_images']))
-                            <p style="margin: 0 0 6px;"><strong>Copyright Images</strong> &nbsp; {{ $colofon['copyright_images'] }}</p>
-                        @endif
-                        <p style="margin-top: 16px; font-size: 12px; opacity: 0.75;">
-                            {{ $agent['name'] ?? $branding['company_name'] }} prepared this proposal for {{ $tourist->name ?? 'you' }}.
+
+                @endif
+            @endif
+
+            <div style="margin-top: 80px; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 18px;">
+                <div style="font-size: 16px; font-weight: 800; margin-bottom: 10px;">Colofon</div>
+@if (!empty($colofon['copyright_text']))
+                <p style="margin: 0 0 6px;"><strong>Copyright Text</strong> &nbsp; {{ $colofon['copyright_text'] }}</p>
+
+
+            @endif
+            @if (!empty($colofon['copyright_images']))
+                <p style="margin: 0 0 6px;"><strong>Copyright Images</strong> &nbsp; {{ $colofon['copyright_images'] }}</p>
+
+
+            @endif
+            <p style="margin-top: 16px; font-size: 12px; opacity: 0.75;">
+{{ $agent['name'] ?? $branding['company_name'] }} prepared this proposal for {{ $tourist->name ?? 'you' }}.
                         </p>
                     </div>
                 </div>
             </div>
+
+
         @endif -->
 
         <div class="quote-footer-bar">
@@ -1362,7 +1469,8 @@
                 <tr>
                     <td style="width: 58%; vertical-align: middle;">
                         @if ($displayLogo)
-                            <img src="{{ $displayLogo }}" alt="{{ $branding['company_name'] }}" class="quote-brand-logo" style="max-height: 34px; max-width: 120px;">
+                            <img src="{{ $displayLogo }}" alt="{{ $branding['company_name'] }}" class="quote-brand-logo"
+                                 style="max-height: 34px; max-width: 120px;">
                         @else
                             <strong>{{ $branding['company_name'] }}</strong>
                         @endif
@@ -1372,7 +1480,8 @@
                         <div style="font-size: 13px; margin-bottom: 6px;">
                             <a href="{{ $website_url }}">{{ $branding['powered_by_label'] }}</a>
                         </div>
-                        <div style="font-size: 12px; color: #61736c;">Generated {{ $generatedLabel }} | {{ $document_reference }}</div>
+                        <div style="font-size: 12px; color: #61736c;">Generated {{ $generatedLabel }}
+                            | {{ $document_reference }}</div>
                     </td>
                 </tr>
             </table>
