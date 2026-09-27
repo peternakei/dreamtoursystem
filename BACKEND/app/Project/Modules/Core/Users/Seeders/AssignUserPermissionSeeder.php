@@ -15,7 +15,7 @@ class AssignUserPermissionSeeder extends Seeder
     public function run(): void
     {
         $user = User::query()
-            ->where('username', 'admin@serenbluesafaris.com')
+            ->where('username', 'admin@dreamtravelandtours.com')
             ->firstOrFail();
 
         $user->assignRole('SuperAdmin');
